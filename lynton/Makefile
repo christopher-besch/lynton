@@ -40,7 +40,7 @@ OBJDIR = ../bin-int/Debug-WASM/lynton
 DEFINES += -DDEBUG -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -g
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main", "_fib"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
 
 else ifeq ($(config),debug_linux)
 TARGETDIR = ../bin/Debug-Linux/lynton
@@ -67,7 +67,7 @@ OBJDIR = ../bin-int/Release-WASM/lynton
 DEFINES += -DRELEASE -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -O3 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -O3 -g
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main", "_fib"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
 
 else ifeq ($(config),release_linux)
 TARGETDIR = ../bin/Release-Linux/lynton
@@ -94,7 +94,7 @@ OBJDIR = ../bin-int/Dist-WASM/lynton
 DEFINES += -DDIST -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -O3
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -O3
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s -s WASM=1 -s EXPORTED_FUNCTIONS='["_main", "_fib"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
 
 else ifeq ($(config),dist_linux)
 TARGETDIR = ../bin/Dist-Linux/lynton
@@ -126,8 +126,8 @@ endif
 GENERATED :=
 OBJECTS :=
 
-GENERATED += $(OBJDIR)/main.o
-OBJECTS += $(OBJDIR)/main.o
+GENERATED += $(OBJDIR)/sdl_test.o
+OBJECTS += $(OBJDIR)/sdl_test.o
 
 # Rules
 # #############################################
@@ -191,7 +191,7 @@ endif
 # File Rules
 # #############################################
 
-$(OBJDIR)/main.o: src/main.cpp
+$(OBJDIR)/sdl_test.o: src/sdl_test.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 

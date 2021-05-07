@@ -49,7 +49,7 @@ project "lynton"
     }
 
     filter "platforms:WASM"
-        linkoptions { "-s WASM=1", "-s EXPORTED_FUNCTIONS='[\"_main\", \"_fib\"]'", "-s EXPORTED_RUNTIME_METHODS='[\"cwrap\"]'" }
+        linkoptions { "-s WASM=1", "-s EXPORTED_FUNCTIONS='[\"_main\"]'", "-s EXPORTED_RUNTIME_METHODS='[\"cwrap\"]'" }
         targetname ("%{prj.name}.html")
     filter "platforms:Linux"
         targetname ("%{prj.name}")

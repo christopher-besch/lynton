@@ -1,0 +1,43 @@
+#include <SDL.h>
+#include <emscripten.h>
+#include <stdlib.h>
+
+SDL_Window *window;
+SDL_Renderer *renderer;
+SDL_Surface *surface;
+
+void draw_random_pixels()
+{
+    if (SDL_MUSTLOCK(surface))
+        SDL_LockSurface(surface);
+
+    uint8_t *pixels = static_cast<uint8_t *>(surface->pixels);
+
+    for (int i = 0; i < 1048576; ++i)
+    {
+        char random_byte = rand() % 255;
+        pixels[i] = random_byte;
+    }
+
+    if (SDL_MUSTLOCK(surface))
+        SDL_UnlockSurface(surface);
+
+    SDL_Texture *screen_texture = SDL_Create_TextureFromSurface(renderer, surface);
+
+    SDL_RenderClear(renderer);
+    SDL_RenderClear(renderer);
+    SDL_REnderCopy(renderer, screen_texture, nullptr, nullptr);
+    SDL_RenderPresent(renderer);
+
+    SDL_DestroyTexture(screen_texture);
+}
+
+int main(int argc, char *argv[])
+{
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_CreateWindowAndRenderer(512, 512, 0, &window, &renderer);
+    surface = SDL_CreateRGBSurface(0, 512, 512, 32, 0, 0, 0, 0);
+
+    // let the browser some time to render
+    emscripten_set_main_loop(draw_random_pixels, 60, 1);
+}
