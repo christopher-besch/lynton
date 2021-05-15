@@ -1,5 +1,8 @@
-#include <SDL.h>
+#ifdef __EMSCRIPTEN__
 #include <emscripten.h>
+#endif
+
+#include <SDL2/SDL.h>
 #include <stdlib.h>
 
 SDL_Window *window;
@@ -22,11 +25,10 @@ void draw_random_pixels()
     if (SDL_MUSTLOCK(surface))
         SDL_UnlockSurface(surface);
 
-    SDL_Texture *screen_texture = SDL_Create_TextureFromSurface(renderer, surface);
+    SDL_Texture *screen_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     SDL_RenderClear(renderer);
-    SDL_RenderClear(renderer);
-    SDL_REnderCopy(renderer, screen_texture, nullptr, nullptr);
+    SDL_RenderCopy(renderer, screen_texture, nullptr, nullptr);
     SDL_RenderPresent(renderer);
 
     SDL_DestroyTexture(screen_texture);
@@ -38,6 +40,15 @@ int main(int argc, char *argv[])
     SDL_CreateWindowAndRenderer(512, 512, 0, &window, &renderer);
     surface = SDL_CreateRGBSurface(0, 512, 512, 32, 0, 0, 0, 0);
 
+#ifdef __EMSCRIPTEN__
     // let the browser some time to render
     emscripten_set_main_loop(draw_random_pixels, 60, 1);
+#else
+    // halt the entire program
+    while (1)
+    {
+        draw_random_pixels();
+        SDL_Delay(16);
+    }
+#endif
 }

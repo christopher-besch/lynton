@@ -23,7 +23,6 @@ INCLUDES += -Isrc
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-LIBS +=
 LDDEPS +=
 LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
 define PREBUILDCMDS
@@ -40,7 +39,8 @@ OBJDIR = ../bin-int/Debug-WASM/lynton
 DEFINES += -DDEBUG -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -g
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
+LIBS +=
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]' -s USE_SDL=2
 
 else ifeq ($(config),debug_linux)
 TARGETDIR = ../bin/Debug-Linux/lynton
@@ -49,6 +49,7 @@ OBJDIR = ../bin-int/Debug-Linux/lynton
 DEFINES += -DDEBUG -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g
+LIBS += -lSDL2
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),debug_windows)
@@ -58,6 +59,7 @@ OBJDIR = ../bin-int/Debug-Windows/lynton
 DEFINES += -DDEBUG -DWINDOWS
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g
+LIBS +=
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release_wasm)
@@ -67,7 +69,8 @@ OBJDIR = ../bin-int/Release-WASM/lynton
 DEFINES += -DRELEASE -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -O3 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -O3 -g
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
+LIBS +=
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]' -s USE_SDL=2
 
 else ifeq ($(config),release_linux)
 TARGETDIR = ../bin/Release-Linux/lynton
@@ -76,6 +79,7 @@ OBJDIR = ../bin-int/Release-Linux/lynton
 DEFINES += -DRELEASE -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g
+LIBS += -lSDL2
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release_windows)
@@ -85,6 +89,7 @@ OBJDIR = ../bin-int/Release-Windows/lynton
 DEFINES += -DRELEASE -DWINDOWS
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g
+LIBS +=
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),dist_wasm)
@@ -94,7 +99,8 @@ OBJDIR = ../bin-int/Dist-WASM/lynton
 DEFINES += -DDIST -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -O3
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -O3
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]'
+LIBS +=
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]' -s USE_SDL=2
 
 else ifeq ($(config),dist_linux)
 TARGETDIR = ../bin/Dist-Linux/lynton
@@ -103,6 +109,7 @@ OBJDIR = ../bin-int/Dist-Linux/lynton
 DEFINES += -DDIST -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O3
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3
+LIBS += -lSDL2
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 else ifeq ($(config),dist_windows)
@@ -112,6 +119,7 @@ OBJDIR = ../bin-int/Dist-Windows/lynton
 DEFINES += -DDIST -DWINDOWS
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O3
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3
+LIBS +=
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 endif
