@@ -42,7 +42,8 @@ int main(int argc, char *argv[])
 
 #ifdef __EMSCRIPTEN__
     // let the browser some time to render
-    emscripten_set_main_loop(draw_random_pixels, 60, 1);
+    // use v sync
+    emscripten_set_main_loop(draw_random_pixels, 0, false);
 #else
     // halt the entire program
     while (1)
