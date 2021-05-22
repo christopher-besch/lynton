@@ -4,6 +4,7 @@
 
 #include <SDL2/SDL.h>
 #include <stdlib.h>
+#include <optional>
 
 SDL_Window *window;
 SDL_Renderer *renderer;
