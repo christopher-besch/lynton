@@ -18,8 +18,16 @@ endif
 # Configurations
 # #############################################
 
-RESCOMP = windres
-INCLUDES += -Isrc
+ifeq ($(origin CC), default)
+  CC = clang
+endif
+ifeq ($(origin CXX), default)
+  CXX = clang++
+endif
+ifeq ($(origin AR), default)
+  AR = ar
+endif
+INCLUDES +=
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -38,7 +46,7 @@ TARGET = $(TARGETDIR)/lynton.html
 OBJDIR = ../bin-int/Debug-WASM/lynton
 DEFINES += -DDEBUG -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -g -std=c++17
 LIBS +=
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]' -s USE_SDL=2
 
@@ -48,7 +56,7 @@ TARGET = $(TARGETDIR)/lynton
 OBJDIR = ../bin-int/Debug-Linux/lynton
 DEFINES += -DDEBUG -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17
 LIBS += -lSDL2
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
@@ -58,7 +66,7 @@ TARGET = $(TARGETDIR)/lynton.exe.exe
 OBJDIR = ../bin-int/Debug-Windows/lynton
 DEFINES += -DDEBUG -DWINDOWS
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17
 LIBS +=
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
@@ -68,7 +76,7 @@ TARGET = $(TARGETDIR)/lynton.html
 OBJDIR = ../bin-int/Release-WASM/lynton
 DEFINES += -DRELEASE -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -O3 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -O3 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -O3 -g -std=c++17
 LIBS +=
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]' -s USE_SDL=2
 
@@ -78,7 +86,7 @@ TARGET = $(TARGETDIR)/lynton
 OBJDIR = ../bin-int/Release-Linux/lynton
 DEFINES += -DRELEASE -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g -std=c++17
 LIBS += -lSDL2
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
@@ -88,7 +96,7 @@ TARGET = $(TARGETDIR)/lynton.exe.exe
 OBJDIR = ../bin-int/Release-Windows/lynton
 DEFINES += -DRELEASE -DWINDOWS
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -g -std=c++17
 LIBS +=
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
@@ -98,9 +106,9 @@ TARGET = $(TARGETDIR)/lynton.html
 OBJDIR = ../bin-int/Dist-WASM/lynton
 DEFINES += -DDIST -DWASM
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -O3
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -O3
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -O3 -std=c++17
 LIBS +=
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]' -s USE_SDL=2
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32 -s WASM=1 -s EXPORTED_FUNCTIONS='["_main"]' -s EXPORTED_RUNTIME_METHODS='["cwrap"]' -s USE_SDL=2
 
 else ifeq ($(config),dist_linux)
 TARGETDIR = ../bin/Dist-Linux/lynton
@@ -108,9 +116,9 @@ TARGET = $(TARGETDIR)/lynton
 OBJDIR = ../bin-int/Dist-Linux/lynton
 DEFINES += -DDIST -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O3
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -std=c++17
 LIBS += -lSDL2
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),dist_windows)
 TARGETDIR = ../bin/Dist-Windows/lynton
@@ -118,9 +126,9 @@ TARGET = $(TARGETDIR)/lynton.exe.exe
 OBJDIR = ../bin-int/Dist-Windows/lynton
 DEFINES += -DDIST -DWINDOWS
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O3
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O3 -std=c++17
 LIBS +=
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 endif
 
