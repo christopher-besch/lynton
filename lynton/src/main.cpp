@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <optional>
-#include <stdlib.h>
 
 constexpr int screen_width   = 640;
 constexpr int screeen_height = 480;
