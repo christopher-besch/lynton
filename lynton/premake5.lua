@@ -22,8 +22,9 @@ project "lynton"
         targetname ("%{prj.name}.html")
     filter "platforms:Linux"
         -- I hate everything!
-        buildoptions { "`sdl2-config --cflags --libs`" }
-        links { "SDL2main", "SDL2", "SDL2_image" }
+        buildoptions { "`sdl2-config --cflags`" }
+        linkoptions { "`sdl2-config --libs`" }
+        links { "SDL2main", "SDL2_image" }
         targetname ("%{prj.name}")
     -- not supported
     filter "platforms:Windows"
