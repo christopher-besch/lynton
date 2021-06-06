@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Binaries
+bin/*
+bin-int/*
+
+Makefile
+.vscode/*
+
