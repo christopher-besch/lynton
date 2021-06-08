@@ -5,15 +5,22 @@ project "lynton"
 
     warnings "Extra"
 
+    -- like in #include
+    pchheader "pch.h"
+    -- relative path
+    pchsource "src/pch.cpp"
+
     location ""
     targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
     objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
     files {
-        "src/**.h", "src/**.cpp"
+        "src/**.h",
+        "src/**.cpp"
     }
 
     includedirs {
+        "src",
         "%{wks.location}/utils/src"
     }
 
