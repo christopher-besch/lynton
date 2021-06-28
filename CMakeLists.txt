@@ -5,6 +5,7 @@ project(lynton VERSION 0.1)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl_mixer")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl_image")
