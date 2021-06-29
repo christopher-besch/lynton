@@ -6,9 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # needed for sdl_ttf
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype")
-set(FREETYPE_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype/include")
-set(FREETYPE_LIBRARY freetype)
+# add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype")
+# set(FREETYPE_INCLUDE_DIRS
+# "${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype/include") set(FREETYPE_LIBRARY
+# freetype)
 
 # set(TTF_WITH_HARFBUZZ ON BOOL)
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl")

@@ -10,6 +10,3 @@
 [submodule "vendor/sdl_ttf"]
 	path = vendor/sdl_ttf
 	url = https://github.com/libsdl-org/SDL_ttf
-[submodule "vendor/freetype"]
-	path = vendor/freetype
-	url = https://github.com/christopher-besch/freetype_fork
