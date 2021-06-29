@@ -41,6 +41,7 @@ jobs:
         run: |
           git clone https://gitlab.freedesktop.org/freetype/freetype
           cmake -B freetype/build -D CMAKE_BUILD_TYPE=Release ./freetype
+          cmake --build freetype/build
           cmake --build freetype/build --target install
 
       - name: Configure CMake
