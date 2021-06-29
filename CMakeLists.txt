@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # needed for sdl_ttf
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype")
-set(FREETYPE_LIBRARY $<TARGET_FILE:freetype>)
+set(FREETYPE_LIBRARY "$<TARGET_FILE:freetype>")
 set(FREETYPE_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype/include")
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl")
