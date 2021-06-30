@@ -55,7 +55,10 @@ jobs:
             cmake \
             gcc-10 \
             g++-10 \
-            libfreetype-dev
+            libfreetype-dev \
+            libsdl2-dev \
+            libsdl2-image-dev \
+            libsdl2-ttf-dev
 
       - name: Configure CMake
         run: |

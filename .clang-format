@@ -24,7 +24,7 @@ BinPackArguments: 'true'
 BinPackParameters: 'true'
 BreakAfterJavaFieldAnnotations: 'true'
 BreakBeforeBinaryOperators: None
-BreakBeforeBraces: Custom
+BreakBeforeBraces: Stroustrup
 BreakBeforeTernaryOperators: 'false'
 BreakConstructorInitializers: BeforeColon
 BreakInheritanceList: BeforeColon
