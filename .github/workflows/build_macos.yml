@@ -31,7 +31,7 @@ jobs:
 
       - name: Update environment
         run: |
-          brew install -y \
+          brew install \
             libfreetype-dev \
             libsdl2-dev \
             libsdl2-image-dev \
