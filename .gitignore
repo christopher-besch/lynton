@@ -1,5 +1,6 @@
 build
 build_db
+build_em
 
 .cache
 compile_commands.json

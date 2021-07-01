@@ -1,4 +1,4 @@
-#ifdef WASM
+#ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #endif
 
@@ -123,75 +123,78 @@ void close()
     SDL_Quit();
 }
 
-int main(int argc, char* argv[])
-{
-    init();
-    load_media();
-
+struct RunObj {
     bool quit = false;
     // event handler
     SDL_Event e;
+};
 
-    g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Default)];
-
-    // this is art; don't touch
-    while(!(((quit == true) == false) == false)) {
-        while(SDL_PollEvent(&e) != 0) {
-            if(e.type == SDL_QUIT)
-                quit = true;
-            else if(e.type == SDL_KEYDOWN) {
-                switch(e.key.keysym.sym) {
-                case SDLK_UP:
-                    g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Up)];
-                    break;
-                case SDLK_DOWN:
-                    g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Down)];
-                    break;
-                case SDLK_LEFT:
-                    g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Left)];
-                    break;
-                case SDLK_RIGHT:
-                    g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Right)];
-                    break;
-                default:
-                    g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Default)];
-                }
+void draw(void* run_obj)
+{
+    RunObj* r = static_cast<RunObj*>(run_obj);
+    while(SDL_PollEvent(&r->e) != 0) {
+        if(r->e.type == SDL_QUIT)
+            r->quit = true;
+        else if(r->e.type == SDL_KEYDOWN) {
+            switch(r->e.key.keysym.sym) {
+            case SDLK_UP:
+                g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Up)];
+                break;
+            case SDLK_DOWN:
+                g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Down)];
+                break;
+            case SDLK_LEFT:
+                g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Left)];
+                break;
+            case SDLK_RIGHT:
+                g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Right)];
+                break;
+            default:
+                g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Default)];
             }
         }
-
-        // apply image
-        SDL_Rect strech_rect;
-        strech_rect.x = 0;
-        strech_rect.y = 0;
-        strech_rect.w = screen_width / 2;
-        strech_rect.h = screen_height / 2;
-
-        SDL_RenderClear(g_renderer);
-
-        // render texture to screen
-        SDL_RenderCopy(g_renderer, g_current_surface, NULL, NULL);
-
-        // update screen
-        SDL_RenderPresent(g_renderer);
-
-        // for bliting a surface instead
-        // SDL_BlitSurface(g_current_surface, nullptr, g_screen_surface, nullptr);
-        // SDL_BlitScaled(g_current_surface, nullptr, g_screen_surface, &strech_rect);
-        // SDL_UpdateWindowSurface(g_window);
     }
-    close();
 
-    // #ifdef WASM
-    //     // let the browser some time to render
-    //     // use v sync
-    //     // emscripten_set_main_loop(draw_random_pixels, 0, false);
-    // #else
-    //     // halt the entire program
-    //     while (1)
-    //     {
-    //         // draw_random_pixels();
-    //         SDL_Delay(16);
-    //     }
-    // #endif
-    return 0;
+    // apply image
+    SDL_Rect stretch_rect;
+    stretch_rect.x = 0;
+    stretch_rect.y = 0;
+    stretch_rect.w = screen_width / 2;
+    stretch_rect.h = screen_height / 2;
+
+    SDL_RenderClear(g_renderer);
+
+    // render texture to screen
+    SDL_RenderCopy(g_renderer, g_current_surface, NULL, NULL);
+
+    // update screen
+    SDL_RenderPresent(g_renderer);
+
+    // for bliting a surface instead
+    // SDL_BlitSurface(g_current_surface, nullptr, g_screen_surface, nullptr);
+    // SDL_BlitScaled(g_current_surface, nullptr, g_screen_surface, &stretch_rect);
+    // SDL_UpdateWindowSurface(g_window);
+}
+
+int main(int argc, char* argv[])
+{
+    std::cout << "hello world" << std::endl;
+    init();
+    load_media();
+
+    g_current_surface = g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Default)];
+    RunObj run_obj;
+
+#ifdef __EMSCRIPTEN__
+    // let the browser some time to render
+    // use v-sync
+    emscripten_set_main_loop_arg(draw, &run_obj, 0, true);
+#else
+    // halt the entire program
+    while(1) {
+        draw(&run_obj);
+        SDL_Delay(1 / 60);
+    }
+#endif
+    close();
 }
