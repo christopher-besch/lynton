@@ -39,6 +39,7 @@ jobs:
 
       - name: Configure CMake
         run: |
+          source ${{github.workspace}}/emsdk/emsdk_env.sh
           emcmake cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.config.build_type}}
 
       - name: Build
