@@ -100,11 +100,11 @@ SDL_Surface* load_surface(std::string path)
 
 void load_media()
 {
-    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Default)] = load_texture("images/press.bmp");
-    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Up)]      = load_texture("images/up.bmp");
-    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Down)]    = load_texture("images/down.bmp");
-    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Left)]    = load_texture("images/left.bmp");
-    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Right)]   = load_texture("images/right.bmp");
+    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Default)] = load_texture("res/images/press.bmp");
+    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Up)]      = load_texture("res/images/up.bmp");
+    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Down)]    = load_texture("res/images/down.bmp");
+    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Left)]    = load_texture("res/images/left.bmp");
+    g_key_press_surfaces[static_cast<long>(KeyPressSurfaces::Right)]   = load_texture("res/images/right.bmp");
 }
 
 void close()

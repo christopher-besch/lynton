@@ -1,0 +1,55 @@
+name: Build WASM
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {
+            name: "Ubuntu Emscripten Debug",
+            artifact: "wasm_debug.tar.xz",
+            build_type: "debug",
+          }
+          - {
+            name: "Ubuntu Emscripten Release",
+            artifact: "wasm_release.tar.xz",
+            build_type: "release",
+          }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+            submodules: recursive
+
+      - name: Update environment
+        run: |
+          git clone https://github.com/emscripten-core/emsdk.git
+          cd emsdk
+          ./emsdk install latest
+          ./emsdk activate latest
+          source ./emsdk_env.sh
+
+      - name: Configure CMake
+        run: |
+          cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.config.build_type}}
+
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --config ${{matrix.config.build_type}} -j2
+
+      - name: Prepare Upload
+        run: |
+          tar cfz ${{matrix.config.artifact}} build
+
+      - name: Upload
+        uses: actions/upload-artifact@v1
+        with:
+          path: ${{matrix.config.artifact}}
+          name: ${{matrix.config.artifact}}

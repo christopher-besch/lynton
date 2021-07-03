@@ -6,33 +6,17 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
-if(!EMSCRIPTEN)
+# native dependency setup
+if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
   find_package(SDL2 REQUIRED)
   find_package(SDL2_image REQUIRED)
   find_package(SDL2_ttf REQUIRED)
-
-  link_libraries(${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
-  include_directories(${CMAKE_SOURCE_DIR}/include ${SDL2_INCLUDE_DIR})
 endif()
 
 # emscripten setup
-if(EMSCRIPTEN)
-  set(CMAKE_C_FLAGS
-      "${CMAKE_C_FLAGS}   -s ASSERTIONS=1 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='[\"png\", \"bmp\"]' -s WASM=1 -s ASYNCIFY"
-  )
-  set(CMAKE_CXX_FLAGS
-      "${CMAKE_CXX_FLAGS} -s ASSERTIONS=1 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='[\"png\", \"bmp\"]' -s WASM=1 -s ASYNCIFY"
-  )
-
-  # accessible files file(GLOB_RECURSE EMSCRIPTEN_FILES
-  # "${CMAKE_CURRENT_BINARY_DIR}/images/*")
-  set(GLOB_RECURSE EMSCRIPTEN_FILES "${CMAKE_CURRENT_SOURCE_DIR}/images")
-  foreach(EMSCRIPTEN_FILE ${EMSCRIPTEN_FILES})
-    message("${EMSCRIPTEN_FILE}")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}     --preload-file ${EMSCRIPTEN_FILE}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --preload-file ${EMSCRIPTEN_FILE}")
-  endforeach()
-
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}     -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
   set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif()
 
