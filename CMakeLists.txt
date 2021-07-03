@@ -6,28 +6,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
-# needed for sdl_ttf
-# add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype")
-# set(FREETYPE_INCLUDE_DIRS
-# "${CMAKE_CURRENT_SOURCE_DIR}/vendor/freetype/include") set(FREETYPE_LIBRARY
-# freetype)
-
-# set(TTF_WITH_HARFBUZZ ON BOOL)
-# add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl")
-# add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl_mixer")
-# add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl_image")
-# add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl_ttf")
-
 if(!EMSCRIPTEN)
   find_package(SDL2 REQUIRED)
   find_package(SDL2_image REQUIRED)
   find_package(SDL2_ttf REQUIRED)
-endif()
 
-# set_target_properties(abc_proxy_with_asan PROPERTIES COMPILE_FLAGS "-g3
-# -fsanitize=address -fno-omit-frame-pointer")
-# set_target_properties(abc_proxy_with_asan PROPERTIES LINK_FLAGS
-# "-fsanitize=address -static-libasan")
+  link_libraries(${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
+  include_directories(${CMAKE_SOURCE_DIR}/include ${SDL2_INCLUDE_DIR})
+endif()
 
 # emscripten setup
 if(EMSCRIPTEN)
