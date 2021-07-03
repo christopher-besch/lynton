@@ -24,6 +24,11 @@ if(!EMSCRIPTEN)
   find_package(SDL2_ttf REQUIRED)
 endif()
 
+# set_target_properties(abc_proxy_with_asan PROPERTIES COMPILE_FLAGS "-g3
+# -fsanitize=address -fno-omit-frame-pointer")
+# set_target_properties(abc_proxy_with_asan PROPERTIES LINK_FLAGS
+# "-fsanitize=address -static-libasan")
+
 # emscripten setup
 if(EMSCRIPTEN)
   set(CMAKE_C_FLAGS
@@ -35,8 +40,7 @@ if(EMSCRIPTEN)
 
   # accessible files file(GLOB_RECURSE EMSCRIPTEN_FILES
   # "${CMAKE_CURRENT_BINARY_DIR}/images/*")
-  set(GLOB_RECURSE EMSCRIPTEN_FILES
-                   "down.bmp;left.bmp;right.bmp;up.bmp;press.bmp")
+  set(GLOB_RECURSE EMSCRIPTEN_FILES "${CMAKE_CURRENT_SOURCE_DIR}/images")
   foreach(EMSCRIPTEN_FILE ${EMSCRIPTEN_FILES})
     message("${EMSCRIPTEN_FILE}")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}     --preload-file ${EMSCRIPTEN_FILE}")
