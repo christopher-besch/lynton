@@ -13,13 +13,16 @@ void Log::init()
         // log to console and file
         std::vector<spdlog::sink_ptr> default_log_sinks;
         default_log_sinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
+#ifndef __EMSCRIPTEN__
         default_log_sinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("lynton.log", true));
+#endif
         // log to std error stream
         std::vector<spdlog::sink_ptr> error_log_sinks;
         error_log_sinks.emplace_back(std::make_shared<spdlog::sinks::stderr_color_sink_mt>());
-
         default_log_sinks[0]->set_pattern("%^[%T] %n: %v%$");
+#ifndef __EMSCRIPTEN__
         default_log_sinks[1]->set_pattern("[%T] [%l] %n: %v");
+#endif
         error_log_sinks[0]->set_pattern("%^[%T] %n: %v%$");
 
         s_lynton_logger = std::make_shared<spdlog::logger>("Net Learn", begin(default_log_sinks), end(default_log_sinks));
