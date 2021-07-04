@@ -13,10 +13,14 @@ if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
   find_package(SDL2_ttf REQUIRED)
 endif()
 
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog")
+
 # emscripten setup
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}     -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+  set(CMAKE_C_FLAGS
+      "${CMAKE_C_FLAGS}     -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+  set(CMAKE_CXX_FLAGS
+      "${CMAKE_CXX_FLAGS} -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
   set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif()
 
@@ -30,5 +34,6 @@ elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
       "${CMAKE_CXX_FLAGS} /MP2 /DWIN32_LEAN_AND_MEAN /DNOMINMAX")
 endif()
 
-# executables
+# binaries
 add_subdirectory("${CMAKE_SOURCE_DIR}/lynton")
+add_subdirectory("${CMAKE_SOURCE_DIR}/sandbox")
