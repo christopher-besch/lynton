@@ -13,7 +13,7 @@ if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
   find_package(SDL2_ttf REQUIRED)
 endif()
 
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog")
+add_subdirectory("${CMAKE_SOURCE_DIR}/vendor/spdlog")
 
 # emscripten setup
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")

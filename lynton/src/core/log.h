@@ -34,18 +34,18 @@ public:
     }
 };
 
-#ifndef NDEBUG
+#ifdef NDEBUG
+#define raise_critical(...)                                       \
+    do {                                                          \
+        ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__); \
+        std::exit(EXIT_FAILURE);                                  \
+    } while(0)
+#else
 #define raise_critical(...)                                                                             \
     do {                                                                                                \
         ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__);                                       \
         ::Lynton::Log::get_error_logger()->critical("(in {}:{}; in function: {})", __FILE__, __func__); \
         std::exit(EXIT_FAILURE);                                                                        \
-    } while(0)
-#else
-#define raise_critical(...)                                       \
-    do {                                                          \
-        ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__); \
-        std::exit(EXIT_FAILURE);                                  \
     } while(0)
 #endif
 
