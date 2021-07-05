@@ -10,7 +10,10 @@ public:
 
     ~Renderer();
 
+    // clear screen
     void clear();
+    // rendering happens in between
+    // actually draw to screen
     void update();
 
 private:

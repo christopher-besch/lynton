@@ -12,7 +12,7 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height)
         raise_critical("SDL could not initialize! SDL Error: {}", SDL_GetError());
 
     // set texture filtering to linear
-    if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
+    if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear"))
         log_lynton_warn("Linear texture filtering not enabled!");
 
     // create window

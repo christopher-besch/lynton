@@ -2,6 +2,7 @@
 
 #include "core/layer.h"
 #include "renderer/renderer.h"
+#include "time/timer.h"
 
 #include <string>
 #include <vector>
@@ -9,15 +10,38 @@
 namespace Lynton {
 class Application {
 public:
-    Application(const std::string& name, int screen_width, int screen_height);
+    // use goal_fps = 0 for vsync (emscripten) or uncapped (native)
+    Application(const std::string& name, int goal_fps, int screen_width, int screen_height);
     virtual ~Application();
 
+    // from start to end
     void run();
+    // single frame
+    void run_frame();
+
+    // takes ownership of layer
+    // adds below other layers
+    void add_layer(Layer* layer)
+    {
+        m_layers.insert(m_layers.begin(), layer);
+    }
+    // takes ownership of layer
+    // adds above other layers
+    void add_overlay(Layer* layer)
+    {
+        m_layers.insert(m_layers.end(), layer);
+    }
 
 private:
     std::string         m_name;
+    int                 m_goal_fps;
+    uint32_t            m_goal_frame_time;
     Renderer*           m_renderer = nullptr;
     std::vector<Layer*> m_layers;
+
+    bool      m_quit = false;
+    SDL_Event m_e;
+    Timer     m_main_loop_timer;
 };
 
 // to be defined by client

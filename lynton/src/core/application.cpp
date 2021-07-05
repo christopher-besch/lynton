@@ -1,10 +1,14 @@
 #include "application.h"
 
 #include "pch.h"
+#include "time/timer.h"
 
 namespace Lynton {
-Application::Application(const std::string& name, int screen_width, int screen_height)
-    : m_name(name), m_renderer(new Renderer(name, screen_width, screen_height))
+Application::Application(const std::string& name, int goal_fps, int screen_width, int screen_height)
+    : m_name(name),
+      m_goal_fps(goal_fps),
+      m_goal_frame_time(goal_fps ? 1000.0f / goal_fps : 0),
+      m_renderer(new Renderer(name, screen_width, screen_height))
 {
     log_lynton_extra("Creating application '{}'", m_name);
 }
@@ -19,27 +23,48 @@ Application::~Application()
 
 void Application::run()
 {
-    bool      quit = false;
-    SDL_Event e;
-
-    while(!quit) {
-        while(SDL_PollEvent(&e)) {
-            if(e.type == SDL_QUIT)
-                quit = true;
-            else {
-                // go through all layers, stop when handled
-                for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
-                    if(!(*i)->handle_event(e))
-                        break;
-            }
-        }
-        m_renderer->clear();
-        // todo: add timing
-        for(auto i = m_layers.begin(); i < m_layers.end(); ++i) {
-            (*i)->update();
-            (*i)->render();
-        }
-        m_renderer->update();
+#ifdef __EMSCRIPTEN__
+    emscripten_set_main_loop_arg([](void* app) { static_cast<Application*>(app)->run_frame(); }, this, m_goal_fps, true);
+#else
+    while(!m_quit) {
+        run_frame();
+        uint32_t ticks      = m_main_loop_timer.get_ticks();
+        int      sleep_time = m_goal_frame_time - ticks;
+        log_lynton_warn(sleep_time);
+        Timer t;
+        if(sleep_time > 0)
+            SDL_Delay(sleep_time);
+        log_lynton_warn(t.get_ticks());
     }
+#endif
 }
+
+void Application::run_frame()
+{
+    // ticks since last frame
+    uint32_t ticks = m_main_loop_timer.get_ticks();
+    m_main_loop_timer.reset();
+
+    // handle events
+    while(SDL_PollEvent(&m_e)) {
+        if(m_e.type == SDL_QUIT)
+            m_quit = true;
+        else
+            // go through all layers, stop when handled
+            for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
+                if(!(*i)->handle_event(m_e))
+                    break;
+    }
+
+    // update
+    for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
+        (*i)->update(ticks);
+
+    // render
+    m_renderer->clear();
+    for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
+        (*i)->render();
+    m_renderer->update();
+}
+
 } // namespace Lynton
