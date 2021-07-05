@@ -18,17 +18,7 @@ target_include_directories(lynton
 if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
   target_link_libraries(lynton PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY}
                                        ${SDL2_TTF_LIBRARY})
-  target_include_directories(lynton PRIVATE ${SDL2_INCLUDE_DIR})
-endif()
-
-# emscripten sdl2
-if(${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
-  set(LYNTON_COMPILE_FLAGS
-      "${LYNTON_COMPILE_FLAGS} -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='[\"png\", \"bmp\"]'"
-  )
-  set(LYNTON_LINK_FLAGS
-      "${LYNTON_COMPILE_FLAGS} -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='[\"png\", \"bmp\"]'"
-  )
+  target_include_directories(lynton PUBLIC ${SDL2_INCLUDE_DIR})
 endif()
 
 target_link_libraries(lynton PUBLIC spdlog)

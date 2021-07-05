@@ -18,9 +18,11 @@ add_subdirectory("${CMAKE_SOURCE_DIR}/vendor/spdlog")
 # emscripten setup
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
   set(CMAKE_C_FLAGS
-      "${CMAKE_C_FLAGS}     -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+      "${CMAKE_C_FLAGS}   -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY -s USE_SDL=2 -s USE_SDL_IMAGE=2, -s SDL2_IMAGE_FORMATS='[\"png\", \"bmp\"]'"
+  )
   set(CMAKE_CXX_FLAGS
-      "${CMAKE_CXX_FLAGS} -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+      "${CMAKE_CXX_FLAGS} -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY -s USE_SDL=2 -s USE_SDL_IMAGE=2, -s SDL2_IMAGE_FORMATS='[\"png\", \"bmp\"]'"
+  )
   set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif()
 

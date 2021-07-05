@@ -3,7 +3,7 @@
 class Sandbox: public Lynton::Application {
 public:
     Sandbox()
-        : Application("Sandbox")
+        : Application("Sandbox", 960, 480)
     {
         log_client_extra("hi");
     }

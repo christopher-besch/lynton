@@ -25,7 +25,7 @@ void Log::init()
 #endif
         error_log_sinks[0]->set_pattern("%^[%T] %n: %v%$");
 
-        s_lynton_logger = std::make_shared<spdlog::logger>("Net Learn", begin(default_log_sinks), end(default_log_sinks));
+        s_lynton_logger = std::make_shared<spdlog::logger>("Lynton", begin(default_log_sinks), end(default_log_sinks));
         s_client_logger = std::make_shared<spdlog::logger>("Client", begin(default_log_sinks), end(default_log_sinks));
         s_error_logger  = std::make_shared<spdlog::logger>("Error", begin(error_log_sinks), end(error_log_sinks));
 
