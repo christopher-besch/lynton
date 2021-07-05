@@ -3,10 +3,9 @@
 SandboxLayer::SandboxLayer()
     : Layer("Sandbox Layer") {}
 
-void SandboxLayer::update(uint8_t ticks)
+void SandboxLayer::update(double frame_time)
 {
-    log_client_extra("fps: {}", 1000.0f / ticks);
-    log_client_extra("frame time: {}", ticks);
+    log_client_extra("fps: {}", 1.0 / frame_time);
 }
 
 void SandboxLayer::render() {}

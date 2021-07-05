@@ -35,7 +35,7 @@ public:
 private:
     std::string         m_name;
     int                 m_goal_fps;
-    uint32_t            m_goal_frame_time;
+    double              m_goal_frame_time;
     Renderer*           m_renderer = nullptr;
     std::vector<Layer*> m_layers;
 

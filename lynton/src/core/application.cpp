@@ -7,7 +7,7 @@ namespace Lynton {
 Application::Application(const std::string& name, int goal_fps, int screen_width, int screen_height)
     : m_name(name),
       m_goal_fps(goal_fps),
-      m_goal_frame_time(goal_fps ? 1000.0f / goal_fps : 0),
+      m_goal_frame_time(goal_fps ? 1.0 / goal_fps : 0.0),
       m_renderer(new Renderer(name, screen_width, screen_height))
 {
     log_lynton_extra("Creating application '{}'", m_name);
@@ -28,21 +28,19 @@ void Application::run()
 #else
     while(!m_quit) {
         run_frame();
-        uint32_t ticks      = m_main_loop_timer.get_ticks();
-        int      sleep_time = m_goal_frame_time - ticks;
-        log_lynton_warn(sleep_time);
-        Timer t;
+
+        // wait if required
+        double sleep_time = m_goal_frame_time - m_main_loop_timer.get_time();
         if(sleep_time > 0)
-            SDL_Delay(sleep_time);
-        log_lynton_warn(t.get_ticks());
+            SDL_Delay(1000 * sleep_time);
     }
 #endif
 }
 
 void Application::run_frame()
 {
-    // ticks since last frame
-    uint32_t ticks = m_main_loop_timer.get_ticks();
+    // time since last frame
+    double ticks = m_main_loop_timer.get_time();
     m_main_loop_timer.reset();
 
     // handle events

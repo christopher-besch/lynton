@@ -7,8 +7,8 @@ public:
     SandboxLayer();
     virtual ~SandboxLayer() = default;
 
-    // ticks since last frame
-    virtual void update(uint8_t ticks) override;
+    // time in seconds since last frame
+    virtual void update(double frame_time) override;
     virtual void render() override;
 
     // returns true if handled by this layer

@@ -9,9 +9,9 @@ public:
     Layer(const std::string& name);
     virtual ~Layer() = 0;
 
-    // ticks since last frame
-    virtual void update(uint8_t ticks) = 0;
-    virtual void render()              = 0;
+    // time in seconds since last frame
+    virtual void update(double frame_time) = 0;
+    virtual void render()                  = 0;
 
     // todo: replace with lynton wrapper event
     // returns true if handled by this layer

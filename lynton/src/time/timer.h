@@ -15,18 +15,21 @@ public:
     void pause();
     void unpause();
 
-    uint32_t get_ticks();
+    double get_time();
 
     bool is_started() { return m_started; }
     bool is_paused() { return m_paused; }
 
 private:
+    double over_frequency(uint64_t stamp);
+
+private:
     // moment started/stopped
-    uint32_t m_start_stamp;
-    uint32_t m_paused_stamp;
-    // that many ticks were paused
-    uint32_t m_paused_ticks;
-    bool     m_started;
-    bool     m_paused;
+    uint64_t m_start_stamp;
+    uint64_t m_paused_stamp;
+    // that much time was paused
+    long m_paused_time;
+    bool m_started;
+    bool m_paused;
 };
 } // namespace Lynton

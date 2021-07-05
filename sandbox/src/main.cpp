@@ -4,7 +4,7 @@
 class Sandbox: public Lynton::Application {
 public:
     Sandbox()
-        : Application("Sandbox", 60, 960, 480)
+        : Application("Sandbox", 0, 960, 480)
     {
         log_client_extra("hi");
         add_layer(new SandboxLayer());
