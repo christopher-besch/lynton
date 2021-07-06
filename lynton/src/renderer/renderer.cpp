@@ -6,7 +6,7 @@ namespace Lynton {
 Renderer::Renderer(const std::string& name, int screen_width, int screen_height)
     : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height)
 {
-    log_lynton_extra("Creating renderer for '{}'", m_name);
+    log_lynton_general("Creating renderer for '{}'", m_name);
     // init
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
         raise_critical("SDL could not initialize! SDL Error: {}", SDL_GetError());
@@ -36,7 +36,7 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height)
 
 Renderer::~Renderer()
 {
-    log_lynton_extra("Deleting renderer for '{}'", m_name);
+    log_lynton_general("Deleting renderer for '{}'", m_name);
     SDL_DestroyRenderer(m_sdl_renderer);
     SDL_DestroyWindow(m_window);
     m_sdl_renderer = nullptr;
@@ -52,6 +52,12 @@ void Renderer::clear()
     // set to ugly pink <- should never be seen
     SDL_SetRenderDrawColor(m_sdl_renderer, 0xfb, 0x04, 0xf7, 0xff);
     SDL_RenderClear(m_sdl_renderer);
+}
+
+void Renderer::set_viewport(int x, int y, int w, int h)
+{
+    SDL_Rect viewport {x, y, w, h};
+    SDL_RenderSetViewport(m_sdl_renderer, &viewport);
 }
 
 void Renderer::update()

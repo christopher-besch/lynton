@@ -14,6 +14,7 @@ if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
 endif()
 
 add_subdirectory("${CMAKE_SOURCE_DIR}/vendor/spdlog")
+add_subdirectory("${CMAKE_SOURCE_DIR}/vendor/armadillo")
 
 # emscripten setup
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")

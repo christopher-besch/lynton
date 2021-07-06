@@ -21,7 +21,7 @@ if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
   target_include_directories(lynton PUBLIC ${SDL2_INCLUDE_DIR})
 endif()
 
-target_link_libraries(lynton PUBLIC spdlog)
+target_link_libraries(lynton PUBLIC spdlog armadillo)
 
 # ##############################################################################
 # resources #

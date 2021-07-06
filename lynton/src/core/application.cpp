@@ -10,12 +10,12 @@ Application::Application(const std::string& name, int goal_fps, int screen_width
       m_goal_frame_time(goal_fps ? 1.0 / goal_fps : 0.0),
       m_renderer(new Renderer(name, screen_width, screen_height))
 {
-    log_lynton_extra("Creating application '{}'", m_name);
+    log_lynton_general("Creating application '{}'", m_name);
 }
 
 Application::~Application()
 {
-    log_lynton_extra("Deleting application '{}'", m_name);
+    log_lynton_general("Deleting application '{}'", m_name);
     delete m_renderer;
     for(Layer* layer: m_layers)
         delete layer;
@@ -24,7 +24,7 @@ Application::~Application()
 void Application::run()
 {
 #ifdef __EMSCRIPTEN__
-    emscripten_set_main_loop_arg([](void* app) { static_cast<Application*>(app)->run_frame(); }, this, m_goal_fps, true);
+    emscripten_set_main_loop_arg([](void* app) { static_cast<Application*>(app)->run_frame(); }, this, m_goal_fps, false);
 #else
     while(!m_quit) {
         run_frame();

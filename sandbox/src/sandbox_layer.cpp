@@ -5,7 +5,7 @@ SandboxLayer::SandboxLayer()
 
 void SandboxLayer::update(double frame_time)
 {
-    log_client_extra("fps: {}", 1.0 / frame_time);
+    log_client_extra("fps: {} frame time: {}", 1.0 / frame_time, frame_time);
 }
 
 void SandboxLayer::render() {}

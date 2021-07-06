@@ -15,6 +15,7 @@ public:
     virtual ~Application();
 
     // from start to end
+    // keeps running on native; immediately returns on emscripten
     void run();
     // single frame
     void run_frame();

@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <armadillo>
 #include <chrono>
 #include <iostream>
 #include <spdlog/sinks/basic_file_sink.h>

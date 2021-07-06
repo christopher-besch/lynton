@@ -9,7 +9,10 @@ int main(int argc, char* argv[])
     Lynton::Log::init();
     Lynton::Application* app = Lynton::create_application();
 
+    // keeps running on native; immediately returns on emscripten
     app->run();
 
+#ifndef __EMSCRIPTEN__
     delete app;
+#endif
 }
