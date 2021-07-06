@@ -33,17 +33,8 @@ jobs:
         with:
             submodules: recursive
 
-      - name: Setup cache
-        id: cache-system-libraries
-        uses: actions/cache@v2
-        with:
-          path: ${{env.EM_CACHE_FOLDER}}
-          key: ${{env.EM_VERSION}}-${{ runner.os }}
       - name: Setup Emscripten
         uses: mymindstorm/setup-emsdk@v9
-        with:
-          version: ${{env.EM_VERSION}}
-          actions-cache-folder: ${{env.EM_CACHE_FOLDER}}
 
       - name: Configure CMake
         run: |
