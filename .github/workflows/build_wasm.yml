@@ -30,7 +30,7 @@ jobs:
             submodules: recursive
 
       - name: Setup Emscripten
-        uses: lovasoa/setup-emscripten@v1
+        uses: mymindstorm/setup-emsdk@v9
 
       - name: Configure CMake
         run: |
