@@ -29,13 +29,8 @@ jobs:
         with:
             submodules: recursive
 
-      - name: Update environment
-        run: |
-          git clone https://github.com/emscripten-core/emsdk.git
-          cd emsdk
-          ./emsdk install latest
-          ./emsdk activate latest
-          source ./emsdk_env.sh
+      - name: Setup Emscripten
+        uses: lovasoa/setup-emscripten@v1
 
       - name: Configure CMake
         run: |
