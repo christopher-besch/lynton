@@ -17,7 +17,7 @@ public:
 
     void set_viewport(int x, int y, int w, int h);
 
-    void render(Renderable* renderable, int x, int y) { renderable->render(m_sdl_renderer, x, y); }
+    // void render(Renderable* renderable, int x, int y) { renderable->render(m_sdl_renderer, x, y); }
 
     // actually draw to screen
     void update();
