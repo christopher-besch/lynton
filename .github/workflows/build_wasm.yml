@@ -33,6 +33,14 @@ jobs:
         with:
             submodules: recursive
 
+      - name: Update environment
+        run: |
+          sudo apt update -qq
+          sudo apt install -y \
+            libsdl2-dev \
+            libsdl2-image-dev \
+            libsdl2-ttf-dev
+
       - name: Setup Emscripten
         uses: mymindstorm/setup-emsdk@v9
 
