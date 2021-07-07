@@ -36,6 +36,7 @@ jobs:
       - name: Update environment
         run: |
           sudo apt update -qq
+          sudo apt upgrade -y
           sudo apt install -y \
             libsdl2-dev \
             libsdl2-image-dev \
