@@ -1,6 +1,6 @@
 #pragma once
 
-#include "renderable.h"
+#include "renderer/texture/texture.h"
 
 #include <SDL.h>
 #include <string>
@@ -17,7 +17,8 @@ public:
 
     void set_viewport(int x, int y, int w, int h);
 
-    // void render(Renderable* renderable, int x, int y) { renderable->render(m_sdl_renderer, x, y); }
+    Texture* add_texture();
+    void     free_textures();
 
     // actually draw to screen
     void update();

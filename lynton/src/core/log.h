@@ -52,10 +52,34 @@ public:
 #define log_lynton_extra(...)   Log::get_lynton_logger()->trace(__VA_ARGS__)
 #define log_lynton_general(...) Log::get_lynton_logger()->debug(__VA_ARGS__)
 #define log_lynton_warn(...)    Log::get_lynton_logger()->warn(__VA_ARGS__)
-#define log_lynton_error(...)   Log::get_lynton_logger()->error(__VA_ARGS__)
+
+#ifdef NDEBUG
+#define log_lynton_error(...)                         \
+    do {                                              \
+        Log::get_lynton_logger()->error(__VA_ARGS__); \
+    } while(0)
+#else
+#define log_lynton_error(...)                                                               \
+    do {                                                                                    \
+        Log::get_lynton_logger()->error(__VA_ARGS__);                                       \
+        Log::get_lynton_logger()->error("(in {}:{}; in function: {})", __FILE__, __func__); \
+    } while(0)
+#endif
 
 #define log_client_extra(...)   ::Lynton::Log::get_client_logger()->trace(__VA_ARGS__)
 #define log_client_general(...) ::Lynton::Log::get_client_logger()->debug(__VA_ARGS__)
 #define log_client_warn(...)    ::Lynton::Log::get_client_logger()->warn(__VA_ARGS__)
-#define log_client_error(...)   ::Lynton::Log::get_client_logger()->error(__VA_ARGS__)
+
+#ifdef NDEBUG
+#define log_client_error(...)                                   \
+    do {                                                        \
+        ::Lynton::Log::get_client_logger()->error(__VA_ARGS__); \
+    } while(0)
+#else
+#define log_client_error(...)                                                                         \
+    do {                                                                                              \
+        ::Lynton::Log::get_client_logger()->error(__VA_ARGS__);                                       \
+        ::Lynton::Log::get_client_logger()->error("(in {}:{}; in function: {})", __FILE__, __func__); \
+    } while(0)
+#endif
 } // namespace Lynton
