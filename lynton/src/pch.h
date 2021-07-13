@@ -1,4 +1,5 @@
 #include "core/log.h"
+#include "core/random.h"
 
 #include <SDL.h>
 #include <SDL_image.h>

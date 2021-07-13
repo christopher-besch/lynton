@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core/layer.h"
+#include "core/random.h"
 #include "renderer/renderer.h"
 #include "time/timer.h"
 
@@ -39,6 +40,7 @@ private:
     double              m_goal_frame_time;
     Renderer*           m_renderer = nullptr;
     std::vector<Layer*> m_layers;
+    RandomGen*          m_random_gen = nullptr;
 
     bool      m_quit = false;
     SDL_Event m_e;

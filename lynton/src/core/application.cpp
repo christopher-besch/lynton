@@ -8,7 +8,8 @@ Application::Application(const std::string& name, int goal_fps, int screen_width
     : m_name(name),
       m_goal_fps(goal_fps),
       m_goal_frame_time(goal_fps ? 1.0 / goal_fps : 0.0),
-      m_renderer(new Renderer(name, screen_width, screen_height))
+      m_renderer(new Renderer(name, screen_width, screen_height)),
+      m_random_gen(new RandomGen())
 {
     log_lynton_general("Creating application '{}'", m_name);
 }
@@ -19,6 +20,7 @@ Application::~Application()
     delete m_renderer;
     for(Layer* layer: m_layers)
         delete layer;
+    delete m_random_gen;
 }
 
 void Application::run()

@@ -17,9 +17,6 @@ public:
 
     void set_viewport(int x, int y, int w, int h);
 
-    Texture* add_texture();
-    void     free_textures();
-
     // actually draw to screen
     void update();
 
