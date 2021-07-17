@@ -31,10 +31,7 @@ public:
     int get_w() { return m_w; }
     int get_h() { return m_h; }
 
-private:
-    virtual void render(SDL_Renderer* sdl_renderer, int x, int y) = 0;
-
-private:
+protected:
     Renderer* m_renderer = nullptr;
     int       m_x, m_y;
     int       m_w, m_h;

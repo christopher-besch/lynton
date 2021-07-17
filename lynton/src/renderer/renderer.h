@@ -21,6 +21,8 @@ public:
     // actually draw to screen
     void update();
 
+    TextureLibrary* get_texture_library() { return &m_texture_library; }
+
 private:
     std::string    m_name;
     int            m_screen_width;

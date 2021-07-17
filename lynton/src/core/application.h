@@ -25,12 +25,14 @@ public:
     // adds below other layers
     void add_layer(Layer* layer)
     {
+        layer->set_renderer(m_renderer);
         m_layers.insert(m_layers.begin(), layer);
     }
     // takes ownership of layer
     // adds above other layers
     void add_overlay(Layer* layer)
     {
+        layer->set_renderer(m_renderer);
         m_layers.insert(m_layers.end(), layer);
     }
 
@@ -39,7 +41,8 @@ private:
     RandomGen*          m_random_gen = nullptr;
     int                 m_goal_fps;
     double              m_goal_frame_time;
-    Renderer*           m_renderer = nullptr;
+    Renderer*           m_renderer        = nullptr;
+    TextureLibrary*     m_texture_library = nullptr;
     std::vector<Layer*> m_layers;
 
     bool      m_quit = false;

@@ -8,9 +8,12 @@ public:
     virtual ~SandboxLayer() = default;
 
     // time in seconds since last frame
-    virtual void update(double frame_time) override;
-    virtual void render() override;
+    void update(double frame_time) override;
+    void render() override;
 
     // returns true if handled by this layer
-    virtual bool handle_event(SDL_Event e) override;
+    bool handle_event(SDL_Event e) override;
+
+private:
+    Lynton::TexQuad* m_tex_quad = nullptr;
 };
