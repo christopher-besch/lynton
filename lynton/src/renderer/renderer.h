@@ -1,6 +1,7 @@
 #pragma once
 
-#include "renderer/texture/texture.h"
+#include "core/random.h"
+#include "renderer/texture/texture_library.h"
 
 #include <SDL.h>
 #include <string>
@@ -8,7 +9,7 @@
 namespace Lynton {
 class Renderer {
 public:
-    Renderer(const std::string& name, int screen_width, int screen_height);
+    Renderer(const std::string& name, int screen_width, int screen_height, RandomGen* random_gen);
 
     ~Renderer();
 
@@ -21,10 +22,12 @@ public:
     void update();
 
 private:
-    std::string   m_name;
-    int           m_screen_width;
-    int           m_screen_height;
-    SDL_Window*   m_window       = nullptr;
-    SDL_Renderer* m_sdl_renderer = nullptr;
+    std::string    m_name;
+    int            m_screen_width;
+    int            m_screen_height;
+    SDL_Window*    m_window       = nullptr;
+    SDL_Renderer*  m_sdl_renderer = nullptr;
+    RandomGen*     m_random_gen   = nullptr;
+    TextureLibrary m_texture_library;
 };
 } // namespace Lynton

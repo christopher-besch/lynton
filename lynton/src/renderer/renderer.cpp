@@ -3,8 +3,8 @@
 #include "pch.h"
 
 namespace Lynton {
-Renderer::Renderer(const std::string& name, int screen_width, int screen_height)
-    : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height)
+Renderer::Renderer(const std::string& name, int screen_width, int screen_height, RandomGen* random_gen)
+    : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height), m_random_gen(random_gen), m_texture_library(m_sdl_renderer, m_random_gen)
 {
     log_lynton_general("Creating renderer for '{}'", m_name);
     // init

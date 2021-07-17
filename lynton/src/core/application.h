@@ -36,11 +36,11 @@ public:
 
 private:
     std::string         m_name;
+    RandomGen*          m_random_gen = nullptr;
     int                 m_goal_fps;
     double              m_goal_frame_time;
     Renderer*           m_renderer = nullptr;
     std::vector<Layer*> m_layers;
-    RandomGen*          m_random_gen = nullptr;
 
     bool      m_quit = false;
     SDL_Event m_e;

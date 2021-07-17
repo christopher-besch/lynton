@@ -6,10 +6,10 @@
 namespace Lynton {
 Application::Application(const std::string& name, int goal_fps, int screen_width, int screen_height)
     : m_name(name),
+      m_random_gen(new RandomGen()),
       m_goal_fps(goal_fps),
       m_goal_frame_time(goal_fps ? 1.0 / goal_fps : 0.0),
-      m_renderer(new Renderer(name, screen_width, screen_height)),
-      m_random_gen(new RandomGen())
+      m_renderer(new Renderer(name, screen_width, screen_height, m_random_gen))
 {
     log_lynton_general("Creating application '{}'", m_name);
 }
