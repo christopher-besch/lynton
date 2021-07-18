@@ -1,11 +1,12 @@
 #include "sandbox_layer.h"
 
+#include <iostream>
+
 void SandboxLayer::start()
 {
     Lynton::TextureLibrary* texture_library = m_renderer->get_texture_library();
 
-    unsigned short id = texture_library->load_from_file("test.png");
-    log_client_error("{}", id);
+    unsigned short id = texture_library->load_from_file("res/test.png");
 
     m_tex_quad = new Lynton::TexQuad(m_renderer, 20, 20);
     m_tex_quad->set_texture_id(id);

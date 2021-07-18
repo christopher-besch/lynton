@@ -4,7 +4,7 @@
 
 namespace Lynton {
 Renderer::Renderer(const std::string& name, int screen_width, int screen_height, RandomGen* random_gen)
-    : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height), m_random_gen(random_gen), m_texture_library(new TextureLibrary(m_sdl_renderer, m_random_gen))
+    : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height), m_random_gen(random_gen)
 {
     log_lynton_general("Creating renderer for '{}'", m_name);
     // init
@@ -32,6 +32,9 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height,
     int img_flags = IMG_INIT_PNG;
     if(!(IMG_Init(img_flags) & img_flags))
         raise_critical("SDL_image could not initialize! SDL_image Error: {}", IMG_GetError());
+
+    // used to own and handle textures
+    m_texture_library = new TextureLibrary(m_sdl_renderer, m_random_gen);
 }
 
 Renderer::~Renderer()

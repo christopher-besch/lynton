@@ -202,11 +202,10 @@ uint32_t TextureLibrary::get_pixel32(unsigned short id, unsigned int x, unsigned
 /////////////
 Texture* TextureLibrary::add_texture(unsigned short& id)
 {
-    log_lynton_error("{}", reinterpret_cast<long>(this));
     // get first unused id
+    // id = 0 is not allowed <- used as error code
     do {
         id = m_random_gen->next_unsigned_short();
-        // id = 0 is not allowed
     } while(!id || is_used(id));
     log_lynton_extra("Creating texture with id: {}", id);
     // create texture at id
@@ -216,7 +215,7 @@ Texture* TextureLibrary::add_texture(unsigned short& id)
 
 Texture* TextureLibrary::get_texture(unsigned short id)
 {
-    if(is_used(id)) {
+    if(!is_used(id)) {
         raise_critical("Accessing texture with invalid id: {}", id);
         return nullptr;
     }

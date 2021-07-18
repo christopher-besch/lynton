@@ -1,6 +1,10 @@
 #pragma once
 #include <spdlog/spdlog.h>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 namespace Lynton {
 enum class LogLevel {
     Extra   = spdlog::level::trace,
@@ -35,10 +39,27 @@ public:
 };
 
 #ifdef NDEBUG
+#ifdef __EMSCRIPTEN__
+#define raise_critical(...)                                       \
+    do {                                                          \
+        ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__); \
+        emscripten_force_exit(EXIT_FAILURE);                      \
+    } while(0)
+#else
 #define raise_critical(...)                                       \
     do {                                                          \
         ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__); \
         std::exit(EXIT_FAILURE);                                  \
+    } while(0)
+#endif
+
+#else
+#ifdef __EMSCRIPTEN__
+#define raise_critical(...)                                                                             \
+    do {                                                                                                \
+        ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__);                                       \
+        ::Lynton::Log::get_error_logger()->critical("(in {}:{}; in function: {})", __FILE__, __func__); \
+        emscripten_force_exit(EXIT_FAILURE);                                                            \
     } while(0)
 #else
 #define raise_critical(...)                                                                             \
@@ -47,6 +68,7 @@ public:
         ::Lynton::Log::get_error_logger()->critical("(in {}:{}; in function: {})", __FILE__, __func__); \
         std::exit(EXIT_FAILURE);                                                                        \
     } while(0)
+#endif
 #endif
 
 #define log_lynton_extra(...)   Log::get_lynton_logger()->trace(__VA_ARGS__)
