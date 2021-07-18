@@ -4,8 +4,11 @@
 
 class SandboxLayer: public Lynton::Layer {
 public:
-    SandboxLayer();
+    SandboxLayer()
+        : Layer("Sandbox Layer") {}
     virtual ~SandboxLayer() = default;
+
+    void start() override;
 
     // time in seconds since last frame
     void update(double frame_time) override;

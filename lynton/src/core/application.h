@@ -36,16 +36,17 @@ public:
         m_layers.insert(m_layers.end(), layer);
     }
 
+protected:
+    RandomGen* m_random_gen = nullptr;
+    bool       m_quit       = false;
+
 private:
     std::string         m_name;
-    RandomGen*          m_random_gen = nullptr;
     int                 m_goal_fps;
     double              m_goal_frame_time;
-    Renderer*           m_renderer        = nullptr;
-    TextureLibrary*     m_texture_library = nullptr;
+    Renderer*           m_renderer = nullptr;
     std::vector<Layer*> m_layers;
 
-    bool      m_quit = false;
     SDL_Event m_e;
     Timer     m_main_loop_timer;
 };

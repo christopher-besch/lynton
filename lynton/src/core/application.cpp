@@ -5,8 +5,8 @@
 
 namespace Lynton {
 Application::Application(const std::string& name, int goal_fps, int screen_width, int screen_height)
-    : m_name(name),
-      m_random_gen(new RandomGen()),
+    : m_random_gen(new RandomGen()),
+      m_name(name),
       m_goal_fps(goal_fps),
       m_goal_frame_time(goal_fps ? 1.0 / goal_fps : 0.0),
       m_renderer(new Renderer(name, screen_width, screen_height, m_random_gen))
@@ -18,13 +18,16 @@ Application::~Application()
 {
     log_lynton_general("Deleting application '{}'", m_name);
     delete m_renderer;
+    delete m_random_gen;
     for(Layer* layer: m_layers)
         delete layer;
-    delete m_random_gen;
 }
 
 void Application::run()
 {
+    for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
+        (*i)->start();
+
 #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg([](void* app) { static_cast<Application*>(app)->run_frame(); }, this, m_goal_fps, false);
 #else

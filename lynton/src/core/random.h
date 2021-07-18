@@ -3,6 +3,7 @@
 #include <limits>
 #include <random>
 
+namespace Lynton {
 class RandomGen {
 private:
     std::random_device random_device;
@@ -32,3 +33,4 @@ public:
                            std::numeric_limits<unsigned short>::max());
     }
 };
+} // namespace Lynton

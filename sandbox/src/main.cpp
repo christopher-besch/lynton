@@ -6,7 +6,6 @@ public:
     Sandbox()
         : Application("Sandbox", 2, 960, 480)
     {
-        log_client_extra("hi");
         add_layer(new SandboxLayer());
     }
 

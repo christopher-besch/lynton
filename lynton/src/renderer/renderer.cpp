@@ -4,7 +4,7 @@
 
 namespace Lynton {
 Renderer::Renderer(const std::string& name, int screen_width, int screen_height, RandomGen* random_gen)
-    : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height), m_random_gen(random_gen), m_texture_library(m_sdl_renderer, m_random_gen)
+    : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height), m_random_gen(random_gen), m_texture_library(new TextureLibrary(m_sdl_renderer, m_random_gen))
 {
     log_lynton_general("Creating renderer for '{}'", m_name);
     // init
@@ -37,10 +37,10 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height,
 Renderer::~Renderer()
 {
     log_lynton_general("Deleting renderer for '{}'", m_name);
+    delete m_texture_library;
+
     SDL_DestroyRenderer(m_sdl_renderer);
     SDL_DestroyWindow(m_window);
-    m_sdl_renderer = nullptr;
-    m_window       = nullptr;
 
     // quit sdl subsystems
     IMG_Quit();

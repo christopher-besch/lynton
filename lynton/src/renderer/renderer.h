@@ -21,15 +21,15 @@ public:
     // actually draw to screen
     void update();
 
-    TextureLibrary* get_texture_library() { return &m_texture_library; }
+    TextureLibrary* get_texture_library() { return m_texture_library; }
 
 private:
-    std::string    m_name;
-    int            m_screen_width;
-    int            m_screen_height;
-    SDL_Window*    m_window       = nullptr;
-    SDL_Renderer*  m_sdl_renderer = nullptr;
-    RandomGen*     m_random_gen   = nullptr;
-    TextureLibrary m_texture_library;
+    std::string     m_name;
+    int             m_screen_width;
+    int             m_screen_height;
+    SDL_Window*     m_window          = nullptr;
+    SDL_Renderer*   m_sdl_renderer    = nullptr;
+    RandomGen*      m_random_gen      = nullptr;
+    TextureLibrary* m_texture_library = nullptr;
 };
 } // namespace Lynton
