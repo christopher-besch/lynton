@@ -55,18 +55,18 @@ public:
 
 #else
 #ifdef __EMSCRIPTEN__
-#define raise_critical(...)                                                                             \
-    do {                                                                                                \
-        ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__);                                       \
-        ::Lynton::Log::get_error_logger()->critical("(in {}:{}; in function: {})", __FILE__, __func__); \
-        emscripten_force_exit(EXIT_FAILURE);                                                            \
+#define raise_critical(...)                                                                                       \
+    do {                                                                                                          \
+        ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__);                                                 \
+        ::Lynton::Log::get_error_logger()->critical("(in {}:{}; in function: {})", __FILE__, __LINE__, __func__); \
+        emscripten_force_exit(EXIT_FAILURE);                                                                      \
     } while(0)
 #else
-#define raise_critical(...)                                                                             \
-    do {                                                                                                \
-        ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__);                                       \
-        ::Lynton::Log::get_error_logger()->critical("(in {}:{}; in function: {})", __FILE__, __func__); \
-        std::exit(EXIT_FAILURE);                                                                        \
+#define raise_critical(...)                                                                                       \
+    do {                                                                                                          \
+        ::Lynton::Log::get_error_logger()->critical(__VA_ARGS__);                                                 \
+        ::Lynton::Log::get_error_logger()->critical("(in {}:{}; in function: {})", __FILE__, __LINE__, __func__); \
+        std::exit(EXIT_FAILURE);                                                                                  \
     } while(0)
 #endif
 #endif
@@ -81,10 +81,10 @@ public:
         Log::get_lynton_logger()->error(__VA_ARGS__); \
     } while(0)
 #else
-#define log_lynton_error(...)                                                               \
-    do {                                                                                    \
-        Log::get_lynton_logger()->error(__VA_ARGS__);                                       \
-        Log::get_lynton_logger()->error("(in {}:{}; in function: {})", __FILE__, __func__); \
+#define log_lynton_error(...)                                                                         \
+    do {                                                                                              \
+        Log::get_lynton_logger()->error(__VA_ARGS__);                                                 \
+        Log::get_lynton_logger()->error("(in {}:{}; in function: {})", __FILE__, __LINE__, __func__); \
     } while(0)
 #endif
 
@@ -98,10 +98,10 @@ public:
         ::Lynton::Log::get_client_logger()->error(__VA_ARGS__); \
     } while(0)
 #else
-#define log_client_error(...)                                                                         \
-    do {                                                                                              \
-        ::Lynton::Log::get_client_logger()->error(__VA_ARGS__);                                       \
-        ::Lynton::Log::get_client_logger()->error("(in {}:{}; in function: {})", __FILE__, __func__); \
+#define log_client_error(...)                                                                                   \
+    do {                                                                                                        \
+        ::Lynton::Log::get_client_logger()->error(__VA_ARGS__);                                                 \
+        ::Lynton::Log::get_client_logger()->error("(in {}:{}; in function: {})", __FILE__, __LINE__, __func__); \
     } while(0)
 #endif
 } // namespace Lynton

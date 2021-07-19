@@ -49,7 +49,7 @@ public:
     void set_alpha(unsigned short id, uint8_t a);
 
     // clip == nullptr -> render clip from sprite sheet
-    void render(unsigned short id, int x, int y, SDL_Rect* clip = nullptr, double angle = 0.0, SDL_Point* center = nullptr, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void render(unsigned short id, int x, int y, int w, int h, SDL_Rect* clip = nullptr, double angle = 0.0, SDL_Point* center = nullptr, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
     // pixel manipulators
     bool     lock(unsigned short id);
@@ -57,11 +57,29 @@ public:
     void     copyPixels(unsigned short id, void* pixels);
     uint32_t get_pixel32(unsigned short id, unsigned int x, unsigned int y);
 
-    void* get_pixels(unsigned short id);
-    int   get_pitch(unsigned short id);
+    inline void* get_pixels(unsigned short id)
+    {
+        Texture* texture = get_texture(id);
+        return texture->pixels;
+    }
 
-    int get_width(unsigned short id);
-    int get_height(unsigned short id);
+    inline int get_pitch(unsigned short id)
+    {
+        Texture* texture = get_texture(id);
+        return texture->pitch;
+    }
+
+    inline int get_w(unsigned short id)
+    {
+        Texture* texture = get_texture(id);
+        return texture->width;
+    }
+
+    inline int get_h(unsigned short id)
+    {
+        Texture* texture = get_texture(id);
+        return texture->width;
+    }
 
 private:
     // returns id of create texture

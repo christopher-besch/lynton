@@ -118,8 +118,9 @@ void TextureLibrary::free(unsigned short id)
 void TextureLibrary::free_all()
 {
     log_lynton_extra("Clearing all textures");
-    for(auto it = m_textures.begin(); it != m_textures.end(); ++it)
-        free(it->first);
+    // delete until empty
+    while(!m_textures.empty())
+        free(m_textures.begin()->first);
 }
 
 void TextureLibrary::set_color(unsigned short id, uint8_t r, uint8_t g, uint8_t b)
@@ -140,14 +141,14 @@ void TextureLibrary::set_alpha(unsigned short id, uint8_t a)
     SDL_SetTextureAlphaMod(texture->texture, a);
 }
 
-void TextureLibrary::render(unsigned short id, int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
+void TextureLibrary::render(unsigned short id, int x, int y, int w, int h, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
     Texture* texture     = get_texture(id);
-    SDL_Rect render_quad = {x, y, texture->width, texture->height};
-    if(clip != nullptr) {
-        render_quad.w = clip->w;
-        render_quad.h = clip->h;
-    }
+    SDL_Rect render_quad = {x, y, w, h};
+    // if(clip != nullptr) {
+    //     render_quad.w = clip->w;
+    //     render_quad.h = clip->h;
+    // }
     SDL_RenderCopyEx(m_renderer, texture->texture, clip, &render_quad, angle, center, flip);
 }
 

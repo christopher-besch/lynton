@@ -5,7 +5,7 @@
 namespace Lynton {
 class TexQuad: public Renderable {
 public:
-    TexQuad(Renderer* renderer, int x, int y);
+    TexQuad(Renderer* renderer, int x, int y, int w, int h);
 
     virtual ~TexQuad() = default;
 
