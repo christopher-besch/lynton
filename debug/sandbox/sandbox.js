@@ -187,7 +187,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/res/TruenoLight-E2pg.otf", "start": 0, "end": 34316, "audio": 0}, {"filename": "/res/test.png", "start": 34316, "end": 35106, "audio": 0}], "remote_package_size": 35106, "package_uuid": "44417706-0677-439c-9a15-719d54932b1f"});
+   loadPackage({"files": [{"filename": "/res/TruenoLight-E2pg.otf", "start": 0, "end": 34316, "audio": 0}, {"filename": "/res/test.png", "start": 34316, "end": 35106, "audio": 0}], "remote_package_size": 35106, "package_uuid": "f507a72d-1903-47a2-a3d9-3b38812d9fff"});
   
   })();
   
@@ -9934,12 +9934,6 @@ var dynCall_iiiiiii = Module["dynCall_iiiiiii"] = createExportWrapper("dynCall_i
 var dynCall_iiiiiiii = Module["dynCall_iiiiiiii"] = createExportWrapper("dynCall_iiiiiiii");
 
 /** @type {function(...*):?} */
-var dynCall_viiiii = Module["dynCall_viiiii"] = createExportWrapper("dynCall_viiiii");
-
-/** @type {function(...*):?} */
-var dynCall_viiiiii = Module["dynCall_viiiiii"] = createExportWrapper("dynCall_viiiiii");
-
-/** @type {function(...*):?} */
 var dynCall_iiiiiidii = Module["dynCall_iiiiiidii"] = createExportWrapper("dynCall_iiiiiidii");
 
 /** @type {function(...*):?} */
@@ -9947,6 +9941,12 @@ var dynCall_viiiiiii = Module["dynCall_viiiiiii"] = createExportWrapper("dynCall
 
 /** @type {function(...*):?} */
 var dynCall_viiiiiiiiiii = Module["dynCall_viiiiiiiiiii"] = createExportWrapper("dynCall_viiiiiiiiiii");
+
+/** @type {function(...*):?} */
+var dynCall_viiiii = Module["dynCall_viiiii"] = createExportWrapper("dynCall_viiiii");
+
+/** @type {function(...*):?} */
+var dynCall_viiiiii = Module["dynCall_viiiiii"] = createExportWrapper("dynCall_viiiiii");
 
 /** @type {function(...*):?} */
 var dynCall_vffff = Module["dynCall_vffff"] = createExportWrapper("dynCall_vffff");
