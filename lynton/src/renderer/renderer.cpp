@@ -35,6 +35,7 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height,
 
     // used to own and handle textures
     m_texture_library = new TextureLibrary(m_sdl_renderer, m_random_gen);
+    this code does not work !
 }
 
 Renderer::~Renderer()

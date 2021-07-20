@@ -49,6 +49,7 @@ jobs:
         with:
           branch: pages
           folder: build
+          target-folder: ${{matrix.config.build_type}}
 
       - name: Prepare Upload
         run: |
