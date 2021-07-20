@@ -18,7 +18,7 @@ void SandboxLayer::setup()
     tex_lib->lock(img_id);
     uint32_t* pixels = static_cast<uint32_t*>(tex_lib->get_pixels(img_id));
     // 4 <- RGBA
-    // -> gived amount of pixels per line
+    // -> gives amount of pixels per line
     int pixel_count = (tex_lib->get_pitch(img_id) / 4) * tex_lib->get_h(img_id);
 
     SDL_PixelFormat* mapping_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
