@@ -45,12 +45,11 @@ jobs:
 
       - name: Deploy to GitHub Pages
         if: success()
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
         with:
-          target_branch: pages
-          build_dir: ${{github.workspace}}/build/sandbox
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          dir: ${{github.workspace}}/build
+          branch: pages
+          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Prepare Upload
         run: |
