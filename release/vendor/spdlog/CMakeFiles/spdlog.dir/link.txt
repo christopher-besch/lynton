@@ -1,0 +1,2 @@
+/home/runner/work/_temp/d2eaabc1-998c-4891-8421-21eb9eeb459e/emsdk-master/upstream/emscripten/emar qc libspdlog.a CMakeFiles/spdlog.dir/src/spdlog.cpp.o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o CMakeFiles/spdlog.dir/src/color_sinks.cpp.o CMakeFiles/spdlog.dir/src/file_sinks.cpp.o CMakeFiles/spdlog.dir/src/async.cpp.o CMakeFiles/spdlog.dir/src/cfg.cpp.o CMakeFiles/spdlog.dir/src/fmt.cpp.o
+/home/runner/work/_temp/d2eaabc1-998c-4891-8421-21eb9eeb459e/emsdk-master/upstream/emscripten/emranlib libspdlog.a
