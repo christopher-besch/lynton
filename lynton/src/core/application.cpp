@@ -26,7 +26,7 @@ Application::~Application()
 void Application::run()
 {
     for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
-        (*i)->start();
+        (*i)->setup();
 
 #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg([](void* app) { static_cast<Application*>(app)->run_frame(); }, this, m_goal_fps, false);

@@ -2,12 +2,14 @@
 #include "renderable.h"
 #include "renderer/texture/texture_library.h"
 
+#include <armadillo>
+
 namespace Lynton {
 class TexQuad: public Renderable {
 public:
-    TexQuad(Renderer* renderer, int x, int y, int w, int h);
+    TexQuad(Renderer* renderer, arma::vec3 origin, arma::vec3 scale);
 
-    virtual ~TexQuad() = default;
+    virtual ~TexQuad();
 
     void render() override;
 
@@ -17,5 +19,7 @@ public:
 private:
     // todo: sub coordinates missing <- sprite sheets
     unsigned short m_texture_id;
+
+    arma::vec3 m_scale;
 };
 } // namespace Lynton

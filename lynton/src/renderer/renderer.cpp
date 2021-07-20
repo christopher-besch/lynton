@@ -33,6 +33,10 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height,
     if(!(IMG_Init(img_flags) & img_flags))
         raise_critical("SDL_image could not initialize! SDL_image Error: {}", IMG_GetError());
 
+    // init text loading
+    if(TTF_Init() < 0)
+        raise_critical("SDL_ttf could not initialize! SDL_ttf Error: {}", TTF_GetError());
+
     // used to own and handle textures
     m_texture_library = new TextureLibrary(m_sdl_renderer, m_random_gen);
 }

@@ -3,37 +3,23 @@
 #include "renderer/renderer.h"
 
 #include <SDL.h>
+#include <armadillo>
 
 namespace Lynton {
 class Renderable {
 public:
-    Renderable(Renderer* renderer, int x, int y, int w, int h)
-        : m_renderer(renderer), m_x(x), m_y(y), m_w(w), m_h(h) {}
+    Renderable(Renderer* renderer, arma::vec3 origin)
+        : m_renderer(renderer), m_origin(origin) {}
     virtual ~Renderable() = default;
 
     virtual void render() = 0;
 
-    void set_location(int x, int y)
-    {
-        m_x = x;
-        m_y = y;
-    }
+    // add rotation, translation, scale
 
-    // todo: use matrices instead
-    void set_scale(int w, int h)
-    {
-        m_w = w;
-        m_h = h;
-    }
-
-    int get_x() { return m_x; }
-    int get_y() { return m_y; }
-    int get_w() { return m_w; }
-    int get_h() { return m_h; }
+    arma::vec3 get_origin() { return m_origin; }
 
 protected:
-    Renderer* m_renderer = nullptr;
-    int       m_x, m_y;
-    int       m_w, m_h;
+    Renderer*  m_renderer = nullptr;
+    arma::vec3 m_origin;
 };
 } // namespace Lynton

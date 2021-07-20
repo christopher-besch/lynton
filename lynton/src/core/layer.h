@@ -15,7 +15,7 @@ public:
 
     // run after construction
     // texture loading should be done here or dynamically in update or render, not in constructor
-    virtual void start() = 0;
+    virtual void setup() = 0;
     // time in seconds since last frame
     virtual void update(double frame_time) = 0;
     virtual void render()                  = 0;
