@@ -45,11 +45,10 @@ jobs:
 
       - name: Deploy to GitHub Pages
         if: success()
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          dir: ${{github.workspace}}/build
           branch: pages
-          token: ${{ secrets.ACCESS_TOKEN }}
+          folder: build
 
       - name: Prepare Upload
         run: |
