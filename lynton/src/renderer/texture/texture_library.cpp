@@ -141,7 +141,7 @@ void TextureLibrary::set_alpha(unsigned short id, uint8_t a)
     SDL_SetTextureAlphaMod(tex->texture, a);
 }
 
-void TextureLibrary::render(unsigned short id, arma::vec3 origin, arma::vec3 scale, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
+void TextureLibrary::render(unsigned short id, vec3 origin, vec3 scale, SDL_Rect* clip, scalar angle, SDL_Point* center, SDL_RendererFlip flip)
 {
     Texture* tex         = get_texture(id);
     SDL_Rect render_quad = {static_cast<int>(origin[0]), static_cast<int>(origin[1]), static_cast<int>(scale[0]), static_cast<int>(scale[1])};
