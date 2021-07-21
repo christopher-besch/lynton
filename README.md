@@ -6,4 +6,4 @@
 
 `sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev`
 
-[Working Web Version](https://christopher-besch.github.io/lynton/release/sandbox/sandbox.html)
+[Working Web Version](https://christopher-besch.github.io/lynton/sandbox/sandbox.html)
