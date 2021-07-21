@@ -21,11 +21,13 @@ jobs:
             name: "Ubuntu Emscripten Debug",
             artifact: "wasm_debug.tar.xz",
             build_type: "debug",
+            push_to_pages: false,
           }
           - {
             name: "Ubuntu Emscripten Release",
             artifact: "wasm_release.tar.xz",
             build_type: "release",
+            push_to_pages: true,
           }
     steps:
       - name: Checkout
@@ -44,7 +46,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config ${{matrix.config.build_type}} -j2
 
       - name: Deploy to GitHub Pages
-        if: ${{matrix.config.build_type}} == 'release' && success()
+        if: matrix.config.push_to_pages && success()
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: pages
