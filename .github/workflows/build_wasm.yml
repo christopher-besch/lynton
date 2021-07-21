@@ -44,7 +44,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config ${{matrix.config.build_type}} -j2
 
       - name: Deploy to GitHub Pages
-        if: success() && ${{matrix.config.build_type}} == "release"
+        if: ${{matrix.config.build_type}} == 'release' && success()
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: pages
