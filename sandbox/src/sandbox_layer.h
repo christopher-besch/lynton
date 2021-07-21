@@ -18,6 +18,9 @@ public:
     bool handle_event(SDL_Event e) override;
 
 private:
+    Lynton::TextureLibrary* m_tex_lib = nullptr;
+    Lynton::Font*           m_font    = nullptr;
+
     Lynton::TexQuad* m_tex_quad1 = nullptr;
     Lynton::TexQuad* m_tex_quad2 = nullptr;
 };

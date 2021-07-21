@@ -15,6 +15,9 @@ inline mat3 trans_mat3(scalar dx, scalar dy)
 
 inline mat3 rot_mat3(scalar angle)
 {
+    // convert degree to radian
+    angle /= 180;
+    angle *= M_PI;
     scalar sin = std::sin(angle);
     scalar cos = std::cos(angle);
     return {

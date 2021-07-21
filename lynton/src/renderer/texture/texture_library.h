@@ -29,18 +29,21 @@ public:
     // create new texture
     // return id
     // return 0 if failed
-    unsigned short load_from_file(const std::string& path, SDL_TextureAccess access = SDL_TEXTUREACCESS_STREAMING);
-    unsigned short load_from_text(const std::string& text, SDL_Color text_color, Font* font);
-    unsigned short create_blank(int width, int height, SDL_TextureAccess access = SDL_TEXTUREACCESS_STREAMING);
+    // when reuse_id not 0 -> don't create new texture, overwrite old one
+    unsigned short load_from_file(const std::string& path, unsigned short reuse_id = 0, SDL_TextureAccess access = SDL_TEXTUREACCESS_STREAMING);
+    unsigned short load_from_text(const std::string& text, SDL_Color text_color, Font* font, unsigned short reuse_id = 0);
+    unsigned short create_blank(int width, int height, unsigned short reuse_id = 0, SDL_TextureAccess access = SDL_TEXTUREACCESS_STREAMING);
 
-    // deallocate texture
+    // destroy sdl assets but memory of texture stays
     void free(unsigned short id);
-    void free_all();
+    // deallocate texture
+    void purge(unsigned short id);
+    void purge_all();
 
     // check if texture with specified id is existent
     bool is_used(unsigned short id)
     {
-        return m_textures.count(id);
+        return m_textures.find(id) != m_textures.end();
     }
 
     // modulate texture rgb
@@ -51,7 +54,7 @@ public:
 
     // clip == nullptr -> render clip from sprite sheet
     // scale location of bottom right corner relative to top left corner (origin) and rotation of texture quad <- width and height
-    void render(unsigned short id, vec3 origin, vec3 scale, SDL_Rect* clip = nullptr, scalar angle = 0.0, SDL_Point* center = nullptr, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void render(unsigned short id, vec3 origin, vec3 scale, SDL_Rect* clip = nullptr, scalar angle = 0.0, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
     arma::mat33 x;
     // pixel manipulators

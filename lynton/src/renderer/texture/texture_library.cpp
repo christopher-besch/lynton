@@ -13,18 +13,25 @@ TextureLibrary::TextureLibrary(SDL_Renderer* renderer, RandomGen* random_gen)
 TextureLibrary::~TextureLibrary()
 {
     log_lynton_general("Deleting texture library");
-    free_all();
+    purge_all();
 }
 
-unsigned short TextureLibrary::load_from_file(const std::string& path, SDL_TextureAccess access)
+unsigned short TextureLibrary::load_from_file(const std::string& path, unsigned short reuse_id, SDL_TextureAccess access)
 {
-    unsigned short id;
-    Texture*       tex = add_texture(id);
+    unsigned short id = reuse_id;
+    Texture*       tex;
+    if(reuse_id) {
+        free(id);
+        tex = get_texture(id);
+    }
+    else
+        // overwrites id
+        tex = add_texture(id);
 
     SDL_Surface* loaded_surface = IMG_Load(path.c_str());
     if(loaded_surface == nullptr) {
         log_lynton_error("Unable to load image '{}'! SDL_image Error: {}", path, IMG_GetError());
-        free(id);
+        purge(id);
         return false;
     }
     // convert surface to display format
@@ -33,7 +40,7 @@ unsigned short TextureLibrary::load_from_file(const std::string& path, SDL_Textu
     SDL_FreeSurface(loaded_surface);
     if(formatted_surface == nullptr) {
         log_lynton_error("Unable to convert loaded surface from '{}' to display format! SDL_image Error: {}", path, IMG_GetError());
-        free(id);
+        purge(id);
         return false;
     }
     // create blank texture
@@ -41,7 +48,7 @@ unsigned short TextureLibrary::load_from_file(const std::string& path, SDL_Textu
     if(tex->texture == nullptr) {
         log_lynton_error("Unable to create blank texture for '{}'! SDL_image Error: {}", path, IMG_GetError());
         SDL_FreeSurface(formatted_surface);
-        free(id);
+        purge(id);
         return false;
     }
 
@@ -64,23 +71,30 @@ unsigned short TextureLibrary::load_from_file(const std::string& path, SDL_Textu
     return id;
 }
 
-unsigned short TextureLibrary::load_from_text(const std::string& text, SDL_Color text_color, Font* font)
+unsigned short TextureLibrary::load_from_text(const std::string& text, SDL_Color text_color, Font* font, unsigned short reuse_id)
 {
-    unsigned short id;
-    Texture*       tex = add_texture(id);
+    unsigned short id = reuse_id;
+    Texture*       tex;
+    if(reuse_id) {
+        free(id);
+        tex = get_texture(id);
+    }
+    else
+        // overwrites id
+        tex = add_texture(id);
 
     // render text surface
     SDL_Surface* text_surface = TTF_RenderText_Solid(font->get_font(), text.c_str(), text_color);
     if(text_surface == nullptr) {
         log_lynton_error("Unable to render text '{}'! SDL_ttf Error: {}", text, TTF_GetError());
-        free(id);
+        purge(id);
         return false;
     }
     tex->texture = SDL_CreateTextureFromSurface(m_renderer, text_surface);
     SDL_FreeSurface(text_surface);
     if(tex->texture == nullptr) {
         log_lynton_error("Unable to create texture form renderer text '{}'! SDL Error: {}", text, SDL_GetError());
-        free(id);
+        purge(id);
         return false;
     }
     tex->width  = text_surface->w;
@@ -89,15 +103,23 @@ unsigned short TextureLibrary::load_from_text(const std::string& text, SDL_Color
     return id;
 }
 
-unsigned short TextureLibrary::create_blank(int width, int height, SDL_TextureAccess access)
+unsigned short TextureLibrary::create_blank(int width, int height, unsigned short reuse_id, SDL_TextureAccess access)
 {
-    unsigned short id;
-    Texture*       tex = add_texture(id);
+    unsigned short id = reuse_id;
+    Texture*       tex;
+    if(reuse_id) {
+        free(id);
+        tex = get_texture(id);
+    }
+    else
+        // overwrites id
+        tex = add_texture(id);
+
     // create blank texture
     tex->texture = SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_RGBA8888, access, width, height);
     if(tex->texture == nullptr) {
         log_lynton_error("Unable to create blank texture! SDL_ttf Error: {}", IMG_GetError());
-        free(id);
+        purge(id);
         return false;
     }
     tex->width  = width;
@@ -109,18 +131,31 @@ unsigned short TextureLibrary::create_blank(int width, int height, SDL_TextureAc
 void TextureLibrary::free(unsigned short id)
 {
     Texture* tex = get_texture(id);
+    if(tex->texture != nullptr) {
+        SDL_DestroyTexture(tex->texture);
+        tex->texture = nullptr;
+        tex->width   = 0;
+        tex->height  = 0;
+        tex->pixels  = nullptr;
+        tex->pitch   = 0;
+    }
+}
+
+void TextureLibrary::purge(unsigned short id)
+{
+    Texture* tex = get_texture(id);
     if(tex->texture != nullptr)
         SDL_DestroyTexture(tex->texture);
     log_lynton_extra("Deleting texture with id: {}", id);
     m_textures.erase(id);
 }
 
-void TextureLibrary::free_all()
+void TextureLibrary::purge_all()
 {
     log_lynton_extra("Clearing all textures");
     // delete until empty
     while(!m_textures.empty())
-        free(m_textures.begin()->first);
+        purge(m_textures.begin()->first);
 }
 
 void TextureLibrary::set_color(unsigned short id, uint8_t r, uint8_t g, uint8_t b)
@@ -141,15 +176,16 @@ void TextureLibrary::set_alpha(unsigned short id, uint8_t a)
     SDL_SetTextureAlphaMod(tex->texture, a);
 }
 
-void TextureLibrary::render(unsigned short id, vec3 origin, vec3 scale, SDL_Rect* clip, scalar angle, SDL_Point* center, SDL_RendererFlip flip)
+void TextureLibrary::render(unsigned short id, vec3 origin, vec3 scale, SDL_Rect* clip, scalar angle, SDL_RendererFlip flip)
 {
-    Texture* tex         = get_texture(id);
-    SDL_Rect render_quad = {static_cast<int>(origin[0]), static_cast<int>(origin[1]), static_cast<int>(scale[0]), static_cast<int>(scale[1])};
-    // if(clip != nullptr) {
-    //     render_quad.w = clip->w;
-    //     render_quad.h = clip->h;
-    // }
-    SDL_RenderCopyEx(m_renderer, tex->texture, clip, &render_quad, angle, center, flip);
+    Texture*  tex             = get_texture(id);
+    int       x               = static_cast<int>(origin[0]);
+    int       y               = static_cast<int>(origin[1]);
+    int       w               = static_cast<int>(scale[0]);
+    int       h               = static_cast<int>(scale[1]);
+    SDL_Rect  render_quad     = {x, y, w, h};
+    SDL_Point rotation_center = {0, 0};
+    SDL_RenderCopyEx(m_renderer, tex->texture, clip, &render_quad, angle, &rotation_center, flip);
 }
 
 bool TextureLibrary::lock(unsigned short id)
