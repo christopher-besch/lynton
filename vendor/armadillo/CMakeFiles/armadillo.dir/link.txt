@@ -1,0 +1,2 @@
+/home/runner/work/_temp/d7323b5d-87a6-4d26-a3c2-7864a476964b/emsdk-master/upstream/emscripten/emar qc libarmadillo.a CMakeFiles/armadillo.dir/src/wrapper1.cpp.o CMakeFiles/armadillo.dir/src/wrapper2.cpp.o
+/home/runner/work/_temp/d7323b5d-87a6-4d26-a3c2-7864a476964b/emsdk-master/upstream/emscripten/emranlib libarmadillo.a
