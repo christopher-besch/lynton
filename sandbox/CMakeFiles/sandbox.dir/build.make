@@ -74,30 +74,30 @@ sandbox/CMakeFiles/sandbox.dir/src/main.cpp.o: sandbox/CMakeFiles/sandbox.dir/in
 sandbox/CMakeFiles/sandbox.dir/src/main.cpp.o: ../sandbox/src/main.cpp
 sandbox/CMakeFiles/sandbox.dir/src/main.cpp.o: sandbox/CMakeFiles/sandbox.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object sandbox/CMakeFiles/sandbox.dir/src/main.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/1fe63fcc-d190-4ca8-a766-b7d8e0948d9d/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT sandbox/CMakeFiles/sandbox.dir/src/main.cpp.o -MF CMakeFiles/sandbox.dir/src/main.cpp.o.d -o CMakeFiles/sandbox.dir/src/main.cpp.o -c /home/runner/work/lynton/lynton/sandbox/src/main.cpp
+	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/78ce39fa-d7e9-4e63-b483-39a00e87eb3c/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT sandbox/CMakeFiles/sandbox.dir/src/main.cpp.o -MF CMakeFiles/sandbox.dir/src/main.cpp.o.d -o CMakeFiles/sandbox.dir/src/main.cpp.o -c /home/runner/work/lynton/lynton/sandbox/src/main.cpp
 
 sandbox/CMakeFiles/sandbox.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sandbox.dir/src/main.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/1fe63fcc-d190-4ca8-a766-b7d8e0948d9d/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/sandbox/src/main.cpp > CMakeFiles/sandbox.dir/src/main.cpp.i
+	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/78ce39fa-d7e9-4e63-b483-39a00e87eb3c/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/sandbox/src/main.cpp > CMakeFiles/sandbox.dir/src/main.cpp.i
 
 sandbox/CMakeFiles/sandbox.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sandbox.dir/src/main.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/1fe63fcc-d190-4ca8-a766-b7d8e0948d9d/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/sandbox/src/main.cpp -o CMakeFiles/sandbox.dir/src/main.cpp.s
+	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/78ce39fa-d7e9-4e63-b483-39a00e87eb3c/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/sandbox/src/main.cpp -o CMakeFiles/sandbox.dir/src/main.cpp.s
 
 sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o: sandbox/CMakeFiles/sandbox.dir/flags.make
 sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o: sandbox/CMakeFiles/sandbox.dir/includes_CXX.rsp
 sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o: ../sandbox/src/sandbox_layer.cpp
 sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o: sandbox/CMakeFiles/sandbox.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/1fe63fcc-d190-4ca8-a766-b7d8e0948d9d/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o -MF CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o.d -o CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o -c /home/runner/work/lynton/lynton/sandbox/src/sandbox_layer.cpp
+	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/78ce39fa-d7e9-4e63-b483-39a00e87eb3c/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o -MF CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o.d -o CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o -c /home/runner/work/lynton/lynton/sandbox/src/sandbox_layer.cpp
 
 sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/1fe63fcc-d190-4ca8-a766-b7d8e0948d9d/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/sandbox/src/sandbox_layer.cpp > CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.i
+	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/78ce39fa-d7e9-4e63-b483-39a00e87eb3c/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/sandbox/src/sandbox_layer.cpp > CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.i
 
 sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/1fe63fcc-d190-4ca8-a766-b7d8e0948d9d/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/sandbox/src/sandbox_layer.cpp -o CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.s
+	cd /home/runner/work/lynton/lynton/build/sandbox && /home/runner/work/_temp/78ce39fa-d7e9-4e63-b483-39a00e87eb3c/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/sandbox/src/sandbox_layer.cpp -o CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.s
 
 # Object files for target sandbox
 sandbox_OBJECTS = \
@@ -111,7 +111,7 @@ sandbox/sandbox.html: sandbox/CMakeFiles/sandbox.dir/src/main.cpp.o
 sandbox/sandbox.html: sandbox/CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o
 sandbox/sandbox.html: sandbox/CMakeFiles/sandbox.dir/build.make
 sandbox/sandbox.html: lynton/liblynton.a
-sandbox/sandbox.html: vendor/spdlog/libspdlog.a
+sandbox/sandbox.html: vendor/spdlog/libspdlogd.a
 sandbox/sandbox.html: vendor/armadillo/libarmadillo.a
 sandbox/sandbox.html: sandbox/CMakeFiles/sandbox.dir/linklibs.rsp
 sandbox/sandbox.html: sandbox/CMakeFiles/sandbox.dir/objects1.rsp
