@@ -73,7 +73,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xdevx" OR NOT CMAKE_INSTALL_COMPONEN
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/share/Armadillo/CMake" TYPE FILE FILES
+  file(INSTALL DESTINATION "/usr/share/Armadillo/CMake" TYPE FILE FILES
     "/home/runner/work/lynton/lynton/build/vendor/armadillo/InstallFiles/ArmadilloConfig.cmake"
     "/home/runner/work/lynton/lynton/build/vendor/armadillo/InstallFiles/ArmadilloConfigVersion.cmake"
     )

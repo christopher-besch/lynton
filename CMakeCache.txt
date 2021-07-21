@@ -45,7 +45,7 @@ BUILD_SMOKE_TEST:BOOL=OFF
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
 //Emscripten ar
-CMAKE_AR:FILEPATH=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/emar
+CMAKE_AR:FILEPATH=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/emar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
@@ -55,16 +55,16 @@ CMAKE_BUILD_TYPE:STRING=release
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //No help, variable specified on the command line.
-CMAKE_CROSSCOMPILING_EMULATOR:UNINITIALIZED="/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/node/14.15.5_64bit/bin/node"
+CMAKE_CROSSCOMPILING_EMULATOR:UNINITIALIZED="/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/node/14.15.5_64bit/bin/node"
 
 //CXX compiler
-CMAKE_CXX_COMPILER:STRING=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/em++
+CMAKE_CXX_COMPILER:STRING=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/em++
 
 //Emscripten ar
-CMAKE_CXX_COMPILER_AR:FILEPATH=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/emar
+CMAKE_CXX_COMPILER_AR:FILEPATH=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/emar
 
 //Emscripten ranlib
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/emranlib
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/emranlib
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -82,13 +82,13 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:STRING=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/emcc
+CMAKE_C_COMPILER:STRING=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/emcc
 
 //Emscripten ar
-CMAKE_C_COMPILER_AR:FILEPATH=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/emar
+CMAKE_C_COMPILER_AR:FILEPATH=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/emar
 
 //Emscripten ranlib
-CMAKE_C_COMPILER_RANLIB:FILEPATH=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/emranlib
+CMAKE_C_COMPILER_RANLIB:FILEPATH=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/emranlib
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -178,7 +178,7 @@ CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
 CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=/usr/bin/ld
+CMAKE_LINKER:FILEPATH=CMAKE_LINKER-NOTFOUND
 
 //Path to a program.
 CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
@@ -237,7 +237,7 @@ CMAKE_PROJECT_VERSION_PATCH:STATIC=
 CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
 //Emscripten ranlib
-CMAKE_RANLIB:FILEPATH=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/emranlib
+CMAKE_RANLIB:FILEPATH=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/emranlib
 
 //Path to a program.
 CMAKE_READELF:FILEPATH=/usr/bin/readelf
@@ -293,7 +293,7 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 CMAKE_STRIP:FILEPATH=/usr/bin/strip
 
 //The CMake toolchain file
-CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/runner/work/_temp/4f5e464a-cc7c-4127-9f59-5371ffa8e92e/emsdk-master/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
+CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/runner/work/_temp/25fc30b0-3887-4a1c-97a9-94af255e9d71/emsdk-master/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -430,6 +430,9 @@ SuperLU_LIBRARY:FILEPATH=SuperLU_LIBRARY-NOTFOUND
 armadillo_BINARY_DIR:STATIC=/home/runner/work/lynton/lynton/build/vendor/armadillo
 
 //Value Computed by CMake
+armadillo_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
 armadillo_SOURCE_DIR:STATIC=/home/runner/work/lynton/lynton/vendor/armadillo
 
 //Path to a library.
@@ -437,6 +440,9 @@ atlas_LIBRARY:FILEPATH=atlas_LIBRARY-NOTFOUND
 
 //Value Computed by CMake
 lynton_BINARY_DIR:STATIC=/home/runner/work/lynton/lynton/build
+
+//Value Computed by CMake
+lynton_IS_TOP_LEVEL:STATIC=ON
 
 //Dependencies for the target
 lynton_LIB_DEPENDS:STATIC=general;spdlog;general;armadillo;
@@ -463,6 +469,9 @@ satlas_LIBRARY:FILEPATH=satlas_LIBRARY-NOTFOUND
 spdlog_BINARY_DIR:STATIC=/home/runner/work/lynton/lynton/build/vendor/spdlog
 
 //Value Computed by CMake
+spdlog_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
 spdlog_SOURCE_DIR:STATIC=/home/runner/work/lynton/lynton/vendor/spdlog
 
 //Path to a library.
@@ -484,9 +493,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/runner/work/lynton/lynton/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=20
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=21
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=5
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=0
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -619,7 +628,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/usr/local/share/cmake-3.20
+CMAKE_ROOT:INTERNAL=/usr/local/share/cmake-3.21
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
