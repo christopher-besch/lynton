@@ -1,6 +1,7 @@
 #include "sandbox_layer.h"
 
 #include <iostream>
+#include <stdio.h>
 
 SandboxLayer::~SandboxLayer()
 {
@@ -10,8 +11,7 @@ SandboxLayer::~SandboxLayer()
 
 void SandboxLayer::setup()
 {
-    m_tex_lib = m_renderer->get_texture_library();
-    m_font    = new Lynton::Font("res/TruenoLight-E2pg.otf", 50);
+    m_font = new Lynton::Font("res/iosevka-extendedbold.ttf", 50);
 
     // image
     unsigned short img_id = m_tex_lib->load_from_file("res/test.png");
@@ -44,20 +44,19 @@ void SandboxLayer::setup()
 
 void SandboxLayer::update(double frame_time)
 {
-    // update frame rate
-    std::ostringstream buf;
-    buf << "fps: " << (1.0 / frame_time);
-    m_tex_lib->load_from_text(buf.str(), {0x00, 0xff, 0x10, 0xff}, m_font, m_tex_quad2->get_texture_id());
-
     // move objects
-    // m_tex_quad1->translate(400 * frame_time, 400 * frame_time);
     // m_tex_quad1->rotate(90 * frame_time);
+
+    m_vx += 500 * frame_time * (m_a_r - m_a_l);
+    m_vy += 500 * frame_time * (m_a_d - m_a_u);
+
+    m_tex_quad1->translate(m_vx * frame_time, m_vy * frame_time);
 }
 
 void SandboxLayer::render()
 {
     m_tex_quad1->render();
-    m_tex_quad2->render();
+    // m_tex_quad2->render();
 }
 
 bool SandboxLayer::handle_event(SDL_Event e)
@@ -65,16 +64,32 @@ bool SandboxLayer::handle_event(SDL_Event e)
     if(e.type == SDL_KEYDOWN) {
         switch(e.key.keysym.sym) {
         case SDLK_w:
-            m_tex_quad1->translate(0, -10);
+            m_a_u = true;
             return true;
         case SDLK_s:
-            m_tex_quad1->translate(0, 10);
+            m_a_d = true;
             return true;
         case SDLK_a:
-            m_tex_quad1->rotate(-10);
+            m_a_l = true;
             return true;
         case SDLK_d:
-            m_tex_quad1->rotate(10);
+            m_a_r = true;
+            return true;
+        }
+    }
+    else if(e.type == SDL_KEYUP) {
+        switch(e.key.keysym.sym) {
+        case SDLK_w:
+            m_a_u = false;
+            return true;
+        case SDLK_s:
+            m_a_d = false;
+            return true;
+        case SDLK_a:
+            m_a_l = false;
+            return true;
+        case SDLK_d:
+            m_a_r = false;
             return true;
         }
     }

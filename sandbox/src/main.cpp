@@ -1,12 +1,14 @@
+#include "debug_layer.h"
 #include "lynton.h"
 #include "sandbox_layer.h"
 
 class Sandbox: public Lynton::Application {
 public:
     Sandbox()
-        : Application("Sandbox", 0, 960, 480)
+        : Application("Sandbox", 0, 1600, 1200)
     {
         add_layer(new SandboxLayer());
+        add_overlay(new DebugLayer());
     }
 
     ~Sandbox() {}

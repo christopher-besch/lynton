@@ -28,11 +28,13 @@ protected:
     void set_renderer(Renderer* renderer)
     {
         m_renderer = renderer;
+        m_tex_lib  = renderer->get_texture_library();
     }
 
 protected:
-    std::string m_name;
-    Renderer*   m_renderer = nullptr;
+    std::string             m_name;
+    Renderer*               m_renderer = nullptr;
+    Lynton::TextureLibrary* m_tex_lib  = nullptr;
 
     friend class Application;
 };

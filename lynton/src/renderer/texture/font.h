@@ -8,6 +8,10 @@ class Font {
 public:
     Font(const std::string& path, int size)
         : m_font(TTF_OpenFont(path.c_str(), size)) {}
+    ~Font()
+    {
+        TTF_CloseFont(m_font);
+    }
 
     TTF_Font* get_font() { return m_font; }
 
