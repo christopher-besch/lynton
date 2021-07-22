@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/sandbox.dir/src/debug_layer.cpp.o"
+  "CMakeFiles/sandbox.dir/src/debug_layer.cpp.o.d"
   "CMakeFiles/sandbox.dir/src/main.cpp.o"
   "CMakeFiles/sandbox.dir/src/main.cpp.o.d"
   "CMakeFiles/sandbox.dir/src/sandbox_layer.cpp.o"

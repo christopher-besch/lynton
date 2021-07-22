@@ -175,6 +175,30 @@ sandbox/fast:
 	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/build
 .PHONY : sandbox/fast
 
+src/debug_layer.o: src/debug_layer.cpp.o
+.PHONY : src/debug_layer.o
+
+# target to build an object file
+src/debug_layer.cpp.o:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/src/debug_layer.cpp.o
+.PHONY : src/debug_layer.cpp.o
+
+src/debug_layer.i: src/debug_layer.cpp.i
+.PHONY : src/debug_layer.i
+
+# target to preprocess a source file
+src/debug_layer.cpp.i:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/src/debug_layer.cpp.i
+.PHONY : src/debug_layer.cpp.i
+
+src/debug_layer.s: src/debug_layer.cpp.s
+.PHONY : src/debug_layer.s
+
+# target to generate assembly for a file
+src/debug_layer.cpp.s:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/src/debug_layer.cpp.s
+.PHONY : src/debug_layer.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -236,6 +260,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... sandbox"
+	@echo "... src/debug_layer.o"
+	@echo "... src/debug_layer.i"
+	@echo "... src/debug_layer.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
