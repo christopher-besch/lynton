@@ -25,4 +25,12 @@ inline mat3 rot_mat3(scalar angle)
         {sin, cos, 0},
         {0, 0, 1}};
 }
+
+inline mat3 ska_mat3(scalar fx, scalar fy)
+{
+    return {
+        {fx, 0, 0},
+        {0, fy, 0},
+        {0, 0, 1}};
+}
 } // namespace Lynton

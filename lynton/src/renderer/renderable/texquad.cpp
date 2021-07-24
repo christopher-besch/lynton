@@ -33,7 +33,13 @@ void TexQuad::rotate(scalar angle)
     m_rotation += angle;
 }
 
-void TexQuad::scale(scalar dx, scalar dy) {}
+void TexQuad::scale(scalar fx, scalar fy)
+{
+    vec3 bottom_right = m_origin + m_scale;
+    m_origin          = ska_mat3(fx, fy) * m_origin;
+    bottom_right      = ska_mat3(fx, fy) * bottom_right;
+    m_scale           = bottom_right - m_origin;
+}
 
 void TexQuad::mirror_hor() {}
 

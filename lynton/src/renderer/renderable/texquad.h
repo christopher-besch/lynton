@@ -11,7 +11,7 @@ public:
 
     virtual void translate(scalar dx, scalar dy) override;
     virtual void rotate(scalar angle) override;
-    virtual void scale(scalar dx, scalar dy) override;
+    virtual void scale(scalar fx, scalar fy) override;
     virtual void mirror_hor() override;
     virtual void mirror_ver() override;
 
@@ -24,7 +24,7 @@ private:
     // todo: sub coordinates missing <- sprite sheets
     unsigned short m_texture_id;
 
-    vec3   m_scale;
-    scalar m_rotation;
+    vec3   m_scale {0, 0, 0};
+    scalar m_rotation {0};
 };
 } // namespace Lynton

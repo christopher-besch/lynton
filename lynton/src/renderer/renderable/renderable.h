@@ -14,7 +14,7 @@ public:
     // certain limitations in the use of these methods may be set by inheriting classes
     virtual void translate(scalar dx, scalar dy) = 0;
     virtual void rotate(scalar angle)            = 0;
-    virtual void scale(scalar dx, scalar dy)     = 0;
+    virtual void scale(scalar fx, scalar fy)     = 0;
     virtual void mirror_hor()                    = 0;
     virtual void mirror_ver()                    = 0;
 

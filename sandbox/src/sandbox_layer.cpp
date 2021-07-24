@@ -28,6 +28,7 @@ void SandboxLayer::setup()
         for(int y = 0; y < m_tex_lib->get_w(img_id); ++y)
             if(x % 2 && y % 2)
                 pixels[x + y * m_tex_lib->get_w(img_id)] = SDL_MapRGBA(mapping_format, 0x10, 0x50, 0xff, 0xff);
+    log_client_extra("{} {}", m_a_r, m_a_l);
 
     m_tex_lib->unlock(img_id);
     SDL_FreeFormat(mapping_format);
@@ -46,11 +47,12 @@ void SandboxLayer::update(double frame_time)
 {
     // move objects
     // m_tex_quad1->rotate(90 * frame_time);
-
-    m_vx += 500 * frame_time * (m_a_r - m_a_l);
-    m_vy += 500 * frame_time * (m_a_d - m_a_u);
+    m_vx += 50 * frame_time * (m_a_r - m_a_l);
+    m_vy += 50 * frame_time * (m_a_d - m_a_u);
 
     m_tex_quad1->translate(m_vx * frame_time, m_vy * frame_time);
+    // log_client_general("{} {}", m_tex_quad1->get_origin()[0], m_tex_quad1->get_origin()[1]);
+    m_tex_quad1->scale(1 + 10 * frame_time * (m_s_u - m_s_d), 1 + 10 * frame_time * (m_s_u - m_s_d));
 }
 
 void SandboxLayer::render()
@@ -75,6 +77,12 @@ bool SandboxLayer::handle_event(SDL_Event e)
         case SDLK_d:
             m_a_r = true;
             return true;
+        case SDLK_q:
+            m_s_u = true;
+            return true;
+        case SDLK_e:
+            m_s_d = true;
+            return true;
         }
     }
     else if(e.type == SDL_KEYUP) {
@@ -90,6 +98,12 @@ bool SandboxLayer::handle_event(SDL_Event e)
             return true;
         case SDLK_d:
             m_a_r = false;
+            return true;
+        case SDLK_q:
+            m_s_u = false;
+            return true;
+        case SDLK_e:
+            m_s_d = false;
             return true;
         }
     }
