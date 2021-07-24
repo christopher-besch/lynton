@@ -23,7 +23,7 @@ public:
     vec3 get_origin() { return m_origin; }
 
 protected:
-    Renderer* m_renderer = nullptr;
-    vec3      m_origin;
+    Renderer* m_renderer {nullptr};
+    vec3      m_origin {0, 0, 0};
 };
 } // namespace Lynton

@@ -17,6 +17,7 @@ TexQuad::~TexQuad()
 void TexQuad::render()
 {
     // todo: sub coordinates missing <- sprite sheets
+    // m_renderer->get_texture_library()->render(m_texture_id, m_origin, m_scale, nullptr, m_rotation, (m_flip_hor * SDL_FLIP_HORIZONTAL) & (m_flip_ver * SDL_FLIP_VERTICAL));
     m_renderer->get_texture_library()->render(m_texture_id, m_origin, m_scale, nullptr, m_rotation);
 }
 

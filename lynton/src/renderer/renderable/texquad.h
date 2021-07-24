@@ -22,9 +22,10 @@ public:
 
 private:
     // todo: sub coordinates missing <- sprite sheets
-    unsigned short m_texture_id;
+    unsigned short m_texture_id {0};
 
     vec3   m_scale {0, 0, 0};
     scalar m_rotation {0};
+    bool   m_flip_hor {0}, m_flip_ver {0};
 };
 } // namespace Lynton

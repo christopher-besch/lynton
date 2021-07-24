@@ -47,12 +47,13 @@ void SandboxLayer::update(double frame_time)
 {
     // move objects
     // m_tex_quad1->rotate(90 * frame_time);
-    m_vx += 50 * frame_time * (m_a_r - m_a_l);
-    m_vy += 50 * frame_time * (m_a_d - m_a_u);
+    m_vx += 200 * frame_time * (m_a_r - m_a_l);
+    m_vy += 200 * frame_time * (m_a_d - m_a_u);
 
     m_tex_quad1->translate(m_vx * frame_time, m_vy * frame_time);
     // log_client_general("{} {}", m_tex_quad1->get_origin()[0], m_tex_quad1->get_origin()[1]);
-    m_tex_quad1->scale(1 + 10 * frame_time * (m_s_u - m_s_d), 1 + 10 * frame_time * (m_s_u - m_s_d));
+    Lynton::scalar scale_factor = 1 / (1 + 3 * frame_time * (m_s_u - m_s_d));
+    m_tex_quad1->scale(scale_factor, scale_factor);
 }
 
 void SandboxLayer::render()
@@ -63,6 +64,7 @@ void SandboxLayer::render()
 
 bool SandboxLayer::handle_event(SDL_Event e)
 {
+    // todo: filter out repetitions
     if(e.type == SDL_KEYDOWN) {
         switch(e.key.keysym.sym) {
         case SDLK_w:
