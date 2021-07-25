@@ -5,6 +5,7 @@
 #include <cmath>
 
 namespace Lynton {
+
 inline mat3 trans_mat3(scalar dx, scalar dy)
 {
     return {
@@ -33,4 +34,5 @@ inline mat3 ska_mat3(scalar fx, scalar fy)
         {0, fy, 0},
         {0, 0, 1}};
 }
+
 } // namespace Lynton

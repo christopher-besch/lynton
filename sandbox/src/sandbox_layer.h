@@ -20,8 +20,8 @@ public:
 private:
     Lynton::Font* m_font = nullptr;
 
-    Lynton::TexQuad* m_tex_quad1 = nullptr;
-    Lynton::TexQuad* m_tex_quad2 = nullptr;
+    Lynton::TexQuad* m_smiley = nullptr;
+    Lynton::TexQuad* m_dot    = nullptr;
 
     // acceleration
     bool m_a_left {0}, m_a_right {0}, m_a_up {0}, m_a_down {0};

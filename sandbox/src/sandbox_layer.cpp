@@ -5,8 +5,8 @@
 
 SandboxLayer::~SandboxLayer()
 {
-    delete m_tex_quad1;
-    delete m_tex_quad2;
+    delete m_smiley;
+    delete m_dot;
 }
 
 void SandboxLayer::setup()
@@ -28,20 +28,20 @@ void SandboxLayer::setup()
 
     // text
     // unsigned short text_id = m_tex_lib->load_from_text("Hello World!", {0xff, 0x20, 0x20, 0xff}, m_font);
-    unsigned short red_dot_id = m_tex_lib->create_blank(5, 5);
-    m_tex_lib->lock(red_dot_id);
-    pixels = static_cast<uint32_t*>(m_tex_lib->get_pixels(red_dot_id));
+    unsigned short dot_id = m_tex_lib->create_blank(5, 5);
+    m_tex_lib->lock(dot_id);
+    pixels = static_cast<uint32_t*>(m_tex_lib->get_pixels(dot_id));
 
-    for(int i = 0; i < m_tex_lib->get_pixel_count(red_dot_id); ++i) {
+    for(int i = 0; i < m_tex_lib->get_pixel_count(dot_id); ++i) {
         pixels[i] = m_renderer->get_color(0x00, 0x00, 0xff, 0xff);
     }
-    m_tex_lib->unlock(red_dot_id);
+    m_tex_lib->unlock(dot_id);
 
-    m_tex_quad1 = new Lynton::TexQuad(m_renderer, {100, 100, 1}, {150, 150, 1});
-    m_tex_quad1->set_texture_id(img_id);
+    m_smiley = new Lynton::TexQuad(m_renderer, {100, 100, 1}, {150, 150, 1});
+    m_smiley->set_texture_id(img_id);
 
-    m_tex_quad2 = new Lynton::TexQuad(m_renderer, {20, 20, 1}, m_tex_lib->get_width(red_dot_id), m_tex_lib->get_height(red_dot_id));
-    m_tex_quad2->set_texture_id(red_dot_id);
+    m_dot = new Lynton::TexQuad(m_renderer, {20, 20, 1}, m_tex_lib->get_width(dot_id), m_tex_lib->get_height(dot_id));
+    m_dot->set_texture_id(dot_id);
 }
 
 void SandboxLayer::update(double frame_time)
@@ -49,23 +49,23 @@ void SandboxLayer::update(double frame_time)
     // translate objects
     m_v_right += 200 * frame_time * (m_a_right - m_a_left);
     m_v_down += 200 * frame_time * (m_a_down - m_a_up);
-    m_tex_quad1->translate(m_v_right * frame_time, m_v_down * frame_time);
+    m_smiley->translate(m_v_right * frame_time, m_v_down * frame_time);
 
     // scale
     Lynton::scalar scale_factor = 1 / (1 + 3 * frame_time * (m_scale_up - m_scale_down));
-    m_tex_quad1->scale_at(scale_factor, scale_factor, m_tex_quad1->get_middle());
+    m_smiley->scale_at(scale_factor, scale_factor, m_smiley->get_middle());
 
     // rotate
-    m_tex_quad1->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_tex_quad1->get_middle());
+    m_smiley->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_smiley->get_middle());
 
-    // move red dot
-    m_tex_quad2->set_location(m_tex_quad1->get_middle());
+    // move dot
+    m_dot->set_location(m_smiley->get_middle());
 }
 
 void SandboxLayer::render()
 {
-    m_tex_quad1->render();
-    m_tex_quad2->render();
+    m_smiley->render();
+    m_dot->render();
 }
 
 bool SandboxLayer::handle_event(SDL_Event e)
@@ -97,10 +97,10 @@ bool SandboxLayer::handle_event(SDL_Event e)
 
             // flipping
         case SDLK_r:
-            m_tex_quad1->flip_hor_at(m_tex_quad1->get_middle());
+            m_smiley->flip_hor_at(m_smiley->get_middle());
             return true;
         case SDLK_f:
-            m_tex_quad1->flip_ver_at(m_tex_quad1->get_middle());
+            m_smiley->flip_ver_at(m_smiley->get_middle());
             return true;
 
             // rotation

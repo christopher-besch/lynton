@@ -108,10 +108,10 @@ void TexQuad::flip_ver_at(vec3 pivot)
 
 vec3 TexQuad::get_middle() const
 {
-    vec3 half_diagonal         = m_other_corner - m_origin;
+    vec3 half_diagonal         = (m_other_corner - m_origin) / 2;
     vec3 rotated_half_diagonal = rot_mat3(m_rotation) * half_diagonal;
 
-    return m_origin + half_diagonal;
+    return m_origin + rotated_half_diagonal;
 }
 
 } // namespace Lynton
