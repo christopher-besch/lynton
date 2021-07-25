@@ -4,8 +4,12 @@
 
 namespace Lynton {
 
-TexQuad::TexQuad(Renderer* renderer, vec3 origin, vec3 other_corner)
-    : Renderable(renderer, origin), m_other_corner(other_corner), m_rotation(0)
+TexQuad::TexQuad(Renderer* renderer, vec3 origin, vec3 virtual_corner)
+    : Renderable(renderer, origin),
+      m_virtual_corner(virtual_corner),
+      m_top_rigth_corner({virtual_corner[0], origin[1], 1}),
+      m_bottom_left_corner({origin[0], virtual_corner[1], 1}),
+      m_bottom_right_corner(virtual_corner)
 {
     log_lynton_extra("Creating texture quad");
 }
@@ -22,25 +26,51 @@ void TexQuad::render() const
 {
     // todo: may not be branchless
     // todo: sub coordinates missing <- sprite sheets
-    vec3 top_right_corner = m_origin;
-    int  flip             = SDL_FLIP_NONE;
+    vec3 current_virtual_top_left_corner = m_origin;
+    int  flip                            = SDL_FLIP_NONE;
 
-    // when the origin is not on the left side
-    if(m_origin[0] > m_other_corner[0]) {
-        top_right_corner[0] = m_other_corner[0];
+    // when the origin is not on the left side anymore
+    if(m_origin[0] > m_virtual_corner[0]) {
+        current_virtual_top_left_corner[0] = m_virtual_corner[0];
         flip |= SDL_FLIP_HORIZONTAL;
     }
-    // when the origin is not on the top side
-    if(m_origin[1] > m_other_corner[1]) {
-        top_right_corner[1] = m_other_corner[1];
+    // when the origin is not on the top side anymore
+    if(m_origin[1] > m_virtual_corner[1]) {
+        current_virtual_top_left_corner[1] = m_virtual_corner[1];
         flip |= SDL_FLIP_VERTICAL;
     }
 
-    scalar width  = std::abs(m_origin[0] - m_other_corner[0]);
-    scalar height = std::abs(m_origin[1] - m_other_corner[1]);
+    // corner used for sdl renderer
+    flip                 = SDL_FLIP_NONE;
+    vec3   sdl_corner    = m_origin;
+    scalar used_rotation = m_rotation;
+    if(m_flip_hor && !m_flip_ver) {
+        sdl_corner    = m_top_rigth_corner;
+        flip          = SDL_FLIP_HORIZONTAL;
+        used_rotation = 360 - used_rotation;
+    }
+    else if(!m_flip_hor && m_flip_ver) {
+        sdl_corner    = m_bottom_left_corner;
+        flip          = SDL_FLIP_VERTICAL;
+        used_rotation = 360 - used_rotation;
+    }
+    else if(m_flip_hor && m_flip_ver) {
+        sdl_corner = m_bottom_right_corner;
+        flip       = SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL;
+    }
 
-    m_renderer->get_texture_library()->render(m_texture_id, top_right_corner[0], top_right_corner[1], width, height, nullptr, m_rotation, static_cast<SDL_RendererFlip>(flip));
-    vec3 scale = m_other_corner - m_origin;
+    scalar width  = std::abs(m_virtual_corner[0] - m_origin[0]);
+    scalar height = std::abs(m_virtual_corner[1] - m_origin[1]);
+
+    m_renderer->get_texture_library()->render(m_texture_id,
+                                              sdl_corner[0],
+                                              sdl_corner[1],
+                                              width,
+                                              height,
+                                              nullptr,
+                                              used_rotation,
+                                              static_cast<SDL_RendererFlip>(flip));
+    vec3 scale = m_virtual_corner - m_origin;
 }
 
 /////////////////////
@@ -48,30 +78,35 @@ void TexQuad::render() const
 /////////////////////
 void TexQuad::set_location(vec3 origin)
 {
-    vec3 diagonal  = m_other_corner - m_origin;
-    m_origin       = origin;
-    m_other_corner = origin + diagonal;
+    // how to move old origin to get to new
+    vec3 direction = origin - m_origin;
+    translate(direction[0], direction[1]);
 }
 
 void TexQuad::translate(scalar dx, scalar dy)
 {
-    m_origin       = trans_mat3(dx, dy) * m_origin;
-    m_other_corner = trans_mat3(dx, dy) * m_other_corner;
+    mul_all_mat(trans_mat3(dx, dy));
 }
 
 void TexQuad::rotate(scalar angle)
 {
     // squares stay squares
-    vec3 scale     = m_other_corner - m_origin;
-    m_origin       = rot_mat3(angle) * m_origin;
-    m_other_corner = m_origin + scale;
-    m_rotation += angle;
+    vec3 scale = m_virtual_corner - m_origin;
+    mul_mat(rot_mat3(angle));
+    m_virtual_corner = m_origin + scale;
+    if(m_flip_hor != m_flip_ver)
+        m_rotation -= angle;
+    else
+        m_rotation += angle;
 }
 
 void TexQuad::scale(scalar fx, scalar fy)
 {
-    m_origin       = ska_mat3(fx, fy) * m_origin;
-    m_other_corner = ska_mat3(fx, fy) * m_other_corner;
+    mul_all_mat(sca_mat3(fx, fy));
+    if((fx < 0))
+        m_flip_hor = !m_flip_hor;
+    if((fy < 0))
+        m_flip_ver = !m_flip_ver;
 }
 
 //////////////////////////////
@@ -108,10 +143,16 @@ void TexQuad::flip_ver_at(vec3 pivot)
 
 vec3 TexQuad::get_middle() const
 {
-    vec3 half_diagonal         = (m_other_corner - m_origin) / 2;
-    vec3 rotated_half_diagonal = rot_mat3(m_rotation) * half_diagonal;
+    vec3 half_diagonal = (m_virtual_corner - get_top_left()) / 2;
+    // when there has been one and only one flip
+    if(m_origin[0] > m_virtual_corner[0] != m_origin[1] > m_virtual_corner[1]) {
+        half_diagonal = rot_mat3(-m_rotation) * half_diagonal;
+    }
+    else {
+        half_diagonal = rot_mat3(m_rotation) * half_diagonal;
+    }
 
-    return m_origin + rotated_half_diagonal;
+    return m_origin + half_diagonal;
 }
 
 } // namespace Lynton

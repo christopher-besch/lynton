@@ -101,8 +101,8 @@ private:
     Texture*       get_texture(unsigned short id) { return const_cast<Texture*>(const_cast<const TextureLibrary*>(this)->get_texture(id)); }
 
 private:
-    SDL_Renderer*                               m_renderer   = nullptr;
-    RandomGen*                                  m_random_gen = nullptr;
+    SDL_Renderer*                               m_renderer {nullptr};
+    RandomGen*                                  m_random_gen {nullptr};
     std::unordered_map<unsigned short, Texture> m_textures;
 };
 } // namespace Lynton

@@ -27,7 +27,7 @@ inline mat3 rot_mat3(scalar angle)
         {0, 0, 1}};
 }
 
-inline mat3 ska_mat3(scalar fx, scalar fy)
+inline mat3 sca_mat3(scalar fx, scalar fy)
 {
     return {
         {fx, 0, 0},

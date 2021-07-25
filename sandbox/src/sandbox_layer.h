@@ -18,10 +18,13 @@ public:
     bool handle_event(SDL_Event e) override;
 
 private:
-    Lynton::Font* m_font = nullptr;
+    Lynton::Font* m_font {nullptr};
 
-    Lynton::TexQuad* m_smiley = nullptr;
-    Lynton::TexQuad* m_dot    = nullptr;
+    Lynton::TexQuad* m_smiley {nullptr};
+    Lynton::TexQuad* m_dot1 {nullptr};
+    Lynton::TexQuad* m_dot2 {nullptr};
+    Lynton::TexQuad* m_dot3 {nullptr};
+    Lynton::TexQuad* m_dot4 {nullptr};
 
     // acceleration
     bool m_a_left {0}, m_a_right {0}, m_a_up {0}, m_a_down {0};

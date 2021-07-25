@@ -26,7 +26,7 @@ void DebugLayer::update(double frame_time)
 
 void DebugLayer::render()
 {
-    m_fps_quad->render();
+    // m_fps_quad->render();
 }
 
 bool DebugLayer::handle_event(SDL_Event e)
