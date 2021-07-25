@@ -143,15 +143,7 @@ void TexQuad::flip_ver_at(vec3 pivot)
 
 vec3 TexQuad::get_middle() const
 {
-    vec3 half_diagonal = (m_virtual_corner - get_top_left()) / 2;
-    // when there has been one and only one flip
-    if(m_origin[0] > m_virtual_corner[0] != m_origin[1] > m_virtual_corner[1]) {
-        half_diagonal = rot_mat3(-m_rotation) * half_diagonal;
-    }
-    else {
-        half_diagonal = rot_mat3(m_rotation) * half_diagonal;
-    }
-
+    vec3 half_diagonal = (m_bottom_right_corner - m_origin) / 2;
     return m_origin + half_diagonal;
 }
 

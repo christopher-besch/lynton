@@ -82,8 +82,7 @@ void SandboxLayer::update(double frame_time)
     m_smiley->scale_at(scale_factor, scale_factor, m_smiley->get_middle());
 
     // rotate
-    // m_smiley->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_smiley->get_middle());
-    m_smiley->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, {500, 500, 1});
+    m_smiley->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_smiley->get_middle());
 
     // move dots
     m_dot1->set_location(m_smiley->get_top_left());
