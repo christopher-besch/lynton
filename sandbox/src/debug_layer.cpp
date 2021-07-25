@@ -12,7 +12,7 @@ void DebugLayer::setup()
     // text
     unsigned short text_id = m_tex_lib->load_from_text("1234", {0xff, 0x20, 0x20, 0xff}, m_font);
 
-    m_fps_quad = new Lynton::TexQuad(m_renderer, {10, 10, 1}, m_tex_lib->get_scale(text_id));
+    m_fps_quad = new Lynton::TexQuad(m_renderer, {10, 10, 1}, m_tex_lib->get_w(text_id), m_tex_lib->get_h(text_id));
     m_fps_quad->set_texture_id(text_id);
 }
 

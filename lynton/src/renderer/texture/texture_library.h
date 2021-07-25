@@ -53,8 +53,7 @@ public:
     void set_alpha(unsigned short id, uint8_t a);
 
     // clip == nullptr -> render clip from sprite sheet
-    // scale location of bottom right corner relative to top left corner (origin) and rotation of texture quad <- width and height
-    void render(unsigned short id, vec3 origin, vec3 scale, SDL_Rect* clip = nullptr, scalar angle = 0.0, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void render(unsigned short id, int x, int y, int w, int h, SDL_Rect* clip = nullptr, scalar angle = 0.0, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
     arma::mat33 x;
     // pixel manipulators
@@ -85,12 +84,6 @@ public:
     {
         Texture* tex = get_texture(id);
         return tex->width;
-    }
-
-    inline vec3 get_scale(unsigned short id)
-    {
-        Texture* tex = get_texture(id);
-        return {static_cast<scalar>(tex->width), static_cast<scalar>(tex->height)};
     }
 
 private:

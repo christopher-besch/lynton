@@ -176,13 +176,9 @@ void TextureLibrary::set_alpha(unsigned short id, uint8_t a)
     SDL_SetTextureAlphaMod(tex->texture, a);
 }
 
-void TextureLibrary::render(unsigned short id, vec3 origin, vec3 scale, SDL_Rect* clip, scalar angle, SDL_RendererFlip flip)
+void TextureLibrary::render(unsigned short id, int x, int y, int w, int h, SDL_Rect* clip, scalar angle, SDL_RendererFlip flip)
 {
     Texture*  tex             = get_texture(id);
-    int       x               = static_cast<int>(origin[0]);
-    int       y               = static_cast<int>(origin[1]);
-    int       w               = static_cast<int>(scale[0]);
-    int       h               = static_cast<int>(scale[1]);
     SDL_Rect  render_quad     = {x, y, w, h};
     SDL_Point rotation_center = {0, 0};
     SDL_RenderCopyEx(m_renderer, tex->texture, clip, &render_quad, angle, &rotation_center, flip);

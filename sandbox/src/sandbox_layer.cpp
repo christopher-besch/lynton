@@ -28,7 +28,6 @@ void SandboxLayer::setup()
         for(int y = 0; y < m_tex_lib->get_w(img_id); ++y)
             if(x % 2 && y % 2)
                 pixels[x + y * m_tex_lib->get_w(img_id)] = SDL_MapRGBA(mapping_format, 0x10, 0x50, 0xff, 0xff);
-    log_client_extra("{} {}", m_a_r, m_a_l);
 
     m_tex_lib->unlock(img_id);
     SDL_FreeFormat(mapping_format);
@@ -36,10 +35,10 @@ void SandboxLayer::setup()
     // text
     unsigned short text_id = m_tex_lib->load_from_text("Hello World!", {0xff, 0x20, 0x20, 0xff}, m_font);
 
-    m_tex_quad1 = new Lynton::TexQuad(m_renderer, {100, 100, 1}, {50, 50, 1});
+    m_tex_quad1 = new Lynton::TexQuad(m_renderer, {100, 100, 1}, {150, 150, 1});
     m_tex_quad1->set_texture_id(img_id);
 
-    m_tex_quad2 = new Lynton::TexQuad(m_renderer, {20, 20, 1}, m_tex_lib->get_scale(text_id));
+    m_tex_quad2 = new Lynton::TexQuad(m_renderer, {20, 20, 1}, m_tex_lib->get_w(text_id), m_tex_lib->get_h(text_id));
     m_tex_quad2->set_texture_id(text_id);
 }
 
@@ -51,9 +50,8 @@ void SandboxLayer::update(double frame_time)
     m_vy += 200 * frame_time * (m_a_d - m_a_u);
 
     m_tex_quad1->translate(m_vx * frame_time, m_vy * frame_time);
-    // log_client_general("{} {}", m_tex_quad1->get_origin()[0], m_tex_quad1->get_origin()[1]);
     Lynton::scalar scale_factor = 1 / (1 + 3 * frame_time * (m_s_u - m_s_d));
-    m_tex_quad1->scale(scale_factor, scale_factor);
+    m_tex_quad1->scale_at(scale_factor, scale_factor, m_tex_quad1->get_middle());
 }
 
 void SandboxLayer::render()
@@ -84,6 +82,12 @@ bool SandboxLayer::handle_event(SDL_Event e)
             return true;
         case SDLK_e:
             m_s_d = true;
+            return true;
+        case SDLK_r:
+            m_tex_quad1->flip_hor_at(m_tex_quad1->get_middle());
+            return true;
+        case SDLK_f:
+            m_tex_quad1->flip_ver_at(m_tex_quad1->get_middle());
             return true;
         }
     }

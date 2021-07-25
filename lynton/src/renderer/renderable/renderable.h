@@ -11,16 +11,24 @@ public:
         : m_renderer(renderer), m_origin(origin) {}
     virtual ~Renderable() = default;
 
+    // perform transformation at (0, 0)
     // certain limitations in the use of these methods may be set by inheriting classes
     virtual void translate(scalar dx, scalar dy) = 0;
+    virtual void translate(vec3 d)               = 0;
     virtual void rotate(scalar angle)            = 0;
     virtual void scale(scalar fx, scalar fy)     = 0;
-    virtual void mirror_hor()                    = 0;
-    virtual void mirror_ver()                    = 0;
+    virtual void flip_hor()                      = 0;
+    virtual void flip_ver()                      = 0;
 
-    virtual void render() = 0;
+    // perform transformation at pivot
+    virtual void rotate_at(scalar angle, vec3 pivot)        = 0;
+    virtual void scale_at(scalar fx, scalar fy, vec3 pivot) = 0;
+    virtual void flip_hor_at(vec3 pivot)                    = 0;
+    virtual void flip_ver_at(vec3 pivot)                    = 0;
 
-    vec3 get_origin() { return m_origin; }
+    virtual void render() const = 0;
+
+    vec3 get_origin() const { return m_origin; }
 
 protected:
     Renderer* m_renderer {nullptr};
