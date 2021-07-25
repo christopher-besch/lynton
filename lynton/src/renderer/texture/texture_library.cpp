@@ -176,11 +176,11 @@ void TextureLibrary::set_alpha(unsigned short id, uint8_t a)
     SDL_SetTextureAlphaMod(tex->texture, a);
 }
 
-void TextureLibrary::render(unsigned short id, int x, int y, int w, int h, SDL_Rect* clip, scalar angle, SDL_RendererFlip flip)
+void TextureLibrary::render(unsigned short id, int x, int y, int w, int h, SDL_Rect* clip, scalar angle, SDL_RendererFlip flip) const
 {
-    Texture*  tex             = get_texture(id);
-    SDL_Rect  render_quad     = {x, y, w, h};
-    SDL_Point rotation_center = {0, 0};
+    const Texture* tex             = get_texture(id);
+    SDL_Rect       render_quad     = {x, y, w, h};
+    SDL_Point      rotation_center = {0, 0};
     SDL_RenderCopyEx(m_renderer, tex->texture, clip, &render_quad, angle, &rotation_center, flip);
 }
 
@@ -222,10 +222,10 @@ void TextureLibrary::copyPixels(unsigned short id, void* pixels)
         log_lynton_error("Trying to copy pixels to not yet locked texture with id: {}", id);
 }
 
-uint32_t TextureLibrary::get_pixel32(unsigned short id, unsigned int x, unsigned int y)
+uint32_t TextureLibrary::get_pixel32(unsigned short id, unsigned int x, unsigned int y) const
 {
-    Texture*  tex    = get_texture(id);
-    uint32_t* pixels = static_cast<uint32_t*>(tex->pixels);
+    const Texture* tex    = get_texture(id);
+    uint32_t*      pixels = static_cast<uint32_t*>(tex->pixels);
     // get requested pixel
     return pixels[y * (tex->pitch / 4) + x];
 }
@@ -246,13 +246,14 @@ Texture* TextureLibrary::add_texture(unsigned short& id)
     return &m_textures[id];
 }
 
-Texture* TextureLibrary::get_texture(unsigned short id)
+const Texture* TextureLibrary::get_texture(unsigned short id) const
 {
     if(!is_used(id)) {
         raise_critical("Accessing texture with invalid id: {}", id);
         return nullptr;
     }
-    return &m_textures[id];
+
+    return &m_textures.find(id)->second;
 }
 
 } // namespace Lynton

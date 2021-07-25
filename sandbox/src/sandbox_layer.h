@@ -24,9 +24,11 @@ private:
     Lynton::TexQuad* m_tex_quad2 = nullptr;
 
     // acceleration
-    bool m_a_l {0}, m_a_r {0}, m_a_u {0}, m_a_d {0};
+    bool m_a_left {0}, m_a_right {0}, m_a_up {0}, m_a_down {0};
     // velocity
-    Lynton::scalar m_vx {0}, m_vy {0};
-    // scaling up and down
-    bool m_s_u {0}, m_s_d {0};
+    Lynton::scalar m_v_right {0}, m_v_down {0};
+
+    bool m_scale_up {0}, m_scale_down {0};
+
+    bool m_rotate_left {0}, m_rotate_right {0};
 };

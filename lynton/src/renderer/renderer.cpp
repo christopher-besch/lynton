@@ -39,6 +39,9 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height,
 
     // used to own and handle textures
     m_texture_library = new TextureLibrary(m_sdl_renderer, m_random_gen);
+
+    // used to create color
+    m_mapping_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
 }
 
 Renderer::~Renderer()
@@ -48,6 +51,7 @@ Renderer::~Renderer()
 
     SDL_DestroyRenderer(m_sdl_renderer);
     SDL_DestroyWindow(m_window);
+    SDL_FreeFormat(m_mapping_format);
 
     // quit sdl subsystems
     IMG_Quit();

@@ -12,6 +12,7 @@ public:
 
     virtual ~TexQuad();
 
+    virtual void set_location(vec3 origin) override;
     virtual void translate(scalar dx, scalar dy) override;
     virtual void translate(vec3 d) override { translate(d[0], d[1]); }
     virtual void rotate(scalar angle) override;
@@ -31,16 +32,14 @@ public:
     void           set_texture_id(unsigned short id) { m_texture_id = id; }
     unsigned short get_texture_id() const { return m_texture_id; }
 
-    vec3 get_middle() const
-    {
-        return (m_origin + m_other_corner) / 2;
-    }
+    vec3 get_middle() const;
 
 private:
     // todo: sub coordinates missing <- sprite sheets
     unsigned short m_texture_id {0};
 
     // m_origin is top left corner; m_other_corner is bottom right corner
+    // <- might not always be correct <- rotation applied after applied after everything else
     vec3   m_other_corner {0, 0, 1};
     scalar m_rotation {0};
 };

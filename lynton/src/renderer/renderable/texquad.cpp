@@ -46,6 +46,13 @@ void TexQuad::render() const
 /////////////////////
 // transformations //
 /////////////////////
+void TexQuad::set_location(vec3 origin)
+{
+    vec3 diagonal  = m_other_corner - m_origin;
+    m_origin       = origin;
+    m_other_corner = origin + diagonal;
+}
+
 void TexQuad::translate(scalar dx, scalar dy)
 {
     m_origin       = trans_mat3(dx, dy) * m_origin;
@@ -54,8 +61,10 @@ void TexQuad::translate(scalar dx, scalar dy)
 
 void TexQuad::rotate(scalar angle)
 {
-    // move origin
-    m_origin = rot_mat3(angle) * m_origin;
+    // squares stay squares
+    vec3 scale     = m_other_corner - m_origin;
+    m_origin       = rot_mat3(angle) * m_origin;
+    m_other_corner = m_origin + scale;
     m_rotation += angle;
 }
 
@@ -95,6 +104,14 @@ void TexQuad::flip_ver_at(vec3 pivot)
     translate(-pivot);
     flip_ver();
     translate(pivot);
+}
+
+vec3 TexQuad::get_middle() const
+{
+    vec3 half_diagonal         = m_other_corner - m_origin;
+    vec3 rotated_half_diagonal = rot_mat3(m_rotation) * half_diagonal;
+
+    return m_origin + half_diagonal;
 }
 
 } // namespace Lynton

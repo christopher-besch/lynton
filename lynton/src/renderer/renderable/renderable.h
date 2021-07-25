@@ -13,6 +13,8 @@ public:
 
     // perform transformation at (0, 0)
     // certain limitations in the use of these methods may be set by inheriting classes
+    // move entire object to new origin
+    virtual void set_location(vec3 origin)       = 0;
     virtual void translate(scalar dx, scalar dy) = 0;
     virtual void translate(vec3 d)               = 0;
     virtual void rotate(scalar angle)            = 0;
