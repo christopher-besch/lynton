@@ -56,18 +56,18 @@ void SandboxLayer::setup()
     }
     m_tex_lib->unlock(dot_id3);
 
-    m_smiley = new Lynton::TexQuad(m_renderer, m_camera, {100, 100, 1}, 50, 50);
+    m_smiley = new Lynton::TexQuad(m_renderer, m_camera, {0, 0, 1}, 50, 50);
     m_smiley->set_texture_id(img_id);
 
-    m_dot1 = new Lynton::TexQuad(m_renderer, m_camera, {20, 20, 1}, m_tex_lib->get_width(dot_id1), m_tex_lib->get_height(dot_id1));
+    m_dot1 = new Lynton::TexQuad(m_renderer, m_camera, {0, 0, 1}, m_tex_lib->get_width(dot_id1), m_tex_lib->get_height(dot_id1));
     m_dot1->set_texture_id(dot_id1);
-    m_dot2 = new Lynton::TexQuad(m_renderer, m_camera, {20, 20, 1}, m_tex_lib->get_width(dot_id2), m_tex_lib->get_height(dot_id2));
+    m_dot2 = new Lynton::TexQuad(m_renderer, m_camera, {100, 0, 1}, m_tex_lib->get_width(dot_id2), m_tex_lib->get_height(dot_id2));
     m_dot2->set_texture_id(dot_id2);
-    m_dot3 = new Lynton::TexQuad(m_renderer, m_camera, {20, 20, 1}, m_tex_lib->get_width(dot_id3), m_tex_lib->get_height(dot_id3));
+    m_dot3 = new Lynton::TexQuad(m_renderer, m_camera, {0, 100, 1}, m_tex_lib->get_width(dot_id3), m_tex_lib->get_height(dot_id3));
     m_dot3->set_texture_id(dot_id3);
-    m_dot4 = new Lynton::TexQuad(m_renderer, m_camera, {20, 20, 1}, m_tex_lib->get_width(dot_id1), m_tex_lib->get_height(dot_id1));
+    m_dot4 = new Lynton::TexQuad(m_renderer, m_camera, {100, 100, 1}, m_tex_lib->get_width(dot_id1), m_tex_lib->get_height(dot_id1));
     m_dot4->set_texture_id(dot_id1);
-    m_dot5 = new Lynton::TexQuad(m_renderer, m_camera, {20, 20, 1}, m_tex_lib->get_width(dot_id2), m_tex_lib->get_height(dot_id2));
+    m_dot5 = new Lynton::TexQuad(m_renderer, m_camera, {50, 50, 1}, m_tex_lib->get_width(dot_id2), m_tex_lib->get_height(dot_id2));
     m_dot5->set_texture_id(dot_id1);
 }
 
@@ -88,21 +88,21 @@ void SandboxLayer::update(double frame_time)
     m_camera->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_camera->get_middle());
 
     // move dots
-    m_dot1->set_location(m_camera->get_top_left());
-    m_dot2->set_location(m_camera->get_top_right());
-    m_dot3->set_location(m_camera->get_bottom_left());
-    m_dot4->set_location(m_camera->get_bottom_right());
-    m_dot5->set_location(m_camera->get_middle());
+    // m_dot1->set_location(m_camera->get_top_left());
+    // m_dot2->set_location(m_camera->get_top_right());
+    // m_dot3->set_location(m_camera->get_bottom_left());
+    // m_dot4->set_location(m_camera->get_bottom_right());
+    // m_dot5->set_location(m_camera->get_middle());
 }
 
 void SandboxLayer::render()
 {
     m_smiley->render();
-    // m_dot1->render();
-    // m_dot2->render();
-    // m_dot3->render();
-    // m_dot4->render();
-    // m_dot5->render();
+    m_dot1->render();
+    m_dot2->render();
+    m_dot3->render();
+    m_dot4->render();
+    m_dot5->render();
 }
 
 bool SandboxLayer::handle_event(SDL_Event e)

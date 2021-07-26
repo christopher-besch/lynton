@@ -103,12 +103,12 @@ void Camera::mul_mat(mat3 mat)
     m_bottom_left_corner  = mat * m_bottom_left_corner;
     m_bottom_right_corner = mat * m_bottom_right_corner;
     // reverse transformation with inverse matrix
-    m_mat = mat.i() * m_mat;
+    m_mat = m_mat * mat.i();
 }
 
 void Camera::mul_all_mat(mat3 mat)
 {
-    m_mat_no_rotation = mat.i() * m_mat_no_rotation;
+    m_mat_no_rotation = m_mat_no_rotation * mat.i();
     mul_mat(mat);
 }
 

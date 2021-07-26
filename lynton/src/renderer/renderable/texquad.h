@@ -23,7 +23,7 @@ public:
 
     vec3 get_middle() const;
     vec3 get_top_left() const { return m_origin; }
-    vec3 get_top_right() const { return m_top_rigth_corner; }
+    vec3 get_top_right() const { return m_top_right_corner; }
     vec3 get_bottom_left() const { return m_bottom_left_corner; }
     vec3 get_bottom_right() const { return m_bottom_right_corner; }
 
@@ -40,7 +40,7 @@ private:
 
     // m_origin is top left corner
     // when rotated or flipped -> m_top_right_corner may not stay the one in the topmost rightmost corner
-    vec3 m_top_rigth_corner {1, 0, 1}, m_bottom_left_corner {0, 1, 1}, m_bottom_right_corner {1, 1, 1};
+    vec3 m_top_right_corner {1, 0, 1}, m_bottom_left_corner {0, 1, 1}, m_bottom_right_corner {1, 1, 1};
     // bottom right corner without any rotations applied
     // used to achieve above vertices with sdl <- sdl applies rotation later on
     vec3   m_virtual_corner {1, 1, 1};
