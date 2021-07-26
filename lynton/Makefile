@@ -286,6 +286,54 @@ src/core/log.cpp.s:
 	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/src/core/log.cpp.s
 .PHONY : src/core/log.cpp.s
 
+src/renderer/camera/camera.o: src/renderer/camera/camera.cpp.o
+.PHONY : src/renderer/camera/camera.o
+
+# target to build an object file
+src/renderer/camera/camera.cpp.o:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/src/renderer/camera/camera.cpp.o
+.PHONY : src/renderer/camera/camera.cpp.o
+
+src/renderer/camera/camera.i: src/renderer/camera/camera.cpp.i
+.PHONY : src/renderer/camera/camera.i
+
+# target to preprocess a source file
+src/renderer/camera/camera.cpp.i:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/src/renderer/camera/camera.cpp.i
+.PHONY : src/renderer/camera/camera.cpp.i
+
+src/renderer/camera/camera.s: src/renderer/camera/camera.cpp.s
+.PHONY : src/renderer/camera/camera.s
+
+# target to generate assembly for a file
+src/renderer/camera/camera.cpp.s:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/src/renderer/camera/camera.cpp.s
+.PHONY : src/renderer/camera/camera.cpp.s
+
+src/renderer/renderable/renderable.o: src/renderer/renderable/renderable.cpp.o
+.PHONY : src/renderer/renderable/renderable.o
+
+# target to build an object file
+src/renderer/renderable/renderable.cpp.o:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/src/renderer/renderable/renderable.cpp.o
+.PHONY : src/renderer/renderable/renderable.cpp.o
+
+src/renderer/renderable/renderable.i: src/renderer/renderable/renderable.cpp.i
+.PHONY : src/renderer/renderable/renderable.i
+
+# target to preprocess a source file
+src/renderer/renderable/renderable.cpp.i:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/src/renderer/renderable/renderable.cpp.i
+.PHONY : src/renderer/renderable/renderable.cpp.i
+
+src/renderer/renderable/renderable.s: src/renderer/renderable/renderable.cpp.s
+.PHONY : src/renderer/renderable/renderable.s
+
+# target to generate assembly for a file
+src/renderer/renderable/renderable.cpp.s:
+	cd /home/runner/work/lynton/lynton/build && $(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/src/renderer/renderable/renderable.cpp.s
+.PHONY : src/renderer/renderable/renderable.cpp.s
+
 src/renderer/renderable/texquad.o: src/renderer/renderable/texquad.cpp.o
 .PHONY : src/renderer/renderable/texquad.o
 
@@ -410,6 +458,12 @@ help:
 	@echo "... src/core/log.o"
 	@echo "... src/core/log.i"
 	@echo "... src/core/log.s"
+	@echo "... src/renderer/camera/camera.o"
+	@echo "... src/renderer/camera/camera.i"
+	@echo "... src/renderer/camera/camera.s"
+	@echo "... src/renderer/renderable/renderable.o"
+	@echo "... src/renderer/renderable/renderable.i"
+	@echo "... src/renderer/renderable/renderable.s"
 	@echo "... src/renderer/renderable/texquad.o"
 	@echo "... src/renderer/renderable/texquad.i"
 	@echo "... src/renderer/renderable/texquad.s"
