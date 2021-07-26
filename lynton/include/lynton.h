@@ -4,6 +4,7 @@
 #include "core/random.h"
 #include "math/defs.h"
 #include "math/matrices.h"
+#include "renderer/camera/camera.h"
 #include "renderer/renderable/renderable.h"
 #include "renderer/renderable/texquad.h"
 #include "renderer/renderer.h"
