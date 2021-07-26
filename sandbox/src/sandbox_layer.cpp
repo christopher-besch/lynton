@@ -18,7 +18,7 @@ void SandboxLayer::setup()
     m_font = new Lynton::Font("res/iosevka-extendedbold.ttf", 50);
 
     // image
-    unsigned short img_id = m_tex_lib->load_from_file("res/test.png");
+    unsigned short img_id = m_tex_lib->load_from_file("res/awesomeface.png");
 
     m_tex_lib->lock(img_id);
     uint32_t* pixels = static_cast<uint32_t*>(m_tex_lib->get_pixels(img_id));
