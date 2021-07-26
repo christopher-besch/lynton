@@ -62,8 +62,7 @@ void TexQuad::scale(scalar fx, scalar fy)
 void TexQuad::render() const
 {
     // apply camera
-    vec3   sdl_origin         = m_camera->get_mat() * m_origin;
-    vec3   sdl_virtual_corner = m_camera->get_mat() * m_virtual_corner;
+    vec3   sdl_virtual_corner = m_camera->get_mat_no_rotation() * m_virtual_corner;
     scalar sdl_rotation       = m_rotation - m_camera->get_rotation();
     bool   sdl_flip_hor       = m_flip_hor != m_camera->get_flip_hor();
     bool   sdl_flip_ver       = m_flip_ver != m_camera->get_flip_ver();
@@ -73,16 +72,20 @@ void TexQuad::render() const
 
     sdl_rotation = sdl_flip_hor != sdl_flip_ver ? 360 - sdl_rotation : sdl_rotation;
 
+    vec3 sdl_origin = m_origin;
     if(sdl_flip_hor && !sdl_flip_ver)
         sdl_origin = m_top_rigth_corner;
     else if(!sdl_flip_hor && sdl_flip_ver)
         sdl_origin = m_bottom_left_corner;
     else if(sdl_flip_hor && sdl_flip_ver)
         sdl_origin = m_bottom_right_corner;
+    // apply camera
+    sdl_origin = m_camera->get_mat() * sdl_origin;
 
-    scalar width  = std::abs(sdl_virtual_corner[0] - m_origin[0]);
-    scalar height = std::abs(sdl_virtual_corner[1] - m_origin[1]);
-    std::cout << sdl_origin << std::endl;
+    scalar width  = std::abs(sdl_virtual_corner[0] - sdl_origin[0]);
+    scalar height = std::abs(sdl_virtual_corner[1] - sdl_origin[1]);
+    std::cout << width << std::endl;
+    std::cout << height << std::endl;
 
     m_renderer->get_texture_library()->render(m_texture_id,
                                               sdl_origin[0],
