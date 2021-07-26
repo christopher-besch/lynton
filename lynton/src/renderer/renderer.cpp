@@ -26,7 +26,7 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height,
         raise_critical("SDL renderer could not be created! SDL Error: {}", SDL_GetError());
 
     // init renderer color
-    SDL_SetRenderDrawColor(m_sdl_renderer, 0xfb, 0x04, 0xf7, 0xff);
+    SDL_SetRenderDrawColor(m_sdl_renderer, 0x00, 0x00, 0x00, 0xff);
 
     // init png loading
     int img_flags = IMG_INIT_PNG;
@@ -61,7 +61,8 @@ Renderer::~Renderer()
 void Renderer::clear()
 {
     // set to ugly pink <- should never be seen
-    SDL_SetRenderDrawColor(m_sdl_renderer, 0xfb, 0x04, 0xf7, 0xff);
+    // SDL_SetRenderDrawColor(m_sdl_renderer, 0xfb, 0x04, 0xf7, 0xff);
+    SDL_SetRenderDrawColor(m_sdl_renderer, 0xff, 0xff, 0xff, 0xff);
     SDL_RenderClear(m_sdl_renderer);
 }
 

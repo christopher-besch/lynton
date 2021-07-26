@@ -1,8 +1,8 @@
 #pragma once
 
+#include "renderer/camera/camera.h"
 #include "renderer/renderer.h"
 
-#include <SDL.h>
 #include <string>
 
 namespace Lynton {
@@ -10,7 +10,7 @@ namespace Lynton {
 class Layer {
 public:
     // todo: make renderer be defined here
-    Layer(const std::string& name);
+    Layer(const std::string& name, vec3 camera_origin = {-1, -1, 1}, scalar camera_width = 2, scalar camera_height = 2);
     virtual ~Layer() = 0;
 
     // run after construction
@@ -32,9 +32,11 @@ protected:
     }
 
 protected:
-    std::string             m_name;
-    Renderer*               m_renderer = nullptr;
-    Lynton::TextureLibrary* m_tex_lib  = nullptr;
+    std::string m_name;
+    Camera*     m_camera {nullptr};
+    // these get set by set_renderer
+    Renderer*               m_renderer {nullptr};
+    Lynton::TextureLibrary* m_tex_lib {nullptr};
 
     friend class Application;
 };

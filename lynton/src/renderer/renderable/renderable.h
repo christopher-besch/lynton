@@ -1,15 +1,14 @@
 #pragma once
 
+#include "renderer/camera/camera.h"
 #include "renderer/renderer.h"
-
-#include <SDL.h>
 
 namespace Lynton {
 
 class Renderable {
 public:
-    Renderable(Renderer* renderer, vec3 origin)
-        : m_renderer(renderer), m_origin(origin) {}
+    Renderable(Renderer* renderer, Camera* camera)
+        : m_renderer(renderer), m_camera(camera) {}
     virtual ~Renderable() = default;
 
     // perform transformation at (0, 0)
@@ -24,32 +23,10 @@ public:
     virtual void flip_ver()                  = 0;
 
     // perform transformation at pivot
-    virtual void rotate_at(scalar angle, vec3 pivot)
-    {
-        // translate so that pivot is (0, 0)
-        translate(-pivot);
-        rotate(angle);
-        // translate back
-        translate(pivot);
-    }
-    virtual void scale_at(scalar fx, scalar fy, vec3 pivot)
-    {
-        translate(-pivot);
-        scale(fx, fy);
-        translate(pivot);
-    }
-    virtual void flip_hor_at(vec3 pivot)
-    {
-        translate(-pivot);
-        flip_hor();
-        translate(pivot);
-    }
-    virtual void flip_ver_at(vec3 pivot)
-    {
-        translate(-pivot);
-        flip_ver();
-        translate(pivot);
-    }
+    virtual void rotate_at(scalar angle, vec3 pivot);
+    virtual void scale_at(scalar fx, scalar fy, vec3 pivot);
+    virtual void flip_hor_at(vec3 pivot);
+    virtual void flip_ver_at(vec3 pivot);
 
     virtual void render() const = 0;
 
@@ -57,7 +34,8 @@ public:
 
 protected:
     Renderer* m_renderer {nullptr};
-    vec3      m_origin {0, 0, 0};
+    Camera*   m_camera {nullptr};
+    vec3      m_origin {0, 0, 1};
 };
 
 } // namespace Lynton
