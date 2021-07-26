@@ -2,6 +2,8 @@
 #include "core/layer.h"
 #include "core/log.h"
 #include "core/random.h"
+#include "math/defs.h"
+#include "math/matrices.h"
 #include "renderer/renderable/renderable.h"
 #include "renderer/renderable/texquad.h"
 #include "renderer/renderer.h"

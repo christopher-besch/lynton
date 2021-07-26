@@ -10,6 +10,7 @@ SandboxLayer::~SandboxLayer()
     delete m_dot2;
     delete m_dot3;
     delete m_dot4;
+    delete m_dot5;
 }
 
 void SandboxLayer::setup()
@@ -55,7 +56,7 @@ void SandboxLayer::setup()
     }
     m_tex_lib->unlock(dot_id3);
 
-    m_smiley = new Lynton::TexQuad(m_renderer, {100, 100, 1}, {150, 150, 1});
+    m_smiley = new Lynton::TexQuad(m_renderer, {100, 100, 1}, 50, 50);
     m_smiley->set_texture_id(img_id);
 
     m_dot1 = new Lynton::TexQuad(m_renderer, {20, 20, 1}, m_tex_lib->get_width(dot_id1), m_tex_lib->get_height(dot_id1));
@@ -66,6 +67,8 @@ void SandboxLayer::setup()
     m_dot3->set_texture_id(dot_id3);
     m_dot4 = new Lynton::TexQuad(m_renderer, {20, 20, 1}, m_tex_lib->get_width(dot_id1), m_tex_lib->get_height(dot_id1));
     m_dot4->set_texture_id(dot_id1);
+    m_dot5 = new Lynton::TexQuad(m_renderer, {20, 20, 1}, m_tex_lib->get_width(dot_id2), m_tex_lib->get_height(dot_id2));
+    m_dot5->set_texture_id(dot_id1);
 }
 
 void SandboxLayer::update(double frame_time)
@@ -89,6 +92,7 @@ void SandboxLayer::update(double frame_time)
     m_dot2->set_location(m_smiley->get_top_right());
     m_dot3->set_location(m_smiley->get_bottom_left());
     m_dot4->set_location(m_smiley->get_bottom_right());
+    m_dot5->set_location(m_smiley->get_middle());
 }
 
 void SandboxLayer::render()
@@ -98,6 +102,7 @@ void SandboxLayer::render()
     m_dot2->render();
     m_dot3->render();
     m_dot4->render();
+    m_dot5->render();
 }
 
 bool SandboxLayer::handle_event(SDL_Event e)

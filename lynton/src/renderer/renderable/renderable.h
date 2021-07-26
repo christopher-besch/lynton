@@ -5,6 +5,7 @@
 #include <SDL.h>
 
 namespace Lynton {
+
 class Renderable {
 public:
     Renderable(Renderer* renderer, vec3 origin)
@@ -16,17 +17,39 @@ public:
     // move entire object to new origin
     virtual void set_location(vec3 origin)       = 0;
     virtual void translate(scalar dx, scalar dy) = 0;
-    virtual void translate(vec3 d)               = 0;
-    virtual void rotate(scalar angle)            = 0;
-    virtual void scale(scalar fx, scalar fy)     = 0;
-    virtual void flip_hor()                      = 0;
-    virtual void flip_ver()                      = 0;
+    virtual void translate(vec3 d) { translate(d[0], d[1]); }
+    virtual void rotate(scalar angle)        = 0;
+    virtual void scale(scalar fx, scalar fy) = 0;
+    virtual void flip_hor()                  = 0;
+    virtual void flip_ver()                  = 0;
 
     // perform transformation at pivot
-    virtual void rotate_at(scalar angle, vec3 pivot)        = 0;
-    virtual void scale_at(scalar fx, scalar fy, vec3 pivot) = 0;
-    virtual void flip_hor_at(vec3 pivot)                    = 0;
-    virtual void flip_ver_at(vec3 pivot)                    = 0;
+    virtual void rotate_at(scalar angle, vec3 pivot)
+    {
+        // translate so that pivot is (0, 0)
+        translate(-pivot);
+        rotate(angle);
+        // translate back
+        translate(pivot);
+    }
+    virtual void scale_at(scalar fx, scalar fy, vec3 pivot)
+    {
+        translate(-pivot);
+        scale(fx, fy);
+        translate(pivot);
+    }
+    virtual void flip_hor_at(vec3 pivot)
+    {
+        translate(-pivot);
+        flip_hor();
+        translate(pivot);
+    }
+    virtual void flip_ver_at(vec3 pivot)
+    {
+        translate(-pivot);
+        flip_ver();
+        translate(pivot);
+    }
 
     virtual void render() const = 0;
 
@@ -36,4 +59,5 @@ protected:
     Renderer* m_renderer {nullptr};
     vec3      m_origin {0, 0, 0};
 };
+
 } // namespace Lynton

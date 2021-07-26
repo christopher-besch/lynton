@@ -25,6 +25,7 @@ private:
     Lynton::TexQuad* m_dot2 {nullptr};
     Lynton::TexQuad* m_dot3 {nullptr};
     Lynton::TexQuad* m_dot4 {nullptr};
+    Lynton::TexQuad* m_dot5 {nullptr};
 
     // acceleration
     bool m_a_left {0}, m_a_right {0}, m_a_up {0}, m_a_down {0};
