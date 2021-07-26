@@ -226,8 +226,8 @@ lynton/CMakeFiles/lynton.dir/clean:
 # Target rules for target sandbox/CMakeFiles/sandbox.dir
 
 # All Build rule for target.
-sandbox/CMakeFiles/sandbox.dir/all: lynton/CMakeFiles/lynton.dir/all
 sandbox/CMakeFiles/sandbox.dir/all: vendor/armadillo/CMakeFiles/armadillo.dir/all
+sandbox/CMakeFiles/sandbox.dir/all: lynton/CMakeFiles/lynton.dir/all
 sandbox/CMakeFiles/sandbox.dir/all: vendor/spdlog/CMakeFiles/spdlog.dir/all
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/depend
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/build
