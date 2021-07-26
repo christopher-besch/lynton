@@ -5,9 +5,13 @@
 namespace Lynton {
 
 Camera::Camera(vec3 origin, scalar width, scalar height)
+    : m_origin(origin),
+      m_top_right_corner(origin + vec3 {width, 0, 0}),
+      m_bottom_left_corner(origin + vec3 {0, height, 0}),
+      m_bottom_right_corner(origin + vec3 {width, height, 0})
 {
-    scale(width, height);
-    translate(origin);
+    // scale(width, height);
+    // translate(origin);
     vec3 diagonal = m_bottom_right_corner - m_origin;
     std::cout << m_mat << std::endl;
     std::cout << m_mat_no_rotation << std::endl;

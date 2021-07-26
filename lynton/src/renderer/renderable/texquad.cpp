@@ -84,8 +84,11 @@ void TexQuad::render() const
 
     scalar width  = std::abs(sdl_virtual_corner[0] - sdl_origin[0]);
     scalar height = std::abs(sdl_virtual_corner[1] - sdl_origin[1]);
-    std::cout << width << std::endl;
-    std::cout << height << std::endl;
+    // std::cout << sdl_origin << std::endl;
+    // std::cout << sdl_virtual_corner << std::endl;
+    // std::cout << width << std::endl;
+    // std::cout << height << std::endl;
+    // std::cout << std::endl;
 
     m_renderer->get_texture_library()->render(m_texture_id,
                                               sdl_origin[0],
