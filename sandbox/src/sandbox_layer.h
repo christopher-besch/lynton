@@ -5,7 +5,7 @@
 class SandboxLayer: public Lynton::Layer {
 public:
     SandboxLayer()
-        : Layer("Sandbox Layer", {0, 0, 1}, 1600, 1200) {}
+        : Layer("Sandbox Layer") {}
     virtual ~SandboxLayer();
 
     void setup() override;

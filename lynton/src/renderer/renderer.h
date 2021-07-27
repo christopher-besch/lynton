@@ -22,6 +22,8 @@ public:
     void update();
 
     uint32_t get_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a) const { return SDL_MapRGBA(m_mapping_format, r, g, b, a); }
+    int      get_screen_width() const { return m_screen_width; }
+    int      get_screen_height() const { return m_screen_height; }
 
     TextureLibrary* get_texture_library() { return m_texture_library; }
 

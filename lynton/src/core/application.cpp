@@ -23,11 +23,27 @@ Application::~Application()
         delete layer;
 }
 
+void Application::setup_layer(Layer* layer)
+{
+    layer->set_renderer(m_renderer);
+    layer->set_camera(new Camera({0, 0, 1}, m_renderer->get_screen_width(), m_renderer->get_screen_height()));
+    layer->setup();
+}
+
+void Application::add_layer(Layer* layer)
+{
+    setup_layer(layer);
+    m_layers.insert(m_layers.begin(), layer);
+}
+
+void Application::add_overlay(Layer* layer)
+{
+    setup_layer(layer);
+    m_layers.insert(m_layers.end(), layer);
+}
+
 void Application::run()
 {
-    for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
-        (*i)->setup();
-
 #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg([](void* app) { static_cast<Application*>(app)->run_frame(); }, this, m_goal_fps, false);
 #else

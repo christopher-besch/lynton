@@ -15,26 +15,19 @@ public:
     Application(const std::string& name, int goal_fps, int screen_width, int screen_height);
     virtual ~Application();
 
+    void setup_layer(Layer* layer);
+    // takes ownership of layer
+    // adds below other layers
+    void add_layer(Layer* layer);
+    // takes ownership of layer
+    // adds above other layers
+    void add_overlay(Layer* layer);
+
     // from start to end
     // keeps running on native; immediately returns on emscripten
     void run();
     // single frame
     void run_frame();
-
-    // takes ownership of layer
-    // adds below other layers
-    void add_layer(Layer* layer)
-    {
-        layer->set_renderer(m_renderer);
-        m_layers.insert(m_layers.begin(), layer);
-    }
-    // takes ownership of layer
-    // adds above other layers
-    void add_overlay(Layer* layer)
-    {
-        layer->set_renderer(m_renderer);
-        m_layers.insert(m_layers.end(), layer);
-    }
 
 protected:
     RandomGen* m_random_gen = nullptr;

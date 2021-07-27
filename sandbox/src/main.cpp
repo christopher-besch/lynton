@@ -5,7 +5,7 @@
 class Sandbox: public Lynton::Application {
 public:
     Sandbox()
-        : Application("Sandbox", 0, 1600, 1200)
+        : Application("Sandbox", 0, 600, 400)
     {
         add_layer(new SandboxLayer());
         add_overlay(new DebugLayer());

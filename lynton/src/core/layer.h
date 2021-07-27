@@ -10,7 +10,7 @@ namespace Lynton {
 class Layer {
 public:
     // todo: make renderer be defined here
-    Layer(const std::string& name, vec3 camera_origin = {-1, -1, 1}, scalar camera_width = 2, scalar camera_height = 2);
+    Layer(const std::string& name);
     virtual ~Layer() = 0;
 
     // run after construction
@@ -29,6 +29,11 @@ protected:
     {
         m_renderer = renderer;
         m_tex_lib  = renderer->get_texture_library();
+    }
+    // takes ownership of camera
+    void set_camera(Camera* camera)
+    {
+        m_camera = camera;
     }
 
 protected:
