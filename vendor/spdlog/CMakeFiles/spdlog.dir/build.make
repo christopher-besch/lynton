@@ -74,105 +74,105 @@ vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.o: vendor/spdlog/CMakeFiles/s
 vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.o: ../vendor/spdlog/src/spdlog.cpp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.o -MF CMakeFiles/spdlog.dir/src/spdlog.cpp.o.d -o CMakeFiles/spdlog.dir/src/spdlog.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/spdlog.cpp
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.o -MF CMakeFiles/spdlog.dir/src/spdlog.cpp.o.d -o CMakeFiles/spdlog.dir/src/spdlog.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/spdlog.cpp
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spdlog.dir/src/spdlog.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/spdlog.cpp > CMakeFiles/spdlog.dir/src/spdlog.cpp.i
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/spdlog.cpp > CMakeFiles/spdlog.dir/src/spdlog.cpp.i
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spdlog.dir/src/spdlog.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/spdlog.cpp -o CMakeFiles/spdlog.dir/src/spdlog.cpp.s
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/spdlog.cpp -o CMakeFiles/spdlog.dir/src/spdlog.cpp.s
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/flags.make
 vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/includes_CXX.rsp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o: ../vendor/spdlog/src/stdout_sinks.cpp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -MF CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o.d -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/stdout_sinks.cpp
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -MF CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o.d -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/stdout_sinks.cpp
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/stdout_sinks.cpp > CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.i
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/stdout_sinks.cpp > CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.i
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/stdout_sinks.cpp -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.s
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/stdout_sinks.cpp -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.s
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/flags.make
 vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/includes_CXX.rsp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o: ../vendor/spdlog/src/color_sinks.cpp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -MF CMakeFiles/spdlog.dir/src/color_sinks.cpp.o.d -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/color_sinks.cpp
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -MF CMakeFiles/spdlog.dir/src/color_sinks.cpp.o.d -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/color_sinks.cpp
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spdlog.dir/src/color_sinks.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/color_sinks.cpp > CMakeFiles/spdlog.dir/src/color_sinks.cpp.i
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/color_sinks.cpp > CMakeFiles/spdlog.dir/src/color_sinks.cpp.i
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spdlog.dir/src/color_sinks.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/color_sinks.cpp -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.s
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/color_sinks.cpp -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.s
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/flags.make
 vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/includes_CXX.rsp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o: ../vendor/spdlog/src/file_sinks.cpp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -MF CMakeFiles/spdlog.dir/src/file_sinks.cpp.o.d -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/file_sinks.cpp
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -MF CMakeFiles/spdlog.dir/src/file_sinks.cpp.o.d -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/file_sinks.cpp
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spdlog.dir/src/file_sinks.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/file_sinks.cpp > CMakeFiles/spdlog.dir/src/file_sinks.cpp.i
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/file_sinks.cpp > CMakeFiles/spdlog.dir/src/file_sinks.cpp.i
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spdlog.dir/src/file_sinks.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/file_sinks.cpp -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.s
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/file_sinks.cpp -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.s
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/flags.make
 vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/includes_CXX.rsp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o: ../vendor/spdlog/src/async.cpp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o -MF CMakeFiles/spdlog.dir/src/async.cpp.o.d -o CMakeFiles/spdlog.dir/src/async.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/async.cpp
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o -MF CMakeFiles/spdlog.dir/src/async.cpp.o.d -o CMakeFiles/spdlog.dir/src/async.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/async.cpp
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spdlog.dir/src/async.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/async.cpp > CMakeFiles/spdlog.dir/src/async.cpp.i
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/async.cpp > CMakeFiles/spdlog.dir/src/async.cpp.i
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spdlog.dir/src/async.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/async.cpp -o CMakeFiles/spdlog.dir/src/async.cpp.s
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/async.cpp -o CMakeFiles/spdlog.dir/src/async.cpp.s
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/flags.make
 vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/includes_CXX.rsp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o: ../vendor/spdlog/src/cfg.cpp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o -MF CMakeFiles/spdlog.dir/src/cfg.cpp.o.d -o CMakeFiles/spdlog.dir/src/cfg.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/cfg.cpp
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o -MF CMakeFiles/spdlog.dir/src/cfg.cpp.o.d -o CMakeFiles/spdlog.dir/src/cfg.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/cfg.cpp
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spdlog.dir/src/cfg.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/cfg.cpp > CMakeFiles/spdlog.dir/src/cfg.cpp.i
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/cfg.cpp > CMakeFiles/spdlog.dir/src/cfg.cpp.i
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spdlog.dir/src/cfg.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/cfg.cpp -o CMakeFiles/spdlog.dir/src/cfg.cpp.s
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/cfg.cpp -o CMakeFiles/spdlog.dir/src/cfg.cpp.s
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/flags.make
 vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/includes_CXX.rsp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o: ../vendor/spdlog/src/fmt.cpp
 vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o: vendor/spdlog/CMakeFiles/spdlog.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o -MF CMakeFiles/spdlog.dir/src/fmt.cpp.o.d -o CMakeFiles/spdlog.dir/src/fmt.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/fmt.cpp
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o -MF CMakeFiles/spdlog.dir/src/fmt.cpp.o.d -o CMakeFiles/spdlog.dir/src/fmt.cpp.o -c /home/runner/work/lynton/lynton/vendor/spdlog/src/fmt.cpp
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spdlog.dir/src/fmt.cpp.i"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/fmt.cpp > CMakeFiles/spdlog.dir/src/fmt.cpp.i
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/lynton/lynton/vendor/spdlog/src/fmt.cpp > CMakeFiles/spdlog.dir/src/fmt.cpp.i
 
 vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spdlog.dir/src/fmt.cpp.s"
-	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/5e579e2e-9b81-4826-b829-80120dfdac06/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/fmt.cpp -o CMakeFiles/spdlog.dir/src/fmt.cpp.s
+	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && /home/runner/work/_temp/41156740-0e72-4c5f-bd72-5fa8bf0a9ef6/emsdk-master/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/lynton/lynton/vendor/spdlog/src/fmt.cpp -o CMakeFiles/spdlog.dir/src/fmt.cpp.s
 
 # Object files for target spdlog
 spdlog_OBJECTS = \
@@ -187,21 +187,21 @@ spdlog_OBJECTS = \
 # External object files for target spdlog
 spdlog_EXTERNAL_OBJECTS =
 
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.o
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/build.make
-vendor/spdlog/libspdlogd.a: vendor/spdlog/CMakeFiles/spdlog.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libspdlogd.a"
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/spdlog.cpp.o
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/async.cpp.o
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/cfg.cpp.o
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/src/fmt.cpp.o
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/build.make
+vendor/spdlog/libspdlog.a: vendor/spdlog/CMakeFiles/spdlog.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libspdlog.a"
 	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && $(CMAKE_COMMAND) -P CMakeFiles/spdlog.dir/cmake_clean_target.cmake
 	cd /home/runner/work/lynton/lynton/build/vendor/spdlog && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/spdlog.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-vendor/spdlog/CMakeFiles/spdlog.dir/build: vendor/spdlog/libspdlogd.a
+vendor/spdlog/CMakeFiles/spdlog.dir/build: vendor/spdlog/libspdlog.a
 .PHONY : vendor/spdlog/CMakeFiles/spdlog.dir/build
 
 vendor/spdlog/CMakeFiles/spdlog.dir/clean:
