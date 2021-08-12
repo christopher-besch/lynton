@@ -46,7 +46,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config ${{matrix.config.build_type}} -j2
 
       - name: Deploy to GitHub Pages
-        if: ${{github.event.type}} != "PullRequestEvent" && matrix.config.push_to_pages && success()
+        if: ${{ github.event.type != "PullRequestEvent" && matrix.config.push_to_pages && success() }}
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: pages
