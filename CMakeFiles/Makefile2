@@ -199,8 +199,8 @@ vendor/armadillo/CMakeFiles/armadillo.dir/clean:
 # Target rules for target lynton/CMakeFiles/lynton.dir
 
 # All Build rule for target.
-lynton/CMakeFiles/lynton.dir/all: vendor/spdlog/CMakeFiles/spdlog.dir/all
 lynton/CMakeFiles/lynton.dir/all: vendor/armadillo/CMakeFiles/armadillo.dir/all
+lynton/CMakeFiles/lynton.dir/all: vendor/spdlog/CMakeFiles/spdlog.dir/all
 	$(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/depend
 	$(MAKE) $(MAKESILENT) -f lynton/CMakeFiles/lynton.dir/build.make lynton/CMakeFiles/lynton.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12,13,14,15 "Built target lynton"
@@ -226,8 +226,8 @@ lynton/CMakeFiles/lynton.dir/clean:
 # Target rules for target sandbox/CMakeFiles/sandbox.dir
 
 # All Build rule for target.
-sandbox/CMakeFiles/sandbox.dir/all: vendor/spdlog/CMakeFiles/spdlog.dir/all
 sandbox/CMakeFiles/sandbox.dir/all: vendor/armadillo/CMakeFiles/armadillo.dir/all
+sandbox/CMakeFiles/sandbox.dir/all: vendor/spdlog/CMakeFiles/spdlog.dir/all
 sandbox/CMakeFiles/sandbox.dir/all: lynton/CMakeFiles/lynton.dir/all
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/depend
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/build
