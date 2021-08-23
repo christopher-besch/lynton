@@ -9,11 +9,15 @@ Windows support is in the pipeline.
 
 This repository consists of two build targets: `lynton` (the engine) and `sandbox` (an example "game" using Lynton.
 
-## Linux compilation
-
-These packages have to be installed:
-`sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev`
-
 You can compile this repository using cmake.
 
 ## [Working Web Version](https://christopher-besch.github.io/lynton/sandbox/sandbox.html)
+
+## Dependencies (Debian)
+
+`sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev`
+
+## Dependencies (Red Hat)
+
+`sudo dnf install SDL2-devel SDL2_image-devel SDL2_ttf-devel`
+

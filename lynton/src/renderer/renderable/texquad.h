@@ -31,6 +31,7 @@ public:
     void           set_texture_id(unsigned short id) { m_texture_id = id; }
 
 private:
+    // todo: copy bad
     inline void mul_mat(mat3 mat);
     inline void mul_all_mat(mat3 mat);
 

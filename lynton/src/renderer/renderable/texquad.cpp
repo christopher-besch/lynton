@@ -77,19 +77,20 @@ void TexQuad::render() const
     sdl_rotation = sdl_flip_hor != sdl_flip_ver ? 360 - sdl_rotation : sdl_rotation;
 
     vec3 sdl_origin = cam_origin;
-    if(sdl_flip_hor && !sdl_flip_ver)
-        sdl_origin = cam_top_rigth_corner;
-    else if(!sdl_flip_hor && sdl_flip_ver)
-        sdl_origin = cam_bottom_left_corner;
-    else if(sdl_flip_hor && sdl_flip_ver)
-        sdl_origin = cam_bottom_right_corner;
+    // if(sdl_flip_hor && !sdl_flip_ver)
+    //     sdl_origin = cam_top_rigth_corner;
+    // else if(!sdl_flip_hor && sdl_flip_ver)
+    //     sdl_origin = cam_bottom_left_corner;
+    // else if(sdl_flip_hor && sdl_flip_ver)
+    //     sdl_origin = cam_bottom_right_corner;
 
-    vec3 virtual_diagonal   = cam_origin - m_origin;
-    virtual_diagonal        = sca_mat3(1 - 2 * sdl_flip_hor, 1 - 2 * sdl_flip_hor) * virtual_diagonal;
+    vec3 virtual_diagonal = cam_origin - m_origin;
+    // virtual_diagonal        = sca_mat3(1 - 2 * sdl_flip_hor, 1 - 2 * sdl_flip_hor) * virtual_diagonal;
     vec3 sdl_virtual_corner = m_virtual_corner + virtual_diagonal;
 
     scalar width  = std::abs(sdl_virtual_corner[0] - sdl_origin[0]);
     scalar height = std::abs(sdl_virtual_corner[1] - sdl_origin[1]);
+    log_lynton_extra("{} {}", width, height);
 
     m_renderer->get_texture_library()->render(m_texture_id,
                                               sdl_origin[0],
