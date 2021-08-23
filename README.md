@@ -7,7 +7,7 @@
 Lynton is a simple 2D game engine running natively on Linux and on the web using WASM.
 Windows support is in the pipeline.
 
-This repository consists of two build targets: `lynton` (the engine) and `sandbox` (an example "game" using Lynton.
+This repository consists of two build targets: `lynton` (the engine) and `sandbox` (an example "game" using Lynton)
 
 You can compile this repository using cmake.
 
