@@ -14,6 +14,14 @@ inline mat3 trans_mat3(scalar dx, scalar dy)
         {0, 0, 1}};
 }
 
+inline mat3 trans_mat3(vec3 vec)
+{
+    return {
+        {1, 0, vec[0]},
+        {0, 1, vec[1]},
+        {0, 0, 1}};
+}
+
 inline mat3 rot_mat3(scalar angle)
 {
     // convert degree to radian

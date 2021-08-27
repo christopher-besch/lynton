@@ -4,59 +4,17 @@
 
 namespace Lynton {
 
-TexQuad::TexQuad(Renderer* renderer, Camera* camera)
-    : Renderable(renderer, camera) {}
-
-TexQuad::TexQuad(Renderer* renderer, Camera* camera, vec3 origin, scalar width, scalar height)
-    : TexQuad(renderer, camera)
+TexQuad::TexQuad(Renderer* renderer, Camera* camera, vec3 top_left, scalar width, scalar height)
+    : Renderable(renderer, camera)
 {
-    // transform to requested parameters
-    scale(width, height);
-    Renderable::translate(origin);
     log_lynton_extra("Creating texture quad");
+    scale(width, height);
+    translate(top_left);
 }
 
 TexQuad::~TexQuad()
 {
     log_lynton_extra("Deleting texture quad");
-}
-
-/////////////////////
-// transformations //
-/////////////////////
-void TexQuad::set_location(vec3 origin)
-{
-    // how to move old origin to get to new
-    vec3 direction = origin - m_origin;
-    translate(direction[0], direction[1]);
-}
-
-void TexQuad::translate(scalar dx, scalar dy)
-{
-    mul_all_mat(trans_mat3(dx, dy));
-}
-
-void TexQuad::rotate(scalar angle)
-{
-    // squares stay squares
-    vec3 scale = m_virtual_corner - m_origin;
-    mul_mat(rot_mat3(angle));
-    // this step misaligns m_virtual_corner
-    m_virtual_corner = m_origin + scale;
-    // when only once flipped -> has to be rotated in opposite direction
-    if(m_flip_hor != m_flip_ver)
-        m_rotation -= angle;
-    else
-        m_rotation += angle;
-}
-
-void TexQuad::scale(scalar fx, scalar fy)
-{
-    mul_all_mat(sca_mat3(fx, fy));
-    if(fx < 0)
-        m_flip_hor = !m_flip_hor;
-    if(fy < 0)
-        m_flip_ver = !m_flip_ver;
 }
 
 void TexQuad::render() const
@@ -104,22 +62,10 @@ void TexQuad::render() const
 
 vec3 TexQuad::get_middle() const
 {
-    vec3 half_diagonal = (m_bottom_right_corner - m_origin) / 2;
-    return m_origin + half_diagonal;
-}
-
-void TexQuad::mul_mat(mat3 mat)
-{
-    m_origin              = mat * m_origin;
-    m_top_right_corner    = mat * m_top_right_corner;
-    m_bottom_left_corner  = mat * m_bottom_left_corner;
-    m_bottom_right_corner = mat * m_bottom_right_corner;
-}
-
-void TexQuad::mul_all_mat(mat3 mat)
-{
-    m_virtual_corner = mat * m_virtual_corner;
-    mul_mat(mat);
+    vec3 top_left     = get_top_left();
+    vec3 bottom_right = get_bottom_right();
+    // adding half the diagonal
+    return top_left + (bottom_right - top_left) / 2;
 }
 
 } // namespace Lynton
