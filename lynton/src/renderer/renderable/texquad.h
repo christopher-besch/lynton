@@ -23,7 +23,5 @@ public:
 private:
     // todo: sub coordinates missing <- sprite sheets
     unsigned short m_texture_id {0};
-
-    scalar m_rotation {0};
 };
 } // namespace Lynton

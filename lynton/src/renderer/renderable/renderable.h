@@ -27,6 +27,10 @@ public:
     void rotate_at(scalar angle, vec3 pivot);
     void scale_at(scalar fx, scalar fy, vec3 pivot);
 
+    // locat transforms
+    void translate_local(scalar dx, scalar dy);
+    void translate_local(vec3 d) { translate_local(d[0], d[1]); }
+
     virtual void render() const = 0;
 
     vec3 get_mat() const { return m_mat; }
@@ -35,6 +39,8 @@ protected:
     Renderer* m_renderer {nullptr};
     Camera*   m_camera {nullptr};
     mat3      m_mat {arma::fill::eye};
+    mat3      m_inv_ska_mat {arma::fill::eye};
+    scalar    m_rotation {0};
 };
 
 } // namespace Lynton

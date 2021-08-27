@@ -78,14 +78,17 @@ void SandboxLayer::update(double frame_time)
     m_v_down += 200 * frame_time * (m_a_down - m_a_up);
     // m_v_right = 200000 * frame_time * (m_a_right - m_a_left);
     // m_v_down  = 200000 * frame_time * (m_a_down - m_a_up);
-    m_camera->translate(m_v_right * frame_time, m_v_down * frame_time);
+    // m_smiley->translate(m_v_right * frame_time, m_v_down * frame_time);
+    m_smiley->translate_local(m_v_right * frame_time, m_v_down * frame_time);
 
     // scale
     Lynton::scalar scale_factor = 1 / (1 + 3 * frame_time * (m_scale_up - m_scale_down));
-    m_camera->scale_at(scale_factor, scale_factor, m_camera->get_middle());
+    m_smiley->scale_at(scale_factor, scale_factor, m_smiley->get_middle());
+    m_smiley->scale(scale_factor, scale_factor);
 
     // rotate
-    m_camera->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_camera->get_middle());
+    // m_smiley->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_smiley->get_middle());
+    m_smiley->rotate(90 * (m_rotate_right - m_rotate_left) * frame_time);
 
     // move dots
     // m_dot1->set_location(m_camera->get_top_left());

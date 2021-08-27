@@ -11,22 +11,35 @@ void Renderable::translate(scalar dx, scalar dy)
 
 void Renderable::rotate(scalar angle)
 {
+    m_rotation += angle;
     m_mat = rot_mat3(angle) * m_mat;
 }
 
 void Renderable::scale(scalar fx, scalar fy)
 {
-    m_mat = sca_mat3(fx, fy) * m_mat;
+    mat3 mat      = sca_mat3(fx, fy);
+    m_mat         = mat * m_mat;
+    m_inv_ska_mat = m_inv_ska_mat * mat.i();
 }
 
 void Renderable::rotate_at(scalar angle, vec3 pivot)
 {
+    m_rotation += angle;
+    log_lynton_warn("{} {}", angle, m_rotation);
     m_mat = trans_mat3(pivot) * rot_mat3(angle) * trans_mat3(-pivot) * m_mat;
 }
 
 void Renderable::scale_at(scalar fx, scalar fy, vec3 pivot)
 {
-    m_mat = trans_mat3(pivot) * sca_mat3(fx, fy) * trans_mat3(-pivot) * m_mat;
+    mat3 mat      = sca_mat3(fx, fy);
+    m_mat         = trans_mat3(pivot) * mat * trans_mat3(-pivot) * m_mat;
+    m_inv_ska_mat = m_inv_ska_mat * mat.i();
+}
+
+void Renderable::translate_local(scalar dx, scalar dy)
+{
+    // m_mat = m_mat * m_inv_ska_mat * trans_mat3(dx, dy);
+    m_mat = m_mat * trans_mat3(dx, dy);
 }
 
 } // namespace Lynton
