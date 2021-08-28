@@ -16,9 +16,7 @@ target_include_directories(lynton
 # ##############################################################################
 # native build sdl2
 if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
-  target_link_libraries(lynton PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY}
-                                       ${SDL2_TTF_LIBRARY})
-  target_include_directories(lynton PUBLIC ${SDL2_INCLUDE_DIR})
+    target_link_libraries(lynton PRIVATE CONAN_PKG::sdl CONAN_PKG::sdl_ttf CONAN_PKG::sdl2_image)
 endif()
 
 target_link_libraries(lynton PUBLIC spdlog armadillo)
