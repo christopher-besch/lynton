@@ -35,10 +35,20 @@ void Renderable::scale_at(scalar fx, scalar fy, vec3 pivot)
     m_inv_ska_mat = m_inv_ska_mat * mat.i();
 }
 
-void Renderable::translate_local(vec3 d)
+void Renderable::translate_local_no_scale(vec3 d)
 {
     d     = m_inv_ska_mat * d;
     m_mat = m_mat * trans_mat3(d[0], d[1]);
+}
+
+void Renderable::translate_local_global_scale(vec3 d)
+{
+    d     = m_inv_ska_mat * d;
+    m_mat = m_mat * trans_mat3(d[0], d[1]);
+}
+
+void Renderable::scale_local(vec3 d)
+{
 }
 
 } // namespace Lynton
