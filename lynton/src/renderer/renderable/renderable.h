@@ -28,8 +28,8 @@ public:
     void scale_at(scalar fx, scalar fy, vec3 pivot);
 
     // locat transforms
-    void translate_local(scalar dx, scalar dy);
-    void translate_local(vec3 d) { translate_local(d[0], d[1]); }
+    void translate_local(scalar dx, scalar dy) { translate_local({dx, dy, 1}); }
+    void translate_local(vec3 d);
 
     virtual void render() const = 0;
 
