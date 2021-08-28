@@ -11,35 +11,33 @@ public:
         : m_renderer(renderer), m_camera(camera) {}
     virtual ~Renderable() = default;
 
-    // perform transformation at (0, 0)
-    // certain limitations in the use of these methods may be set by inheriting classes
+    // global translation
     void translate(scalar dx, scalar dy);
     void translate(vec3 d) { translate(d[0], d[1]); }
+    // local translation with local scale applied -> using rotation of object
+    void translate_local(scalar dx, scalar dy);
+    void translate_local(vec3 d) { translate_local(d[0], d[1]); };
+    // locale translation with global scale applied
+    void translate_local_global_scale(scalar dx, scalar dy) { translate_local_global_scale({dx, dy, 1}); }
+    void translate_local_global_scale(vec3 d);
+
     void rotate(scalar angle);
+    // rotate at pivot
+    void rotate_at(scalar angle, vec3 pivot);
+
     void scale(scalar fx, scalar fy);
+    // scale with pivot as center
+    void scale_at(scalar fx, scalar fy, vec3 pivot);
+    // local scale -> using rotation of object
+    void scale_local(scalar fx, scalar fy);
+    void scale_local_at(scalar fx, scalar fy, vec3 pivot);
+
+    virtual void render() const = 0;
 
     // todo: set total transformation
     // void set_location(vec3 origin);
     // void set_rotation(scalar origin);
     // void set_scale(scalar scalar fx, scalar fy);
-
-    // perform transformation at pivot
-    void rotate_at(scalar angle, vec3 pivot);
-    void scale_at(scalar fx, scalar fy, vec3 pivot);
-
-    // local transforms with local scale applied
-    void translate_local(scalar dx, scalar dy);
-    void translate_local(vec3 d) { translate_local(d[0], d[1]); };
-
-    void scale_local(scalar fx, scalar fy);
-
-    // locale transform with global  scale applied
-    void translate_local_global_scale(scalar dx, scalar dy) { translate_local_global_scale({dx, dy, 1}); }
-    void translate_local_global_scale(vec3 d);
-
-    virtual void render() const = 0;
-
-    vec3 get_mat() const { return m_mat; }
 
 protected:
     Renderer* m_renderer {nullptr};

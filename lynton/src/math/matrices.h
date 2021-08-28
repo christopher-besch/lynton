@@ -13,7 +13,6 @@ inline mat3 trans_mat3(scalar dx, scalar dy)
         {0, 1, dy},
         {0, 0, 1}};
 }
-
 inline mat3 trans_mat3(vec3 vec)
 {
     return {

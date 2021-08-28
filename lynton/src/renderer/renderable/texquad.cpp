@@ -11,7 +11,6 @@ TexQuad::TexQuad(Renderer* renderer, Camera* camera, vec3 top_left, scalar width
     scale(width, height);
     translate(top_left);
 }
-
 TexQuad::~TexQuad()
 {
     log_lynton_extra("Deleting texture quad");
