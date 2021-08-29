@@ -80,10 +80,11 @@ void SandboxLayer::update(double frame_time)
 
     // scale
     Lynton::scalar scale_factor = 1 / (1 + 3 * frame_time * (m_scale_up - m_scale_down));
-    m_camera->scale_at(scale_factor, m_camera->get_middle());
+    // m_camera->scale(1, scale_factor);
+    m_smiley->scale(1, scale_factor);
 
     // rotate
-    m_camera->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_camera->get_middle());
+    m_smiley->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_smiley->get_middle());
 }
 
 void SandboxLayer::render()
