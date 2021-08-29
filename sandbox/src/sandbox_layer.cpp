@@ -76,25 +76,14 @@ void SandboxLayer::update(double frame_time)
     // translate objects
     m_v_right += 200 * frame_time * (m_a_right - m_a_left);
     m_v_down += 200 * frame_time * (m_a_down - m_a_up);
-    // m_v_right = 200000 * frame_time * (m_a_right - m_a_left);
-    // m_v_down  = 200000 * frame_time * (m_a_down - m_a_up);
-    // m_smiley->translate(m_v_right * frame_time, m_v_down * frame_time);
-    m_smiley->translate_local_global_scale(m_v_right * frame_time, m_v_down * frame_time);
+    m_camera->translate_local_global_scale(200 * (m_a_right - m_a_left) * frame_time, 200 * (m_a_down - m_a_up) * frame_time);
 
     // scale
     Lynton::scalar scale_factor = 1 / (1 + 3 * frame_time * (m_scale_up - m_scale_down));
-    // m_smiley->scale_local_at(1, scale_factor, m_smiley->get_middle());
-    m_smiley->scale_local(1, scale_factor);
+    m_camera->scale_at(scale_factor, m_camera->get_middle());
 
     // rotate
-    m_smiley->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_smiley->get_middle());
-
-    // move dots
-    // m_dot1->set_location(m_camera->get_top_left());
-    // m_dot2->set_location(m_camera->get_top_right());
-    // m_dot3->set_location(m_camera->get_bottom_left());
-    // m_dot4->set_location(m_camera->get_bottom_right());
-    // m_dot5->set_location(m_camera->get_middle());
+    m_camera->rotate_at(90 * (m_rotate_right - m_rotate_left) * frame_time, m_camera->get_middle());
 }
 
 void SandboxLayer::render()
@@ -136,10 +125,10 @@ bool SandboxLayer::handle_event(SDL_Event e)
 
             // flipping
         case SDLK_r:
-            m_camera->flip_hor_at(m_camera->get_middle());
+            // m_camera->flip_hor_at(m_camera->get_middle());
             return true;
         case SDLK_f:
-            m_camera->flip_ver_at(m_camera->get_middle());
+            // m_camera->flip_ver_at(m_camera->get_middle());
             return true;
 
             // rotation

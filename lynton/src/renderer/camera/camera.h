@@ -6,52 +6,59 @@ namespace Lynton {
 
 class Camera {
 public:
-    Camera(vec3 origin, scalar width, scalar height);
+    Camera(vec3 top_left, scalar width, scalar height);
     ~Camera();
 
-    void set_location(vec3 origin);
+    // global translation -> local to objects looked at, which are in global space
     void translate(scalar dx, scalar dy);
     void translate(vec3 d) { translate(d[0], d[1]); }
+    // local translation with local scale applied -> using rotation of camera
+    void translate_local(scalar dx, scalar dy);
+    void translate_local(vec3 d) { translate_local(d[0], d[1]); };
+    // locale translation with global scale applied
+    void translate_local_global_scale(scalar dx, scalar dy) { translate_local_global_scale({dx, dy, 1}); }
+    void translate_local_global_scale(vec3 d);
+
+    // warning: rotation connected with uneven scaling can cause shearing wich might not be supported
     void rotate(scalar angle);
-    void scale(scalar fx, scalar fy);
-    void flip_hor() { scale(-1, 1); }
-    void flip_ver() { scale(1, -1); }
-
+    // rotate at pivot
     void rotate_at(scalar angle, vec3 pivot);
+
+    void scale(scalar fx, scalar fy);
+    void scale(scalar f) { scale(f, f); }
+    // scale with pivot as center
     void scale_at(scalar fx, scalar fy, vec3 pivot);
-    void flip_hor_at(vec3 pivot);
-    void flip_ver_at(vec3 pivot);
+    void scale_at(scalar f, vec3 pivot) { scale_at(f, f, pivot); }
+    // local scale -> using rotation of camera
+    void scale_local(scalar fx, scalar fy);
+    void scale_local(scalar f) { scale_local(f, f); }
 
+    vec3 get_top_left() const { return m_mat * vec3 {0, 0, 1}; }
+    vec3 get_top_right() const { return m_mat * vec3 {m_width, 0, 1}; }
+    vec3 get_bottom_left() const { return m_mat * vec3 {0, m_height, 1}; }
+    vec3 get_bottom_right() const { return m_mat * vec3 {m_width, m_height, 1}; }
     vec3 get_middle() const;
-    vec3 get_top_left() const { return m_origin; }
-    vec3 get_top_right() const { return m_top_right_corner; }
-    vec3 get_bottom_left() const { return m_bottom_left_corner; }
-    vec3 get_bottom_right() const { return m_bottom_right_corner; }
 
-    scalar get_rotation() { return m_rotation; }
-    bool   get_flip_hor() { return m_flip_hor; }
-    bool   get_flip_ver() { return m_flip_ver; }
-    mat3   get_mat() { return m_mat; }
-    mat3   get_mat_no_rotation() { return m_mat_no_rotation; }
+    const mat3& get_mat() const { return m_mat; }
+    scalar      get_rotation() const { return m_rotation; }
+    const mat3& get_inv_mat() const { return m_inv_mat; }
+    scalar      get_inv_rotation() const { return m_inv_rotation; }
 
-private:
-    inline void mul_mat(mat3 mat);
-    inline void mul_all_mat(mat3 mat);
+    // todo: set total transformation
+    // void set_location(vec3 origin);
+    // void set_rotation(scalar origin);
+    // void set_scale(scalar scalar fx, scalar fy);
 
 private:
-    // coordinates in global space
-    // top left corner
-    vec3 m_origin {0, 0, 1};
-    // when rotated or flipped -> m_top_right_corner may not stay the one in the topmost rightmost corner
-    vec3 m_top_right_corner {1, 0, 1}, m_bottom_left_corner {0, 1, 1}, m_bottom_right_corner {1, 1, 1};
+    scalar m_width {0}, m_height {0};
 
-    // what has to be done to get from global space to camera space
+    mat3   m_mat {arma::fill::eye};
     scalar m_rotation {0};
-    bool   m_flip_hor {0}, m_flip_ver {0};
-    // used to transform points from global space into the camera space correctly
-    mat3 m_mat = {arma::fill::eye};
-    // same as m_mat but with no rotation applied
-    mat3 m_mat_no_rotation = {arma::fill::eye};
+    mat3   m_inv_ska_mat {arma::fill::eye};
+    // what has to be done to get from global space to camera space
+    // used to transform points from global space into the camera space
+    mat3   m_inv_mat {arma::fill::eye};
+    scalar m_inv_rotation {0};
 };
 
 } // namespace Lynton

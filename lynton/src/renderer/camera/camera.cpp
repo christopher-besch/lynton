@@ -4,112 +4,100 @@
 
 namespace Lynton {
 
-Camera::Camera(vec3 origin, scalar width, scalar height)
-    : m_origin(origin),
-      m_top_right_corner(origin + vec3 {width, 0, 0}),
-      m_bottom_left_corner(origin + vec3 {0, height, 0}),
-      m_bottom_right_corner(origin + vec3 {width, height, 0})
+Camera::Camera(vec3 top_left, scalar width, scalar height)
+    : m_width(width), m_height(height)
 {
-    // scale(width, height);
-    // translate(origin);
-    vec3 diagonal = m_bottom_right_corner - m_origin;
-    std::cout << m_mat << std::endl;
-    std::cout << m_mat_no_rotation << std::endl;
-    log_lynton_general("Creating Camera at ({}, {}) with width: {} and height: {}", m_origin[0], m_origin[1], diagonal[0], diagonal[1]);
+    log_lynton_general("Creating Camera at ({}, {}) with width: {} and height: {}", top_left[0], top_left[1], width, height);
+    translate(top_left);
 }
-
 Camera::~Camera()
 {
     log_lynton_general("Deleting Camera");
 }
 
-/////////////////////
-// transformations //
-/////////////////////
-void Camera::set_location(vec3 origin)
-{
-    // how to move old origin to get to new
-    vec3 direction = origin - m_origin;
-    translate(direction[0], direction[1]);
-}
-
+// translate
 void Camera::translate(scalar dx, scalar dy)
 {
-    mul_all_mat(trans_mat3(dx, dy));
+    mat3 mat = trans_mat3(dx, dy);
+
+    m_mat     = mat * m_mat;
+    m_inv_mat = m_inv_mat * mat.i();
+}
+void Camera::translate_local(scalar dx, scalar dy)
+{
+    mat3 mat = trans_mat3(dx, dy);
+
+    m_mat     = m_mat * mat;
+    m_inv_mat = mat.i() * m_inv_mat;
+}
+void Camera::translate_local_global_scale(vec3 d)
+{
+    d        = m_inv_ska_mat * d;
+    mat3 mat = trans_mat3(d);
+
+    m_mat     = m_mat * mat;
+    m_inv_mat = mat.i() * m_inv_mat;
 }
 
+// rotate
 void Camera::rotate(scalar angle)
 {
-    mul_mat(rot_mat3(angle));
-    // other way around
-    if(m_flip_hor != m_flip_ver)
-        m_rotation += angle;
-    else
-        m_rotation -= angle;
-}
+    mat3 mat = rot_mat3(angle);
 
-void Camera::scale(scalar fx, scalar fy)
-{
-    mul_all_mat(sca_mat3(fx, fy));
-    if(fx < 0)
-        m_flip_hor = !m_flip_hor;
-    if(fy < 0)
-        m_flip_ver = !m_flip_ver;
+    m_rotation += angle;
+    m_inv_rotation -= angle;
+    m_mat     = mat * m_mat;
+    m_inv_mat = m_inv_mat * mat.i();
 }
-
-/////////////////////////////
-// transformation at pivot //
-/////////////////////////////
 void Camera::rotate_at(scalar angle, vec3 pivot)
 {
-    // translate so that pivot is (0, 0)
-    translate(-pivot);
-    rotate(angle);
-    // translate back
-    translate(pivot);
+    mat3 mat        = rot_mat3(angle);
+    mat3 pivot_mat  = trans_mat3(pivot);
+    mat3 npivot_mat = trans_mat3(-pivot);
+
+    m_rotation += angle;
+    m_inv_rotation -= angle;
+
+    m_mat     = pivot_mat * mat * npivot_mat * m_mat;
+    m_inv_mat = m_inv_mat * npivot_mat.i() * mat.i() * pivot_mat.i();
 }
 
+// scale
+void Camera::scale(scalar fx, scalar fy)
+{
+    mat3 mat     = sca_mat3(fx, fy);
+    mat3 inv_mat = mat.i();
+
+    m_mat         = mat * m_mat;
+    m_inv_mat     = m_inv_mat * inv_mat;
+    m_inv_ska_mat = m_inv_ska_mat * inv_mat;
+}
 void Camera::scale_at(scalar fx, scalar fy, vec3 pivot)
 {
-    translate(-pivot);
-    scale(fx, fy);
-    translate(pivot);
-}
+    mat3 mat        = sca_mat3(fx, fy);
+    mat3 inv_mat    = mat.i();
+    mat3 pivot_mat  = trans_mat3(pivot);
+    mat3 npivot_mat = trans_mat3(-pivot);
 
-void Camera::flip_hor_at(vec3 pivot)
-{
-    translate(-pivot);
-    flip_hor();
-    translate(pivot);
+    m_mat         = pivot_mat * mat * npivot_mat * m_mat;
+    m_inv_mat     = m_inv_mat * npivot_mat.i() * inv_mat * pivot_mat.i();
+    m_inv_ska_mat = m_inv_ska_mat * inv_mat;
 }
-
-void Camera::flip_ver_at(vec3 pivot)
+void Camera::scale_local(scalar fx, scalar fy)
 {
-    translate(-pivot);
-    flip_ver();
-    translate(pivot);
+    mat3 mat      = sca_mat3(fx, fy);
+    mat3 inv_mat  = mat.i();
+    m_mat         = m_mat * mat;
+    m_inv_mat     = inv_mat * m_inv_mat;
+    m_inv_ska_mat = m_inv_ska_mat * inv_mat;
 }
 
 vec3 Camera::get_middle() const
 {
-    vec3 half_diagonal = (m_bottom_right_corner - m_origin) / 2;
-    return m_origin + half_diagonal;
-}
-
-void Camera::mul_mat(mat3 mat)
-{
-    m_origin              = mat * m_origin;
-    m_top_right_corner    = mat * m_top_right_corner;
-    m_bottom_left_corner  = mat * m_bottom_left_corner;
-    m_bottom_right_corner = mat * m_bottom_right_corner;
-    // reverse transformation with inverse matrix
-    m_mat = m_mat * mat.i();
-}
-
-void Camera::mul_all_mat(mat3 mat)
-{
-    m_mat_no_rotation = m_mat_no_rotation * mat.i();
-    mul_mat(mat);
+    vec3 top_left     = get_top_left();
+    vec3 bottom_right = get_bottom_right();
+    // adding half the diagonal
+    return top_left + (bottom_right - top_left) / 2;
 }
 
 } // namespace Lynton
