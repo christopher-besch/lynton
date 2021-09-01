@@ -83,14 +83,6 @@ void Camera::scale_at(scalar fx, scalar fy, vec3 pivot)
     m_inv_mat     = m_inv_mat * npivot_mat.i() * inv_mat * pivot_mat.i();
     m_inv_ska_mat = m_inv_ska_mat * inv_mat;
 }
-void Camera::scale_local(scalar fx, scalar fy)
-{
-    mat3 mat      = sca_mat3(fx, fy);
-    mat3 inv_mat  = mat.i();
-    m_mat         = m_mat * mat;
-    m_inv_mat     = inv_mat * m_inv_mat;
-    m_inv_ska_mat = m_inv_ska_mat * inv_mat;
-}
 
 vec3 Camera::get_middle() const
 {

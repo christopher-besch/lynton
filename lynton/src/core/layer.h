@@ -25,23 +25,25 @@ public:
     virtual bool handle_event(SDL_Event e) = 0;
 
 protected:
-    void set_renderer(Renderer* renderer)
+    void set_attributes(Renderer* renderer, RandomGen* random_gen, Camera* camera)
     {
         m_renderer = renderer;
         m_tex_lib  = renderer->get_texture_library();
-    }
-    // takes ownership of camera
-    void set_camera(Camera* camera)
-    {
+
+        m_random_gen = random_gen;
+
+        // takes ownership of camera
         m_camera = camera;
     }
 
 protected:
     std::string m_name;
-    Camera*     m_camera {nullptr};
     // these get set by set_renderer
-    Renderer*               m_renderer {nullptr};
-    Lynton::TextureLibrary* m_tex_lib {nullptr};
+    Renderer*       m_renderer {nullptr};
+    RandomGen*      m_random_gen {nullptr};
+    TextureLibrary* m_tex_lib {nullptr};
+    // owned by layer
+    Camera* m_camera {nullptr};
 
     friend class Application;
 };

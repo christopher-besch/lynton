@@ -29,9 +29,6 @@ public:
     // scale with pivot as center
     void scale_at(scalar fx, scalar fy, vec3 pivot);
     void scale_at(scalar f, vec3 pivot) { scale_at(f, f, pivot); }
-    // local scale -> using rotation of camera
-    void scale_local(scalar fx, scalar fy);
-    void scale_local(scalar f) { scale_local(f, f); }
 
     vec3 get_top_left() const { return m_mat * vec3 {0, 0, 1}; }
     vec3 get_top_right() const { return m_mat * vec3 {m_width, 0, 1}; }

@@ -40,3 +40,4 @@ endif()
 # binaries
 add_subdirectory("${CMAKE_SOURCE_DIR}/lynton")
 add_subdirectory("${CMAKE_SOURCE_DIR}/sandbox")
+add_subdirectory("${CMAKE_SOURCE_DIR}/physics_words")

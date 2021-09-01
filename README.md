@@ -21,3 +21,10 @@ You can compile this repository using cmake.
 
 `sudo dnf install SDL2-devel SDL2_image-devel SDL2_ttf-devel`
 
+## Prepare Debug Build
+
+```
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+```

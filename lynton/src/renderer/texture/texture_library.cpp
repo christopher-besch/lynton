@@ -238,7 +238,7 @@ Texture* TextureLibrary::add_texture(unsigned short& id)
     // get first unused id
     // id = 0 is not allowed <- used as error code
     do {
-        id = m_random_gen->next_unsigned_short();
+        id = m_random_gen->next<unsigned short>();
     } while(!id || is_used(id));
     log_lynton_extra("Creating texture with id: {}", id);
     // create texture at id

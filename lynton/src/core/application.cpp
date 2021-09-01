@@ -25,8 +25,9 @@ Application::~Application()
 
 void Application::setup_layer(Layer* layer)
 {
-    layer->set_renderer(m_renderer);
-    layer->set_camera(new Camera({0, 0, 1}, m_renderer->get_screen_width(), m_renderer->get_screen_height()));
+    layer->set_attributes(m_renderer,
+                          m_random_gen,
+                          new Camera({0, 0, 1}, m_renderer->get_screen_width(), m_renderer->get_screen_height()));
     layer->setup();
 }
 
