@@ -67,6 +67,7 @@ all: vendor/spdlog/all
 all: vendor/armadillo/all
 all: lynton/all
 all: sandbox/all
+all: physics_words/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,6 +75,7 @@ preinstall: vendor/spdlog/preinstall
 preinstall: vendor/armadillo/preinstall
 preinstall: lynton/preinstall
 preinstall: sandbox/preinstall
+preinstall: physics_words/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -81,6 +83,7 @@ clean: vendor/spdlog/clean
 clean: vendor/armadillo/clean
 clean: lynton/clean
 clean: sandbox/clean
+clean: physics_words/clean
 .PHONY : clean
 
 #=============================================================================
@@ -97,6 +100,21 @@ lynton/preinstall:
 # Recursive "clean" directory target.
 lynton/clean: lynton/CMakeFiles/lynton.dir/clean
 .PHONY : lynton/clean
+
+#=============================================================================
+# Directory level rules for directory physics_words
+
+# Recursive "all" directory target.
+physics_words/all: physics_words/CMakeFiles/physics_words.dir/all
+.PHONY : physics_words/all
+
+# Recursive "preinstall" directory target.
+physics_words/preinstall:
+.PHONY : physics_words/preinstall
+
+# Recursive "clean" directory target.
+physics_words/clean: physics_words/CMakeFiles/physics_words.dir/clean
+.PHONY : physics_words/clean
 
 #=============================================================================
 # Directory level rules for directory sandbox
@@ -150,7 +168,7 @@ vendor/spdlog/clean: vendor/spdlog/CMakeFiles/spdlog.dir/clean
 vendor/spdlog/CMakeFiles/spdlog.dir/all:
 	$(MAKE) $(MAKESILENT) -f vendor/spdlog/CMakeFiles/spdlog.dir/build.make vendor/spdlog/CMakeFiles/spdlog.dir/depend
 	$(MAKE) $(MAKESILENT) -f vendor/spdlog/CMakeFiles/spdlog.dir/build.make vendor/spdlog/CMakeFiles/spdlog.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=20,21,22,23,24,25,26,27 "Built target spdlog"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=26,27,28,29,30,31,32,33 "Built target spdlog"
 .PHONY : vendor/spdlog/CMakeFiles/spdlog.dir/all
 
 # Build rule for subdir invocation for target.
@@ -231,7 +249,7 @@ sandbox/CMakeFiles/sandbox.dir/all: vendor/armadillo/CMakeFiles/armadillo.dir/al
 sandbox/CMakeFiles/sandbox.dir/all: vendor/spdlog/CMakeFiles/spdlog.dir/all
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/depend
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=16,17,18,19 "Built target sandbox"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=22,23,24,25 "Built target sandbox"
 .PHONY : sandbox/CMakeFiles/sandbox.dir/all
 
 # Build rule for subdir invocation for target.
@@ -249,6 +267,34 @@ sandbox: sandbox/CMakeFiles/sandbox.dir/rule
 sandbox/CMakeFiles/sandbox.dir/clean:
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/clean
 .PHONY : sandbox/CMakeFiles/sandbox.dir/clean
+
+#=============================================================================
+# Target rules for target physics_words/CMakeFiles/physics_words.dir
+
+# All Build rule for target.
+physics_words/CMakeFiles/physics_words.dir/all: lynton/CMakeFiles/lynton.dir/all
+physics_words/CMakeFiles/physics_words.dir/all: vendor/armadillo/CMakeFiles/armadillo.dir/all
+physics_words/CMakeFiles/physics_words.dir/all: vendor/spdlog/CMakeFiles/spdlog.dir/all
+	$(MAKE) $(MAKESILENT) -f physics_words/CMakeFiles/physics_words.dir/build.make physics_words/CMakeFiles/physics_words.dir/depend
+	$(MAKE) $(MAKESILENT) -f physics_words/CMakeFiles/physics_words.dir/build.make physics_words/CMakeFiles/physics_words.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/runner/work/lynton/lynton/build/CMakeFiles --progress-num=16,17,18,19,20,21 "Built target physics_words"
+.PHONY : physics_words/CMakeFiles/physics_words.dir/all
+
+# Build rule for subdir invocation for target.
+physics_words/CMakeFiles/physics_words.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/runner/work/lynton/lynton/build/CMakeFiles 29
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 physics_words/CMakeFiles/physics_words.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/runner/work/lynton/lynton/build/CMakeFiles 0
+.PHONY : physics_words/CMakeFiles/physics_words.dir/rule
+
+# Convenience name for target.
+physics_words: physics_words/CMakeFiles/physics_words.dir/rule
+.PHONY : physics_words
+
+# clean rule for target.
+physics_words/CMakeFiles/physics_words.dir/clean:
+	$(MAKE) $(MAKESILENT) -f physics_words/CMakeFiles/physics_words.dir/build.make physics_words/CMakeFiles/physics_words.dir/clean
+.PHONY : physics_words/CMakeFiles/physics_words.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

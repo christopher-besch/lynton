@@ -43,6 +43,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/runner/work/lynton/lynton/build/vendor/armadillo/cmake_install.cmake")
   include("/home/runner/work/lynton/lynton/build/lynton/cmake_install.cmake")
   include("/home/runner/work/lynton/lynton/build/sandbox/cmake_install.cmake")
+  include("/home/runner/work/lynton/lynton/build/physics_words/cmake_install.cmake")
 
 endif()
 

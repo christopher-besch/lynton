@@ -7,8 +7,8 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/runner/work/_temp/b49b5637-3b05-435a-9f41-b9ee34a004cb/emsdk-master/upstream/emscripten/cmake/Modules/CMakeSystemSpecificInformation.cmake"
-  "/home/runner/work/_temp/b49b5637-3b05-435a-9f41-b9ee34a004cb/emsdk-master/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+  "/home/runner/work/_temp/32b6fa18-0480-4fbd-8847-e57d4e764c14/emsdk-master/upstream/emscripten/cmake/Modules/CMakeSystemSpecificInformation.cmake"
+  "/home/runner/work/_temp/32b6fa18-0480-4fbd-8847-e57d4e764c14/emsdk-master/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
   "../CMakeLists.txt"
   "CMakeFiles/3.21.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.21.1/CMakeCXXCompiler.cmake"
@@ -17,6 +17,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "vendor/armadillo/tmp/include/armadillo_bits/config.hpp.cmake"
   "vendor/armadillo/tmp/misc/armadillo.pc.in"
   "../lynton/CMakeLists.txt"
+  "../physics_words/CMakeLists.txt"
   "../sandbox/CMakeLists.txt"
   "../vendor/armadillo/CMakeLists.txt"
   "../vendor/armadillo/cmake_aux/InstallFiles/ArmadilloConfig.cmake.in"
@@ -91,6 +92,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "vendor/armadillo/CMakeFiles/CMakeDirectoryInformation.cmake"
   "lynton/CMakeFiles/CMakeDirectoryInformation.cmake"
   "sandbox/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "physics_words/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -99,4 +101,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "vendor/armadillo/CMakeFiles/armadillo.dir/DependInfo.cmake"
   "lynton/CMakeFiles/lynton.dir/DependInfo.cmake"
   "sandbox/CMakeFiles/sandbox.dir/DependInfo.cmake"
+  "physics_words/CMakeFiles/physics_words.dir/DependInfo.cmake"
   )

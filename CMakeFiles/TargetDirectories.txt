@@ -32,3 +32,10 @@
 /home/runner/work/lynton/lynton/build/sandbox/CMakeFiles/rebuild_cache.dir
 /home/runner/work/lynton/lynton/build/sandbox/CMakeFiles/install.dir
 /home/runner/work/lynton/lynton/build/sandbox/CMakeFiles/list_install_components.dir
+/home/runner/work/lynton/lynton/build/physics_words/CMakeFiles/install/strip.dir
+/home/runner/work/lynton/lynton/build/physics_words/CMakeFiles/install/local.dir
+/home/runner/work/lynton/lynton/build/physics_words/CMakeFiles/physics_words.dir
+/home/runner/work/lynton/lynton/build/physics_words/CMakeFiles/edit_cache.dir
+/home/runner/work/lynton/lynton/build/physics_words/CMakeFiles/rebuild_cache.dir
+/home/runner/work/lynton/lynton/build/physics_words/CMakeFiles/install.dir
+/home/runner/work/lynton/lynton/build/physics_words/CMakeFiles/list_install_components.dir

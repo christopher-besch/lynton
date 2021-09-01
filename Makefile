@@ -213,6 +213,19 @@ sandbox/fast:
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/sandbox.dir/build.make sandbox/CMakeFiles/sandbox.dir/build
 .PHONY : sandbox/fast
 
+#=============================================================================
+# Target rules for targets named physics_words
+
+# Build rule for target.
+physics_words: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 physics_words
+.PHONY : physics_words
+
+# fast build rule for target.
+physics_words/fast:
+	$(MAKE) $(MAKESILENT) -f physics_words/CMakeFiles/physics_words.dir/build.make physics_words/CMakeFiles/physics_words.dir/build
+.PHONY : physics_words/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -227,6 +240,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... armadillo"
 	@echo "... lynton"
+	@echo "... physics_words"
 	@echo "... sandbox"
 	@echo "... spdlog"
 .PHONY : help
