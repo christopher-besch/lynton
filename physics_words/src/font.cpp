@@ -29,12 +29,11 @@ std::map<char, Char> load_font(const std::string& path)
             for(int y = 0; y < height; ++y) {
                 std::getline(file, buf, '\n');
                 // todo: remove this horribility
-                chars[code].width   = buf.size();
+                chars[code].width   = buf.size() / 2;
                 chars[code].spacing = spacing;
-                for(int x = 0; x < chars[code].width; ++x) {
-                    log_client_extra("{} {} {}", static_cast<int>(code), chars[code].width, buf[x]);
-                    if(buf[x] != ' ')
-                        chars[code].pixels.push_back({x, y});
+                for(size_t x = 0; x < buf.size(); ++x) {
+                    if(x % 2 && buf[x] != ' ')
+                        chars[code].pixels.push_back({x / 2, y});
                 }
             }
         }

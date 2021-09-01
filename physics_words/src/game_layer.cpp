@@ -23,17 +23,49 @@ void GameLayer::setup()
         m_color_ids.push_back(id);
     }
     // place blocks
-    std::map<char, Char> chars = load_font("res/font.txt");
+    std::map<char, Char> chars         = load_font("res/font.txt");
+    int                  char_height   = chars['a'].height;
+    int                  screen_height = m_renderer->get_screen_height();
+    int                  screen_width  = m_renderer->get_screen_width();
 
-    int last_x {0};
-    for(auto ch: "hello world") {
-        Char font_char {chars[ch]};
-        for(auto pixel: font_char.pixels) {
-            Lynton::scalar x = 11 * (last_x + pixel.first);
-            Lynton::scalar y = 11 * pixel.second;
-            create_square({x, y, 1}, 10);
+    std::vector<std::string> lines {
+        "Hello World!",
+        "How are",
+        "you doing?",
+    };
+    Lynton::scalar ver_spacing {10};
+    Lynton::scalar hor_spacing {1};
+    // determine start height
+    int last_y = screen_height -
+                 lines.size() * char_height +
+                 (lines.size() - 1) * ver_spacing;
+    last_y /= 2;
+    log_client_extra("y: {}", last_y);
+
+    for(auto line: lines) {
+        // how many pixels required by line
+        int pixels {0};
+        for(auto ch: line) {
+            Char font_char {chars[ch]};
+            pixels += font_char.width + font_char.spacing;
         }
-        last_x += font_char.width;
+        // determine start width
+        int last_x = screen_width -
+                     pixels +
+                     (line.size() - 1) * hor_spacing;
+        last_x /= 2;
+        log_client_extra("x: {}", last_x);
+
+        for(auto ch: line) {
+            Char font_char {chars[ch]};
+            for(auto pixel: font_char.pixels) {
+                Lynton::scalar x = 11 * (last_x + pixel.first);
+                Lynton::scalar y = 11 * (last_y + pixel.second);
+                create_square({x, y, 1}, 10);
+            }
+            last_x += font_char.width + font_char.spacing;
+        }
+        last_y += char_height + ver_spacing;
     }
 }
 
