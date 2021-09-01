@@ -23,24 +23,24 @@ void GameLayer::setup()
         m_color_ids.push_back(id);
     }
     // place blocks
-    std::map<char, Char> chars         = load_font("res/font.txt");
-    int                  char_height   = chars['a'].height;
-    int                  screen_height = m_renderer->get_screen_height();
-    int                  screen_width  = m_renderer->get_screen_width();
-
     std::vector<std::string> lines {
         "Hello World!",
         "How are",
         "you doing?",
     };
-    Lynton::scalar ver_spacing {10};
-    Lynton::scalar hor_spacing {1};
+    std::map<char, Char> chars         = load_font("res/font.txt");
+    int                  char_height   = chars['a'].height;
+    int                  screen_height = m_renderer->get_screen_height();
+    int                  screen_width  = m_renderer->get_screen_width();
+    Lynton::scalar       ver_spacing {10};
+    Lynton::scalar       hor_spacing {1};
+    Lynton::scalar       quad_width {10};
+
     // determine start height
     int last_y = screen_height -
-                 lines.size() * char_height +
+                 lines.size() * quad_width * char_height -
                  (lines.size() - 1) * ver_spacing;
     last_y /= 2;
-    log_client_extra("y: {}", last_y);
 
     for(auto line: lines) {
         // how many pixels required by line
@@ -51,21 +51,21 @@ void GameLayer::setup()
         }
         // determine start width
         int last_x = screen_width -
-                     pixels +
+                     quad_width * pixels -
                      (line.size() - 1) * hor_spacing;
         last_x /= 2;
-        log_client_extra("x: {}", last_x);
 
         for(auto ch: line) {
             Char font_char {chars[ch]};
             for(auto pixel: font_char.pixels) {
-                Lynton::scalar x = 11 * (last_x + pixel.first);
-                Lynton::scalar y = 11 * (last_y + pixel.second);
+                Lynton::scalar x = last_x + (quad_width + hor_spacing) * pixel.first;
+                Lynton::scalar y = last_y + (quad_width + ver_spacing) * pixel.second;
                 create_square({x, y, 1}, 10);
+                // raise_critical("{} {}", x, y);
             }
-            last_x += font_char.width + font_char.spacing;
+            last_x += (quad_width + hor_spacing) * (font_char.width + font_char.spacing);
         }
-        last_y += char_height + ver_spacing;
+        last_y += (quad_width + ver_spacing) * char_height + ver_spacing;
     }
 }
 

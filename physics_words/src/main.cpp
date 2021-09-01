@@ -5,7 +5,7 @@
 class PhysicsWords: public Lynton::Application {
 public:
     PhysicsWords()
-        : Application("Physics Words", 0, 1920, 1080)
+        : Application("Physics Words", 0, 900, 600)
     {
         add_layer(new GameLayer());
 #ifndef NDEBUG
