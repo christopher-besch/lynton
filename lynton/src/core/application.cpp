@@ -86,6 +86,7 @@ void Application::run_frame()
     // m_renderer->clear();
 
     // todo: crude example
+    // https://marcelfischer.eu/blog/2019/imgui-in-sdl-opengl/
     bool marca = true;
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplSDL2_NewFrame();
