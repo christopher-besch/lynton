@@ -3,8 +3,9 @@
 #include "pch.h"
 
 namespace Lynton {
-Renderer::Renderer(const std::string& name, int screen_width, int screen_height, RandomGen* random_gen)
-    : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height), m_random_gen(random_gen)
+
+Renderer::Renderer(const std::string& name, int screen_width, int screen_height,  uint8_t r, uint8_t g, uint8_t b, RandomGen* random_gen)
+    : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height), m_r(r), m_g(g), m_b(b), m_random_gen(random_gen)
 {
     log_lynton_general("Creating renderer for '{}'", m_name);
     // init
@@ -60,8 +61,8 @@ Renderer::~Renderer()
 
 void Renderer::clear()
 {
-    // light grey background
-    SDL_SetRenderDrawColor(m_sdl_renderer, 0x70, 0x70, 0x70, 0xff);
+    // set background
+    SDL_SetRenderDrawColor(m_sdl_renderer, m_r, m_g, m_b, 0xff);
     SDL_RenderClear(m_sdl_renderer);
 }
 
@@ -75,4 +76,5 @@ void Renderer::update()
 {
     SDL_RenderPresent(m_sdl_renderer);
 }
+
 } // namespace Lynton

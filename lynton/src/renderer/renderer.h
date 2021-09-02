@@ -9,7 +9,8 @@
 namespace Lynton {
 class Renderer {
 public:
-    Renderer(const std::string& name, int screen_width, int screen_height, RandomGen* random_gen);
+    // rgb background color
+    Renderer(const std::string& name, int screen_width, int screen_height,  uint8_t r, uint8_t g, uint8_t b, RandomGen* random_gen);
 
     ~Renderer();
 
@@ -31,6 +32,7 @@ private:
     std::string      m_name;
     int              m_screen_width;
     int              m_screen_height;
+    uint8_t m_r, m_g, m_b;
     SDL_Window*      m_window          = nullptr;
     SDL_Renderer*    m_sdl_renderer    = nullptr;
     RandomGen*       m_random_gen      = nullptr;

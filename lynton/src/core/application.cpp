@@ -4,12 +4,13 @@
 #include "time/timer.h"
 
 namespace Lynton {
-Application::Application(const std::string& name, int goal_fps, int screen_width, int screen_height)
+
+    Application::Application(const std::string& name, int goal_fps, int screen_width, int screen_height, uint8_t r, uint8_t g, uint8_t b)
     : m_random_gen(new RandomGen()),
       m_name(name),
       m_goal_fps(goal_fps),
       m_goal_frame_time(goal_fps ? 1.0 / goal_fps : 0.0),
-      m_renderer(new Renderer(name, screen_width, screen_height, m_random_gen))
+      m_renderer(new Renderer(name, screen_width, screen_height, r, g, b, m_random_gen))
 {
     log_lynton_general("Creating application '{}'", m_name);
 }
