@@ -60,8 +60,8 @@ Renderer::~Renderer()
 
 void Renderer::clear()
 {
-    // set to ugly pink <- should never be seen
-    SDL_SetRenderDrawColor(m_sdl_renderer, 0x17, 0x43, 0x92, 0xff);
+    // light grey background
+    SDL_SetRenderDrawColor(m_sdl_renderer, 0x70, 0x70, 0x70, 0xff);
     SDL_RenderClear(m_sdl_renderer);
 }
 

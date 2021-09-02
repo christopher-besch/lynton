@@ -14,7 +14,6 @@ public:
     void render() { m_tex_quad->render(); }
 
 private:
-    Lynton::scalar m_width {0}, m_height {0};
     Lynton::scalar m_border_width {0}, m_border_height {0};
     Lynton::scalar m_anti_friction;
     // third coordinate is gibberish

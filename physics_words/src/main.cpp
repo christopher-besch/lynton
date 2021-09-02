@@ -5,12 +5,10 @@
 class PhysicsWords: public Lynton::Application {
 public:
     PhysicsWords()
-        : Application("Physics Words", 0, 900, 600)
+        : Application("Physics Words", 0, 1500, 900)
     {
         add_layer(new GameLayer());
-#ifndef NDEBUG
         add_overlay(new DebugLayer());
-#endif
     }
     ~PhysicsWords() {}
 };

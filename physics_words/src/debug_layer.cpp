@@ -7,7 +7,7 @@ DebugLayer::~DebugLayer()
 
 void DebugLayer::setup()
 {
-    m_font = new Lynton::Font("res/iosevka-extendedbold.ttf", 90);
+    m_font = new Lynton::Font("res/iosevka-extendedbold.ttf", 70);
 
     // text
     unsigned short text_id = m_tex_lib->load_from_text("1234", {0xff, 0x20, 0x20, 0xff}, m_font);
