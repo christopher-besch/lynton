@@ -1,11 +1,12 @@
 #include "application.h"
 
+#include "imgui.h"
 #include "pch.h"
 #include "time/timer.h"
 
 namespace Lynton {
 
-    Application::Application(const std::string& name, int goal_fps, int screen_width, int screen_height, uint8_t r, uint8_t g, uint8_t b)
+Application::Application(const std::string& name, int goal_fps, int screen_width, int screen_height, uint8_t r, uint8_t g, uint8_t b)
     : m_random_gen(new RandomGen()),
       m_name(name),
       m_goal_fps(goal_fps),
@@ -82,7 +83,20 @@ void Application::run_frame()
         (*i)->update(ticks);
 
     // render
-    m_renderer->clear();
+    // m_renderer->clear();
+
+    // todo: crude example
+    bool marca = true;
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplSDL2_NewFrame();
+    ImGui::NewFrame();
+    ImGui::ShowDemoWindow(&marca);
+    auto io = ImGui::GetIO();
+    ImGui::Render();
+    glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
+    glClear(GL_COLOR_BUFFER_BIT);
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
     for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
         (*i)->render();
     m_renderer->update();

@@ -16,12 +16,17 @@ target_include_directories(lynton
 # ##############################################################################
 # native build sdl2
 if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
-  target_link_libraries(lynton PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY}
-                                       ${SDL2_TTF_LIBRARY})
-  target_include_directories(lynton PUBLIC ${SDL2_INCLUDE_DIR})
+    # DIR without the S because fuck the programmer, I guess
+  target_include_directories(lynton PUBLIC ${SDL2_INCLUDE_DIR}
+                                           ${OPENGL_INCLUDE_DIR})
+
+  target_link_libraries(lynton PRIVATE ${SDL2_LIBRARY}
+                                       ${SDL2_IMAGE_LIBRARY}
+                                       ${SDL2_TTF_LIBRARY}
+                                       ${OPENGL_LIBRARIES})
 endif()
 
-target_link_libraries(lynton PUBLIC spdlog armadillo)
+target_link_libraries(lynton PUBLIC spdlog armadillo imgui)
 
 # ##############################################################################
 # resources #

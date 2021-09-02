@@ -4,7 +4,7 @@
 
 namespace Lynton {
 
-Renderer::Renderer(const std::string& name, int screen_width, int screen_height,  uint8_t r, uint8_t g, uint8_t b, RandomGen* random_gen)
+Renderer::Renderer(const std::string& name, int screen_width, int screen_height, uint8_t r, uint8_t g, uint8_t b, RandomGen* random_gen)
     : m_name(name), m_screen_width(screen_width), m_screen_height(screen_height), m_r(r), m_g(g), m_b(b), m_random_gen(random_gen)
 {
     log_lynton_general("Creating renderer for '{}'", m_name);
@@ -43,6 +43,28 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height,
 
     // used to create color
     m_mapping_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
+
+    // todo: crude test
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+    SDL_GLContext context = SDL_GL_CreateContext(m_window);
+    // SDL and OpenGL setup...
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    (void)io;
+    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+    // Setup Dear ImGui style
+    ImGui::StyleColorsDark();
+    //ImGui::StyleColorsClassic();
+
+    // Setup Platform/Renderer backends
+    ImGui_ImplSDL2_InitForOpenGL(m_window, context);
+    ImGui_ImplOpenGL3_Init("#version 150");
 }
 
 Renderer::~Renderer()
