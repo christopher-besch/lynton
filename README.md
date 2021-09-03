@@ -16,8 +16,6 @@ You can compile this repository using cmake.
 - [Sandbox](https://christopher-besch.github.io/lynton/sandbox/sandbox.html)
 - [Physics Words](https://christopher-besch.github.io/lynton/physics_words/physics_words.html)
 
-## [Working Web Version](https://christopher-besch.github.io/lynton/sandbox/sandbox.html)
-
 ## Dependencies (Debian)
 
 `sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev`
