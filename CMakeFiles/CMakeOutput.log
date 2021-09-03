@@ -3,14 +3,14 @@ The host system is: Linux - 5.8.0-1040-azure - x86_64
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
 Change Dir: /home/runner/work/lynton/lynton/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_73528/fast && /usr/bin/make  -f CMakeFiles/cmTC_73528.dir/build.make CMakeFiles/cmTC_73528.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_0ca76/fast && /usr/bin/make  -f CMakeFiles/cmTC_0ca76.dir/build.make CMakeFiles/cmTC_0ca76.dir/build
 make[1]: Entering directory '/home/runner/work/lynton/lynton/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_73528.dir/src.c.o
-/home/runner/work/_temp/7f2f4189-13bc-4674-ab8d-e93051798d41/emsdk-master/upstream/emscripten/emcc -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_73528.dir/src.c.o -MF CMakeFiles/cmTC_73528.dir/src.c.o.d -o CMakeFiles/cmTC_73528.dir/src.c.o -c /home/runner/work/lynton/lynton/build/CMakeFiles/CMakeTmp/src.c
+Building C object CMakeFiles/cmTC_0ca76.dir/src.c.o
+/home/runner/work/_temp/5b3b04d1-689e-4cf8-8f1d-c10177445d0c/emsdk-master/upstream/emscripten/emcc -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_0ca76.dir/src.c.o -MF CMakeFiles/cmTC_0ca76.dir/src.c.o.d -o CMakeFiles/cmTC_0ca76.dir/src.c.o -c /home/runner/work/lynton/lynton/build/CMakeFiles/CMakeTmp/src.c
 shared:INFO: (Emscripten: Running sanity checks)
-Linking C executable cmTC_73528.js
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73528.dir/link.txt --verbose=1
-/home/runner/work/_temp/7f2f4189-13bc-4674-ab8d-e93051798d41/emsdk-master/upstream/emscripten/emcc @CMakeFiles/cmTC_73528.dir/objects1.rsp -o cmTC_73528.js 
+Linking C executable cmTC_0ca76.js
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0ca76.dir/link.txt --verbose=1
+/home/runner/work/_temp/5b3b04d1-689e-4cf8-8f1d-c10177445d0c/emsdk-master/upstream/emscripten/emcc @CMakeFiles/cmTC_0ca76.dir/objects1.rsp -o cmTC_0ca76.js 
 make[1]: Leaving directory '/home/runner/work/lynton/lynton/build/CMakeFiles/CMakeTmp'
 
 
