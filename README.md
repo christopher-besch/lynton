@@ -11,6 +11,11 @@ This repository consists of two build targets: `lynton` (the engine) and `sandbo
 
 You can compile this repository using cmake.
 
+## Deployed Web Versions
+
+- [Sandbox](https://christopher-besch.github.io/lynton/sandbox/sandbox.html)
+- [Physics Words](https://christopher-besch.github.io/lynton/physics_words/physics_words.html)
+
 ## [Working Web Version](https://christopher-besch.github.io/lynton/sandbox/sandbox.html)
 
 ## Dependencies (Debian)
