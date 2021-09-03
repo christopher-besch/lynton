@@ -9,9 +9,8 @@ namespace Lynton {
 
 class Layer {
 public:
-    // todo: make renderer be defined here
     Layer(const std::string& name);
-    virtual ~Layer() = 0;
+    virtual ~Layer();
 
     // run after construction
     // texture loading should be done here or dynamically in update or render, not in constructor
@@ -20,7 +19,6 @@ public:
     virtual void update(double frame_time) = 0;
     virtual void render()                  = 0;
 
-    // todo: replace with lynton wrapper event
     // returns true if handled by this layer
     virtual bool handle_event(SDL_Event e) = 0;
 

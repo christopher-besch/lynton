@@ -1,4 +1,3 @@
-#define GL_GLEXT_PROTOTYPES
 #include "core/log.h"
 #include "core/random.h"
 #include "math/defs.h"

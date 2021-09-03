@@ -6,7 +6,7 @@ class DebugLayer: public Lynton::Layer {
 public:
     DebugLayer()
         : Layer("Debug Layer") {}
-    virtual ~DebugLayer();
+    ~DebugLayer();
 
     void setup() override;
 

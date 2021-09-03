@@ -7,7 +7,7 @@ class GameLayer: public Lynton::Layer {
 public:
     GameLayer()
         : Layer("Game Layer") {}
-    virtual ~GameLayer();
+    ~GameLayer();
     void setup() override;
 
     // time in seconds since last fram

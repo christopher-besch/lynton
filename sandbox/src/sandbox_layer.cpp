@@ -95,6 +95,18 @@ void SandboxLayer::render()
     m_dot3->render();
     m_dot4->render();
     m_dot5->render();
+
+    if(ImGui::Begin("MyWindow")) {
+        float speed {0};
+        bool  someBoolean {0};
+        ImGui::Checkbox("Boolean property", &someBoolean);
+        if(ImGui::Button("Reset Speed")) {
+            // this code is executed when the user clicks the button
+            speed = 0;
+        }
+        ImGui::SliderFloat("Speed", &speed, 0.0f, 10.0f);
+        ImGui::End();
+    }
 }
 
 bool SandboxLayer::handle_event(SDL_Event e)

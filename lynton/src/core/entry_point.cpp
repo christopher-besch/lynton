@@ -11,10 +11,6 @@ int main()
 
     // keeps running on native; immediately returns on emscripten
     app->run();
-    // todo: crude example
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplSDL2_Shutdown();
-    ImGui::DestroyContext();
 
 #ifndef __EMSCRIPTEN__
     delete app;

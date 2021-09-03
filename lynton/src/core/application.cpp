@@ -71,6 +71,7 @@ void Application::run_frame()
     while(SDL_PollEvent(&m_e)) {
         if(m_e.type == SDL_QUIT)
             m_quit = true;
+        // else if(!ImGui_ImplSDL2_ProcessEvent(&m_e))
         else
             // go through all layers, stop when handled
             for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
@@ -83,21 +84,8 @@ void Application::run_frame()
         (*i)->update(ticks);
 
     // render
-    // m_renderer->clear();
-
-    // todo: crude example
-    // https://marcelfischer.eu/blog/2019/imgui-in-sdl-opengl/
-    bool marca = true;
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplSDL2_NewFrame();
-    ImGui::NewFrame();
-    ImGui::ShowDemoWindow(&marca);
-    auto io = ImGui::GetIO();
-    ImGui::Render();
-    glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-    glClear(GL_COLOR_BUFFER_BIT);
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
+    m_renderer->create_imgui_frame();
+    m_renderer->clear();
     for(auto i = m_layers.begin(); i < m_layers.end(); ++i)
         (*i)->render();
     m_renderer->update();

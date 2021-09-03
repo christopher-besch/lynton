@@ -44,27 +44,22 @@ Renderer::Renderer(const std::string& name, int screen_width, int screen_height,
     // used to create color
     m_mapping_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
 
-    // todo: crude test
+    // opengl setup
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-    SDL_GLContext context = SDL_GL_CreateContext(m_window);
-    // SDL and OpenGL setup...
+    m_context = SDL_GL_CreateContext(m_window);
+
+    // imgui setup
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO();
-    (void)io;
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-
-    // Setup Dear ImGui style
+    m_io = &ImGui::GetIO();
+    // todo: let client decide style
     ImGui::StyleColorsDark();
-    //ImGui::StyleColorsClassic();
 
-    // Setup Platform/Renderer backends
-    ImGui_ImplSDL2_InitForOpenGL(m_window, context);
-    ImGui_ImplOpenGL3_Init("#version 150");
+    ImGui_ImplSDL2_InitForOpenGL(m_window, m_context);
+    ImGui_ImplOpenGL3_Init();
 }
 
 Renderer::~Renderer()
@@ -72,6 +67,12 @@ Renderer::~Renderer()
     log_lynton_general("Deleting renderer for '{}'", m_name);
     delete m_texture_library;
 
+    // imgui shutdown
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplSDL2_Shutdown();
+    ImGui::DestroyContext();
+
+    // sdl2 shutdown
     SDL_DestroyRenderer(m_sdl_renderer);
     SDL_DestroyWindow(m_window);
     SDL_FreeFormat(m_mapping_format);
@@ -84,8 +85,9 @@ Renderer::~Renderer()
 void Renderer::clear()
 {
     // set background
-    SDL_SetRenderDrawColor(m_sdl_renderer, m_r, m_g, m_b, 0xff);
-    SDL_RenderClear(m_sdl_renderer);
+    // SDL_SetRenderDrawColor(m_sdl_renderer, m_r, m_g, m_b, 0xff);
+    // SDL_RenderClear(m_sdl_renderer);
+    // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Renderer::set_viewport(int x, int y, int w, int h)
@@ -94,8 +96,24 @@ void Renderer::set_viewport(int x, int y, int w, int h)
     SDL_RenderSetViewport(m_sdl_renderer, &viewport);
 }
 
+void Renderer::create_imgui_frame()
+{
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplSDL2_NewFrame(m_window);
+    ImGui::NewFrame();
+}
+
 void Renderer::update()
 {
+    ImGui::Render();
+    glViewport(0, 0, (int)m_io->DisplaySize.x, (int)m_io->DisplaySize.y);
+    glClear(GL_COLOR_BUFFER_BIT);
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+    // ImGui::Render();
+    // ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    // SDL_GL_SwapWindow(m_window);
+
     SDL_RenderPresent(m_sdl_renderer);
 }
 
